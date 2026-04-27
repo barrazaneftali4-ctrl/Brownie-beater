@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brownie Beater</title>
+
+    <link rel="stylesheet" href="style.css"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    
+    <div class="form-box active" id="login-form">
+        <form action="">
+            <h2 style ="margin-bottom:10px;">Login</h2>
+	
+            <input type="text" name="username" placeholder="Username" required>
+
+            <div class="input-group">
+                <input type="password" id="login_password" name="password" placeholder="Password" required>
+		<i class="fa-solid fa-eye toggle-icon" onclick="togglePassword('login_password', this)"></i>
+		<p style = "margin-top:5px;">
+			<a href="#" onclick="showForm('forgot_password-form')" style ="font-size :12px;">Forgot password? </a>
+		</p>
+
+            </div>
+
+            <button type="submit" name="login">Login</button>
+            <p>Don't have an account? <a href="#" onclick="showForm('register-form')">Register</a></p>
+        </form>
+    </div>
+
+    <div class="form-box" id="register-form">
+        <form action="#">
+            <h2>Register</h2>
+            <input type="text" name="name" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <i class="fa-solid fa-eye toggle-icon" onclick="togglePassword('password', this)"></i>
+            </div>
+            
+            <div id="password-requirements" style="text-align: left; margin-top: -10px; margin-bottom: 20px;">
+                <p id="req-number" style="font-size: 12px; color: #ff6b6b; margin: 5px 0;">
+                     <i class="fa-solid fa-circle-xmark"></i> One number (0-9)
+                 </p>
+                <p id="req-upper" style="font-size: 12px; color: #ff6b6b; margin: 5px 0;">
+                    <i class="fa-solid fa-circle-xmark"></i> One uppercase letter (A-Z)
+                 </p>
+                <p id="req-special" style="font-size: 12px; color: #ff6b6b; margin: 5px 0;">
+                     <i class="fa-solid fa-circle-xmark"></i> One special character (@, #, $, etc.)
+                </p>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                <i class="fa-solid fa-eye toggle-icon" onclick="togglePassword('confirm_password', this)"></i>
+            </div>
+
+            <span id="error-message" style="color: #ff6b6b; font-size: 13px; display: block; margin-bottom: 10px;"></span>
+
+            <button type="submit" id="register-btn" name="Register">Register</button>
+            <p>Already have an account? <a href="#" onclick="showForm('login-form')">Login</a></p>
+        </form>
+    </div>
+
+    <div class="form-box" id="forgot_password-form">
+        <form action="">
+            <h2>REQUEST TO RESET YOUR PASSWORD</h2>
+            <p style="font-size: 13px; margin-bottom: 20px;">Forgot your password? No worries! Provide your account email to receive a secure password reset link.</p>
+            <input type="email" name="resetEmail" placeholder="Email" required>
+            <button type="submit">Reset Password</button> 
+            <p><a href="#" onclick="showForm('login-form')">Back to Login</a></p>
+        </form>
+    </div>
+
+    <div class="form-box" id="verify_code-form"> 
+        <form action="#">
+            <h2>RESET PASSWORD</h2>
+            <p style="font-size: 13px; margin-bottom: 20px;">Enter the 6 digit code sent to your email and create a new password.</p>
+            <div class="otp-container" id="otp-inputs"> 
+                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
+                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
+            </div> 
+
+            <div class="input-group"> 
+                <input type="password" id="new_password" name="new_password" placeholder="New Password" required> 
+                <i class="fa-solid fa-eye toggle-icon" onclick="togglePassword('new_password', this)"></i>
+            </div>
+
+            <button type="submit">Update Password</button>
+            <p><a href="#" onclick="showForm('login-form')">Cancel</a></p>
+        </form>
+    </div>
+
+  </div> <script src="script.js"></script>
+</body>
+</html>

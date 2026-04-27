@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap'); 
+
+* {
+    margin: 0; 
+    padding:0; 
+    box-sizing: border-box; 
+    font-family: "Poppins",sans-serif;  /* Changed serif to sans-serif for Poppins */ 
+}
+
+body {
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0; 
+    background-image: url(browniebackground.jpg); /* background of brownie-beater */ 
+    background-repeat: repeat;
+    background-size: 250px;  /* Slightly adjusted the size */ 
+    color:#fff; 
+}
+
+.container {     /* better spacing */ 
+    margin: 0 15px;
+    z-index: 1; 
+}
+
+.form-box {
+    width: 100%;
+    max-width: 450px;
+    padding: 30px; 
+    background: rgba(51, 51, 51, 0.95); /* Gives it a transparent look */ 
+    border: 2px solid #7F4D3E; 
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: none; /* showForm() toggles this */ 
+}
+
+.form-box.active{
+    display:block;
+    animation: fadeIn 0.4s ease-in-out; 
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(-15px); } 
+	to { opacity: 1; transform: translateY(0); } 
+}
+
+
+h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f1f1f1; 
+}
+
+input,
+select{
+    width: 100%;
+    padding: 20px;
+    background: #eee;
+    border-radius: 6px;
+    border: 2px solid transparent; /* Better transition*/ 
+    outline: none;
+    font-size:16px;
+    margin-bottom: 20px;
+    transition: 0.3s; 
+}
+
+input:focus {
+	background: #fff; 
+	border-color: #7F4D3E;
+	box-shadow: 0 0 8px rgba(127, 77, 62, 0.4); 
+}
+
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #7F4D3E;
+    border: none; 
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 20px;
+    transition:0.4s all;
+}
+
+button:hover {
+    background: #5d382d; /* lighter for hover */ 
+    transform: scale(1.02); /* pop effect */ 
+}
+
+p {
+    font-size:14px; 
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p a {
+    color: #a3b8f7;
+    text-decoration: none;
+    font-weight: 500; 
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.input-group {
+    position: relative; 
+    width: 100%
+}
+
+.input-group input {
+    padding-right: 50px; 
+    margin-bottom: 20px;
+}
+
+.input-group p{
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.toggle-icon{
+    position:absolute; 
+    right: 18px;
+    top: 25px; 
+    transform: translateY(-50%); 
+    color:#666; 
+    cursor: pointer; 
+    font-size: 18px; 
+    z-index: 10; 
+
+}
+
+.toggle-icon:hover {
+    color: #7F4D3E 
+}
+
+.valid {
+    color: #4bb543 !important;
+}
+.invalid {
+    color: #ff6b6b !important;
+}
+#password-requirements p {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.form-box.active{
+    display: block;
+    animation: fadeIn 0.4s ease-in-out; 
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px); }
+    to {opacity: 1; transform: translateY(0); }
+}
+
+.form-box {
+    background: rgba(51, 51, 51, 0.95);
+    border: 2px solid #7F4D3E; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+#password-requirements p{
+    transition:0.3s; 
+}
+
+#password-requirements p i {
+    margin-right: 8px; 
+}
+
+.valid {
+    color: #4bb543
+}
+
+.invalid {
+    color: #ff6b6b
+}
+
+input:focus {
+    background: #fff;
+    outline: 2px solid #7F4D3E; 
+    box-shadow: 0 0 8px rgba(127, 77 ,62, 0.4); 
+}
+
+@media (max-width: 480px) {
+    .form-box {
+        padding: 20px; 
+        max-width: 90%;
+    }
+    h2{
+        font-size: 28px; 
+    }
+}
+
+.otp-container {
+	display: flex; 
+	justify-content: space-between; /* Space them out evenly */ 
+	gap: 8px;  
+	margin-bottom: 25px; 
+}
+.otp-container input {
+	width: 45px; 
+	height: 55px; 
+	text-align: center; 
+	font-size: 22px;
+	font-weight: bold; 
+	border: 2px solid #ddd; 
+	border-radius: 8px; 
+	background-color :#fff !important;
+       	color: #333 !important;	
+	transition: all 0.3s ease; 
+	margin-bottom: 0; 
+}
+.otp-container input:focus {
+	border-color: #7F4d3E;
+	box-shadow: 0 0 8px rgba(127,77,62,0.4); 
+	outline: none; 
+	background-color: #fff; 
+}
+
+@media (max-width: 480px) {
+	.form-box {
+		padding: 25px 15px; 
+		max-width : 95%; 
+	}
+	h2 { font-size : 26px; } 
+}
+
+h1 {
+	font-size: 32px; 
+	text-align: center;
+	margin-bottom: 20px;
+	color: #f1f1f1; 
+}
+
+#lobby-page { 
+	background-image: url('lobbybackground.png'); 
+	background-size: cover; 
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed; 
+}
+
+#lobby-page .form-box {
+	max-width: 600px; 
+	padding: 50px; 
+}
+
+#lobby-page h1 {
+	font-size: 45px;
+	margin-bottom:30px; 
+}
+
+#lobby-page p {
+	font-size: 18px; 
+	margin-bottom: 30px;
+}
+
+#lobby-page button {
+	padding: 20px; 
+	font-size: 22px; 
+	margin-bottom: 25px; 
+}
+
+#lobby-page .logout-link, 
+#lobby-page p a {
+	font-size: 16px !important; 
+}
+
+#lobby-page button:hover {
+	background: #9c5f4c;
+	transform: scale(1.05); 
+	box-shadow 0 10px 20px rgba(0, 0, 0, 0.4); 
+	transition: 0.3s ease; 
+}
+
+

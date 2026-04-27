@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brownie Beater - Lobby</title>
+  <link rel ="stylesheet" href="style.css">
+</head>
+<body id = "lobby-page">
+   <div class="container">
+	<div class="form-box active"> 
+           <h1>Brownie Beater - Lobby</h1>
+	   <p style="margin-bottom: 20px;"> Pick host game to start a game, or join a exisiting game!</p>
+
+           <button onclick="hostGame()">Host Game</button>
+  
+            <button onclick="joinGame()" style="background: #5d382d; color: white;">Join Game</button>
+  
+  <p style="margin-top: 15px;">
+    <a href="#" onclick="logout()" style="font-size: 12px; color: #ff6b6b;">Logout</a> 
+  </p>
+	</div>
+   </div>
+
+  <script>
+var token = localStorage.getItem('token');
+    var myName = localStorage.getItem('username'); 
+
+    if (!token ||!myName){
+	alert("You are not logged in! Please login to play."); 
+	window.location.href = "index.html"; 
+    }
+
+    // Redirect if they aren't logged in
+    if(token == null) {
+        alert("You are not logged in!"); 
+        window.location.href = "index.html"; 
+    }
+
+    function hostGame() {
+        console.log("Creating a new room for: " + myName);
+
+        fetch('http://localhost:3000/createRoom', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: myName })
+        })
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(data) {
+            console.log("Room created! Code is: " + data.roomCode); 
+            window.location.href = "game.html?mode=host&room=" + data.roomCode; 
+        })
+        .catch(function(err) {
+            console.log("Host error: " + err); 
+            alert("Server is down, couldn't host."); 
+        }); 
+    }
+
+    // FIXED: Moved the join logic here
+    function joinGame() {
+        var codeFromUser = prompt("Enter the 4-digit Room Code:"); 
+
+        if (codeFromUser == null || codeFromUser == ""){
+            return; 
+        }
+        console.log("Attempting to join room: " + codeFromUser); 
+
+        fetch('http://localhost:3000/joinRoom', {
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({
+                roomCode: codeFromUser, 
+                username: myName
+            })
+        })
+        .then(function(res) {
+            return res.json(); 
+        })
+        .then(function(data) {
+            if(data.success == true) {
+                console.log("Join successful!"); 
+                window.location.href = "game.html?mode=join&room=" + codeFromUser;
+            }
+            else {
+                alert("Error: " + data.msg); 
+            }
+        })
+        .catch(function(err) {
+            console.log("Join error: " + err); 
+            alert("Could not connect to server."); 
+        }); 
+    }
+
+    // FIXED: Kept this simple just for logging out
+    function logout() {
+        console.log("Cleaning up local storage and logging out..."); 
+        localStorage.clear();
+        window.location.href = "index.html"; 
+    }
+    
+  </script>
+
+</body>
+</html>
