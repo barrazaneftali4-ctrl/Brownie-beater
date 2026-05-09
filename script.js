@@ -1,3 +1,5 @@
+const API_URL = "https://brownie-beater.onrender.com"
+
 function toggleLoading(show, message = "Working on it...") {
     const overlay = document.getElementById('loading-overlay'); 
     const text = document.getElementById('loading-text'); 
@@ -90,7 +92,7 @@ document.querySelector('#register-form form').addEventListener('submit', functio
 
     toggleLoading(true, "Baking your account..."); 
 
-    fetch('http://localhost:3000/api/register', {
+    fetch(`${API_URL}/api/register`, {
         method: 'POST', 
         headers: { 'Content-Type' : 'application/json' }, 
         body: JSON.stringify({ username, email, password })
@@ -118,7 +120,7 @@ document.querySelector('#login-form form').addEventListener('submit', function(e
     const username = this.username.value; 
     const password = document.getElementById('login_password').value; 
 
-    fetch('http://localhost:3000/api/login', {
+    fetch(`${API_URL}/api/login`, {
         method: 'POST', 
         headers: { 'Content-Type' : 'application/json' },
         body: JSON.stringify({ username, password })
@@ -147,7 +149,7 @@ document.getElementById('request-otp-form').addEventListener('submit', function(
     const email = this.resetEmail.value;
     toggleLoading(true, "Sending reset code...");
 
-    fetch('http://localhost:3000/api/forgot-password', {
+    fetch(`${API_URL}/api/forgot-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })
@@ -176,7 +178,7 @@ document.getElementById('otp-code-input').addEventListener('input', function() {
     if (codeBox.value.length === 6) {
         toggleLoading(true, "Checking code..."); 
 
-        fetch('http://localhost:3000/api/verify-otp', {
+        fetch(`${API_URL}/api/verify-otp`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: userEmail, otp_code: codeBox.value })
@@ -216,7 +218,7 @@ document.getElementById('reset-final-form').addEventListener('submit', function(
 
     toggleLoading(true, "Updating password...");  
 
-    fetch('http://localhost:3000/api/reset-password', {
+    fetch(`${API_URL}/api/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: userEmail, otp_code: theCode, new_password: firstPass })

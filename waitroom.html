@@ -204,9 +204,8 @@
 <button id="startBtn" onclick="toggleReady()">READY UP</button>
 
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
-<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 <script>
-    var socket = io("http://localhost:3000");
+    var socket = io("https://brownie-beater.onrender.com");
 
     var params = new URLSearchParams(window.location.search);
     var roomCode = params.get("room");
@@ -223,7 +222,8 @@
 
         async function fetchPlayerStats(username) {
             try {
-                const response = await fetch(`http://localhost:3000/api/stats?username=${username}`);
+		const API_URL = "https://brownie-beater.onrender.com";    
+		    const response = await fetch(`${API_URL}/api/stats?username=${username}`);
                 const data = await response.json();
                 
                 const element = document.getElementById(`brownies-${username}`);

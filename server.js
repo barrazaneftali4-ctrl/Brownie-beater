@@ -18,7 +18,12 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseURL, supabaseKey);
 
 
-app.use(cors()); 
+app.use(cors({
+	origin: "*",
+	methods: ["GET", "POST"],
+	credentials: true
+}));
+
 app.use(express.json()); 
 
 const transporter = nodemailer.createTransport({
@@ -34,6 +39,12 @@ const transporter = nodemailer.createTransport({
         minVersion: 'TLSv1.2'
     }
 });
+
+if (!supabaseURL || !supabaseKey) {
+    console.error("CRITICAL: Supabase environment variables are missing!");
+} else {
+    console.log("Supabase client initialized.");
+}
 
 // register
 app.post('/api/register', async function(req, res) {
@@ -229,7 +240,9 @@ app.post('/api/reset-password', async function(req, res) {
 const server = http.createServer(app);
 
 const io = new Server(server, {
-    cors: { origin: "*" }
+    cors: { origin: "*" },
+    pingTimeout: 60000,
+    pingInterval: 25000 
 });
 
 

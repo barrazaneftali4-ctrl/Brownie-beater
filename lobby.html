@@ -28,6 +28,8 @@
    </div>
 
   <script>
+	  const API_URL = "https://brownie-beater.onrender.com";
+
 	    function toggleLoading(show, text = "Loading...") {
             const overlay = document.getElementById('loading-overlay'); 
             const loadingText = document.getElementById('loading-text'); 
@@ -49,7 +51,7 @@
     function hostGame() {
         toggleLoading(true, "Creating room..."); 
 
-        fetch('http://localhost:3000/createRoom', {
+	    fetch(`${API_URL}/createRoom`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: myName })

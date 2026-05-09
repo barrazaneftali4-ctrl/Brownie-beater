@@ -75,7 +75,7 @@
 
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <script>
-        const socket = io("http://localhost:3000"); // change to deploy
+        const socket = io("https://brownie-beater.onrender.com"); 
 
                 
         const params = new URLSearchParams(window.location.search);
@@ -160,7 +160,7 @@
         });
 
         function saveGameResults(clicksThisGame) {
-            fetch('http://localhost:3000/api/add-clicks', {
+            fetch('https://brownie-beater.onrender.com/api/add-clicks', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
