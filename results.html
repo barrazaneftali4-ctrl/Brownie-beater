@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Results</title>
+    <style>
+        body {
+            background: #1e1e1e;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .stat-box {
+            background: #333;
+            padding: 20px;
+            margin: 20px auto;
+            width: 550px;
+            border-radius: 15px;
+            border: 2px solid #ffeb3b;
+        }
+        h1 { font-size: 48px; color: #ffeb3b; }
+        .win { color: #4CAF50; }
+        .lose { color: #f44336; }
+        
+        #playerStatsContainer {
+        display: flex;
+        justify-content: space-around; 
+        align-items: flex-end;        
+        text-align: left;
+        margin-top: 15px;
+        }
+
+        .stat-column {
+            flex: 1;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .crown {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 5px;
+            min-height: 30px;
+        }
+        .stat-column h4 { margin: 0 0 10px 0; color: #ffeb3b; border-bottom: 1px solid #555; }
+        .stat-column p { margin: 5px 0; font-size: 14px; color: white; }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background: #ffeb3b;
+            border: none;
+            border-radius: 5px;
+            margin: 10px; 
+            font-weight: bold;
+        }
+        #rematchBtn { background: #4CAF50; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1 id="resultTitle">RESULT</h1>
+    
+    <div class="stat-box">
+        <p id="winnerName" style="font-weight: bold; font-size: 22px; margin-bottom: 10px;"></p>
+        <hr>
+        
+        <div id="playerStatsContainer"></div> 
+    </div>
+
+    <button onclick="window.location.href='lobby.html'">Back to Menu</button>
+    <button id="rematchBtn">Rematch</button>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script>
+        const socket = io("http://localhost:3000"); // change to deploy
+
+                
+        const params = new URLSearchParams(window.location.search);
+        const roomCode = params.get("room");
+        const winnerName = params.get("winner");
+        const myName = localStorage.getItem("username") || "Player";
+
+        if (roomCode) {
+        socket.emit("joinRoom", { roomCode, username: myName });
+        socket.emit("getFinalScores", { roomCode });
+        }
+
+        //win loss title
+        const title = document.getElementById("resultTitle");
+        if (winnerName === myName) {
+            title.textContent = "YOU WON!";
+            title.className = "win";
+        } else {
+            title.textContent = "YOU LOST!";
+            title.className = "lose";
+        }
+        document.getElementById("winnerName").textContent = "Winner: " + winnerName;
+
+        if (roomCode) {
+            socket.emit("getFinalScores", { roomCode });
+        }
+
+        socket.on("displayFinalScores", function(finalScores) {
+            const statsContainer = document.getElementById("playerStatsContainer");
+            let statsHtml = "";
+
+            for (let user in finalScores) {
+                const isMe = (user === myName);
+                const isWinner = (user === winnerName);
+                const crown = isWinner ? "👑" : "&nbsp;";
+
+                if (isMe) {
+                    const myFinalClicks = finalScores[user].clicks;
+                    saveGameResults(myFinalClicks); 
+        }
+                // power up list
+                let pwrList = "";
+                const userPowerUps = finalScores[user].usedPowerUps || {};
+                let hasPwr = false;
+
+                for (let type in userPowerUps) {
+                    if (userPowerUps[type] > 0) {
+                        hasPwr = true;
+                        let color = "#white"; 
+                        
+                        if (type === "multiplier") color = "#ffeb3b";
+                        if (type === "steal") color = "#ff5252";
+                        if (type === "glitch") color = "#9c27b0"; 
+
+                        pwrList += `<p style="color:${color}">${type.charAt(0).toUpperCase() + type.slice(1)}: ${userPowerUps[type]}</p>`;
+                    }
+                }
+
+                if (!hasPwr) pwrList = "<p>None</p>";
+
+                statsHtml += `
+                    <div class="stat-column">
+                        <div class="crown">${crown}</div>
+                        <h4>${user}${isMe ? " (You)" : ""}</h4>
+                        <p>Total Clicks: ${finalScores[user].clicks}</p>
+                        <p>Peak CPS: ${finalScores[user].cps}</p>
+                        <p style="color:#4CAF50; margin-top:10px; font-weight:bold;">Power-ups:</p>
+                        ${pwrList}
+                    </div>
+                `;
+            }
+            statsContainer.innerHTML = statsHtml;
+        });
+
+        // Rematch Logic
+        document.getElementById("rematchBtn").onclick = function() {
+            if (roomCode) socket.emit("requestRematch", { roomCode });
+        };
+
+        socket.on("goToWaitroom", function() {
+            window.location.href = "waitroom.html?room=" + roomCode;
+        });
+
+        function saveGameResults(clicksThisGame) {
+            fetch('http://localhost:3000/api/add-clicks', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                },
+                body: JSON.stringify({ clicks: clicksThisGame })
+            })
+            .then(res => res.json())
+            .then(data => console.log("Total updated to:", data.newTotal))
+            .catch(err => console.error("Save failed:", err));
+        }
+    </script>
+</body>
+</html>

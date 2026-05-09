@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link ="short icon" type="x-icon" href="browniebeatericon.png"> 
     <title>Brownie Beater</title>
     <style>
-        /* CSS ONLY IN HERE */
+     
         body {
             text-align: center;
             font-family: Arial;
-            background-image: url("background.png");
+            background-image: url("beaterbackground.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -17,7 +18,15 @@
             padding: 0; 
         }
 
-        h1 { margin-top: 30px; }
+        h1 { 
+            margin-top: 30px; 
+            background-color: rgba(51, 51, 51, 0.9); 
+            display: inline-block;                      
+            padding: 20px 30px;                         
+            border-radius: 8px;                        
+            color: white;                                
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);      
+        }
 
         .tubeLabel {
             position: fixed; 
@@ -27,7 +36,22 @@
             width: 60px; 
             text-align: center; 
         }
-
+        #countdownOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        display: none; /* Hidden by default */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        color: white;
+        font-size: 120px;
+        font-weight: bold;
+        pointer-events: all; 
+    }
         #roomInfo { 
             position: absolute; 
             top: 20px; 
@@ -41,14 +65,23 @@
         }
 
         #brownie {
-            width: 300px;
+            width: 350px;
             cursor: pointer;
-            display: block; 
-            margin: 100px auto 0 auto; 
-            transition: transform 0.1s;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /* This centers the image */
+            transform: translate(-50%, -50%); 
+            transition: transform 0.05s; 
+            z-index: 10;
+            user-select: none;
+            -webkit-user-drag: none;
         }
+
         
-        #brownie:active { transform: scale(0.9); }
+        #brownie:active { 
+            transform: translate(-50%, -50%) scale(0.9); 
+        }
 
         .tubeContainer {
             position: fixed;
@@ -88,22 +121,99 @@
             text-align: left;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
+
+        #opponentHUD {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-size: 16px;
+        text-align: left;
+        min-width: 160px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        #roomInfo {
+        display: none;
+        }
+
+        #powerUpContainer {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+            z-index: 1000;
+        }
+
+        .power-card {
+            background-color: rgba(255, 235, 59, 0.95);
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            border: 3px solid #000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: none; 
+            animation: slideIn 0.4s ease-out, pulse 1.5s infinite;
+        }
+
+        #stealCard {
+            background-color: #ff5252;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .powerup-alert {
+            position: absolute;
+            left: 50%;
+            top: 35%; 
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: #ffeb3b;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            border: 2px solid #ffeb3b;
+            z-index: 100;
+            pointer-events: none;
+            animation: floatUpFade 2s forwards;
+        }
+
+        @keyframes floatUpFade {
+            0% { opacity: 0; transform: translate(-50%, 0); }
+            20% { opacity: 1; transform: translate(-50%, -20px); }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: translate(-50%, -50px); }
+        }
     </style>
 </head>
 <body>
-
-<div id="roomInfo">Room: ---</div> 
-
-<div id="myTube" class="tubeContainer"> 
-    <div id="myFill" class="fill"></div> 
+    <div id="countdownOverlay">3</div>
+<div id="opponentHUD"></div>
+<div id="powerUpContainer">
+    <div id="multiplierCard" class="power-card">[PRESS 1]<br>MULTIPLIER (2x)</div>
+    <div id="stealCard" class="power-card">[PRESS 2]<br>STEAL 15%</div>
+    <div id="glitchCard" class="power-card" style="background-color: #9c27b0; color: white;">
+        [PRESS 3]<br>GLITCH OPPONENTS
+    </div>
 </div>
-<div class="tubeLabel" style="left: 25px;">YOU</div>
-
-<div id="opponentTube" class="tubeContainer"> 
-    <div id="oppFill" class="fill"></div> 
-</div> 
-<div class="tubeLabel" style="right: 25px;">THEM</div> 
-
 <h1>Brownie Beater</h1>
 
 <img id="brownie"
@@ -115,91 +225,299 @@
     <div id="cps">CPS: 0</div>
 </div>
 
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 <script>
-    // --- VARIABLES ---
-    var clicks = 0;
-    var clicksThisSecond = 0;
-    var cps = 0;
-    var maxClicks = 500;
+var socket = io("http://localhost:3000");
+
+var clicks = 0;
+var clicksThisSecond = 0;
+var maxClicks = 500;
+var peakCPS = 0;
+var canClick = false; 
+
+var params = new URLSearchParams(window.location.search);
+var roomCode = params.get("room");
+var myName = localStorage.getItem("username") || "Player";
+
+var brownie = document.getElementById("brownie");
+var counter = document.getElementById("counter");
+var cpsDisplay = document.getElementById("cps");
+
+var multiplier = 1;
+var powerUpActive = false;
+var powerUpCooldown = false;
+
+var powerUpShown = false;
+
+var powerUpStats = {
+    multiplier: 0,
+    autoclicker: 0,
+    shield: 0,
+    steal:0
+};
+
+socket.emit("joinRoom", { roomCode, username: myName });
+
+//countdown
+window.onload = function() {
+    var overlay = document.getElementById("countdownOverlay");
+    var count = 3;
     
-    var params = new URLSearchParams(window.location.search); 
-    var roomCode = params.get("room"); 
-    var myName = localStorage.getItem('username') || "Player"; 
+    overlay.style.display = "flex";
+    overlay.textContent = count;
 
-    var brownie = document.getElementById("brownie");
-    var counter = document.getElementById("counter");
-    var myFill = document.getElementById("myFill");
-    var oppFill = document.getElementById("oppFill"); 
-    var roomDisplay = document.getElementById("roomInfo"); 
-    var cpsDisplay = document.getElementById("cps");
+    var timer = setInterval(function() {
+        count--;
+        if (count > 0) {
+            overlay.textContent = count;
+        } else if (count === 0) {
+            overlay.textContent = "GO!";
+        } else {
+            clearInterval(timer);
+            overlay.style.display = "none";
+            canClick = true; 
+        }
+    }, 1000);
+};
 
-    if (roomCode) {
-        roomDisplay.textContent = "Room Code: " + roomCode;
+// Click handler 
+brownie.addEventListener("click", function() {
+    if (!canClick) return; 
+
+    clicks += multiplier;
+    clicksThisSecond += multiplier; 
+    counter.textContent = "Clicks: " + clicks;
+
+    if (clicks >= maxClicks) {
+        socket.emit("playerReachedGoal", { 
+        roomCode, 
+        username: myName, 
+        usedPowerUps: powerUpStats,
+        peakCPS: peakCPS,
+        finalClicks: clicks
+    });
+        }
+
+    let milestone = maxClicks * 0.2;
+
+    if (clicks > 0 && clicks % milestone === 0 && clicks < maxClicks) {
+        if (!powerUpActive) {
+            showRandomPowerUp();
+        }
     }
 
-    // --- GAME LOGIC ---
-    brownie.addEventListener("click", function() {
-        clicks++;
-        clicksThisSecond++;
-        counter.textContent = "Clicks: " + clicks;
-
-        var percent = (clicks / maxClicks) * 100;
-        if (percent > 100) percent = 100;
-        myFill.style.height = percent + "%";
-
-        sendScore(); 
-
-        if(clicks >= maxClicks) {
-            alert("VICTORY! You beat the brownie!"); 
-        }
+    socket.emit("clickUpdate", {
+    roomCode,
+    username: myName,
+    clicks: clicks,
+    cps: clicksThisSecond,
+    usedPowerUps: powerUpStats
     });
 
-    function sendScore() {
-        if (!roomCode) return; 
+});
 
-        fetch('http://localhost:3000/updateClicks', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                roomCode: roomCode,
-                username: myName,
-                clicks: clicks
-            })
-        });
+// CPS Tracker
+setInterval(function() {
+    cpsDisplay.textContent = "CPS: " + clicksThisSecond;
+    
+    if (clicksThisSecond > peakCPS) {
+        peakCPS = clicksThisSecond;
     }
 
-    // --- MULTIPLAYER SYNC (Heartbeat) ---
-    setInterval(function() {
-        if (!roomCode) return;
-
-        fetch('http://localhost:3000/roomStatus/' + roomCode)
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-            for (var user in data.scores) {
-                // If it's not me, it's "Them"
-                if (user.toLowerCase() !== myName.toLowerCase()) {
-                    var oppClicks = data.scores[user];
-                    var oppPercent = (oppClicks / maxClicks) * 100;
-                    
-                    if (oppPercent > 100) oppPercent = 100;
-                    if (oppFill) {
-                        oppFill.style.height = oppPercent + "%";
-                    }
-                }
-            }
-        })
-        .catch(function(err) {
-            console.log("Error fetching status: " + err);
+    if (canClick) {
+        socket.emit("clickUpdate", {
+        roomCode,
+        username: myName,
+        clicks: clicks,
+        cps: clicksThisSecond,
+        usedPowerUps: powerUpStats 
         });
-    }, 500); // 500ms for a snappy feel
-    
-    // CPS Counter
-    setInterval(function() {
-        cps = clicksThisSecond;
-        clicksThisSecond = 0;
-        cpsDisplay.textContent = "CPS: " + cps;
+    }
+    clicksThisSecond = 0; 
     }, 1000);
 
+    // Score update logic
+    socket.on("scoreUpdate", function(scores) {
+    var html = "<strong>Opponent:</strong><hr>";
+    var foundOpponent = false;
+
+    for (var user in scores) {
+        if (user !== myName) {
+            foundOpponent = true;
+            var userScore = scores[user].clicks || 0;
+            var userCPS = scores[user].cps || 0;
+
+            html += `<div style="margin-bottom: 10px;">
+                        <span style="color: #ffeb3b;">${user}</span><br>
+                        Clicks: ${userScore}<br>
+                        CPS: ${userCPS}
+                     </div>`;
+        }
+    }
+
+    if (!foundOpponent) {
+        html += "<em>Waiting for others...</em>";
+    }
+
+    document.getElementById("opponentHUD").innerHTML = html;
+});
+
+function showRandomPowerUp() {
+    const powerUps = ["multiplierCard", "stealCard", "glitchCard"];
+    const randomIndex = Math.floor(Math.random() * powerUps.length);
+    const chosenId = powerUps[randomIndex];
+
+    hideAllCards(); 
+    document.getElementById(chosenId).style.display = "block";
+    powerUpShown = true;
+}
+
+socket.on("gameOver", function(data) {
+   
+    window.location.href = `results.html?room=${roomCode}&winner=${encodeURIComponent(data.winner)}`; 
+});
+
+//powerups manager
+window.addEventListener("keydown", function(event) {
+    const mCard = document.getElementById("multiplierCard");
+    const sCard = document.getElementById("stealCard");
+    const gCard = document.getElementById("glitchCard");
+
+    if (event.key === "1" && mCard.style.display === "block") {
+        hideAllCards();
+        activateDoubleClicks();
+    } else if (event.key === "2" && sCard.style.display === "block") {
+        hideAllCards();
+        activateSteal();
+    } else if (event.key === "3" && gCard.style.display === "block") {
+        hideAllCards();
+        activateGlitch();
+    }
+});
+
+function hideAllCards() {
+    document.getElementById("multiplierCard").style.display = "none";
+    document.getElementById("stealCard").style.display = "none";
+    document.getElementById("glitchCard").style.display = "none";
+}
+
+function activateDoubleClicks() {
+    powerUpActive = true;
+    powerUpShown = false;
+    multiplier = 2;
+    powerUpStats.multiplier++;
+    
+    brownie.style.filter = "drop-shadow(0 0 20px #ffeb3b)";
+    counter.style.color = "#ffeb3b";
+    
+    setTimeout(function() {
+        multiplier = 1;
+        powerUpActive = false;
+        brownie.style.filter = "none";
+        counter.style.color = "white";
+    }, 5000); // 5 seconds of 2x power
+
+    socket.emit("powerUpUsed", { roomCode, username: myName, powerUpName: "2x MULTIPLIER" });
+}
+
+function activateSteal() {
+    powerUpActive = true;
+    powerUpShown = false; 
+    powerUpStats.steal++;
+    
+    socket.emit("activateSteal", { roomCode, username: myName });
+
+    brownie.style.filter = "drop-shadow(0 0 25px #ff0000)";
+    counter.style.color = "#ff0000";
+    
+    setTimeout(function() {
+        powerUpActive = false;
+        brownie.style.filter = "none";
+        counter.style.color = "white";
+    }, 3000); // 3 seconds of "Stealer" status
+}
+
+function activateGlitch() {
+    powerUpActive = true;
+    powerUpShown = false;
+    powerUpStats.glitch = (powerUpStats.glitch || 0) + 1;
+    socket.emit("activateGlitch", { roomCode, username: myName });
+    
+    brownie.style.filter = "hue-rotate(290deg) drop-shadow(0 0 20px #9c27b0)";
+    setTimeout(() => { 
+        brownie.style.filter = "none"; 
+        powerUpActive = false;
+    }, 5000);
+
+    socket.emit("powerUpUsed", { roomCode, username: myName, powerUpName: "GLITCH" });
+    
+}
+
+socket.on("stealConfirmed", function(data) {
+    clicks = data.newTotal;
+    counter.textContent = "Clicks: " + clicks + " (STEAL SUCCESS!)";
+});
+
+socket.on("stolenFrom", function(data) {
+        clicks = data.newTotal; // Update your local count
+        counter.textContent = "Clicks: " + clicks;
+        
+        // Optional: Flash the screen red briefly
+        document.body.style.backgroundColor = "rgba(255, 0, 0, 0.3)";
+        setTimeout(() => { document.body.style.backgroundColor = ""; }, 200);
+        
+        console.log("You were robbed by " + data.thief);
+    });
+
+socket.on("pointsLost", function(data) {
+   
+    if (data.victim === myName) {
+        clicks = data.newTotal; 
+        counter.textContent = "Clicks: " + clicks;
+        
+        brownie.style.filter = "drop-shadow(0 0 30px #ff0000) brightness(0.6)";
+        setTimeout(() => { 
+            brownie.style.filter = "none"; 
+        }, 500);
+
+        console.log("You were robbed by " + data.thief + "!");
+    }
+});
+
+socket.on("glitchEffect", function(data) {
+    let glitchTimer = 0;
+    let duration = data.duration;
+
+    let glitchInterval = setInterval(() => {
+        
+        let randomX = Math.floor(Math.random() * 70) + 15; 
+        let randomY = Math.floor(Math.random() * 60) + 20; 
+
+        brownie.style.left = randomX + "%";
+        brownie.style.top = randomY + "%";
+        
+        glitchTimer += 5000;
+        if (glitchTimer >= duration) {
+            clearInterval(glitchInterval);
+            brownie.style.left = "50%";
+            brownie.style.top = "50%";
+        }
+    }, 5000);
+});
+
+socket.on("opponentUsedPowerUp", function(data) {
+    const alertDiv = document.createElement("div");
+    alertDiv.className = "powerup-alert";
+    alertDiv.innerHTML = `⚠️ ${data.user} used ${data.powerUp}!`;
+
+    
+    document.body.appendChild(alertDiv);
+
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 2000);
+});
 </script>
+
 </body>
 </html>

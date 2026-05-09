@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <title>Brownie Beater - Lobby</title>
   <link rel ="stylesheet" href="style.css">
+  <link rel="shortcut icon" type="x-icon" href="browniebeatericon.png">	
 </head>
 <body id = "lobby-page">
+	<div id="loading-overlay" style="display: none;"> 
+           <div class="spinner"></div> 
+           <p id="loading-text">Preparing your kitchen...</p>
+   </div>          
+	
    <div class="container">
 	<div class="form-box active"> 
-           <h1>Brownie Beater - Lobby</h1>
+           <h1>Brownie Beater-Lobby</h1>
 	   <p style="margin-bottom: 20px;"> Pick host game to start a game, or join a exisiting game!</p>
 
            <button onclick="hostGame()">Host Game</button>
@@ -22,22 +28,26 @@
    </div>
 
   <script>
-var token = localStorage.getItem('token');
+	    function toggleLoading(show, text = "Loading...") {
+            const overlay = document.getElementById('loading-overlay'); 
+            const loadingText = document.getElementById('loading-text'); 
+            if(overlay) {
+                    overlay.style.display = show ? 'flex' : 'none'; 
+                    if (text && loadingText) loadingText.innerText = text; 
+            }
+    }
+	  
+    var token = localStorage.getItem('token');
     var myName = localStorage.getItem('username'); 
 
-    if (!token ||!myName){
-	alert("You are not logged in! Please login to play."); 
-	window.location.href = "index.html"; 
-    }
-
-    // Redirect if they aren't logged in
+    //redirected if not loggin
     if(token == null) {
         alert("You are not logged in!"); 
         window.location.href = "index.html"; 
     }
 
     function hostGame() {
-        console.log("Creating a new room for: " + myName);
+        toggleLoading(true, "Creating room..."); 
 
         fetch('http://localhost:3000/createRoom', {
             method: 'POST',
@@ -48,8 +58,8 @@ var token = localStorage.getItem('token');
             return res.json();
         })
         .then(function(data) {
-            console.log("Room created! Code is: " + data.roomCode); 
-            window.location.href = "game.html?mode=host&room=" + data.roomCode; 
+            toggleLoading(false); 
+            window.location.href = "waitroom.html?mode=host&room=" + data.roomCode; 
         })
         .catch(function(err) {
             console.log("Host error: " + err); 
@@ -57,42 +67,14 @@ var token = localStorage.getItem('token');
         }); 
     }
 
-    // FIXED: Moved the join logic here
+ 
     function joinGame() {
         var codeFromUser = prompt("Enter the 4-digit Room Code:"); 
-
-        if (codeFromUser == null || codeFromUser == ""){
-            return; 
-        }
-        console.log("Attempting to join room: " + codeFromUser); 
-
-        fetch('http://localhost:3000/joinRoom', {
-            method: 'POST', 
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify({
-                roomCode: codeFromUser, 
-                username: myName
-            })
-        })
-        .then(function(res) {
-            return res.json(); 
-        })
-        .then(function(data) {
-            if(data.success == true) {
-                console.log("Join successful!"); 
-                window.location.href = "game.html?mode=join&room=" + codeFromUser;
-            }
-            else {
-                alert("Error: " + data.msg); 
-            }
-        })
-        .catch(function(err) {
-            console.log("Join error: " + err); 
-            alert("Could not connect to server."); 
-        }); 
+        if (!codeFromUser) return; 
+        console.log("Joining room: " + codeFromUser); 
+        window.location.href = "waitroom.html?mode=join&room=" + codeFromUser;
     }
 
-    // FIXED: Kept this simple just for logging out
     function logout() {
         console.log("Cleaning up local storage and logging out..."); 
         localStorage.clear();

@@ -1,69 +1,66 @@
-function showForm(formId) {
-    const forms = document.querySelectorAll(".form-box"); // Looks at html and calls up for fb 
-    for(var i = 0; i < forms.length; i++) {
-        forms[i].classList.remove("active"); // hides them so screen is empty 
-    }
+function toggleLoading(show, message = "Working on it...") {
+    const overlay = document.getElementById('loading-overlay'); 
+    const text = document.getElementById('loading-text'); 
 
-    const targetForm = document.getElementById(formId); // find specific form 
-    if (targetForm) {
-        targetForm.classList.add("active"); // if can find
+    if (show) {
+        text.textContent = message; 
+        overlay.style.display = 'flex'; 
     } else {
-        console.warn("Could not find form with ID:", formId); //if can't find 
+        overlay.style.display = 'none'; 
+    }
+}
+
+function showForm(formId) {
+    const forms = document.querySelectorAll(".form-box"); 
+    forms.forEach(form => form.classList.remove("active"));
+
+    const targetForm = document.getElementById(formId); 
+    if (targetForm) {
+        targetForm.classList.add("active"); 
+    } else {
+        console.warn("Could not find form with ID:", formId); 
     }
 }
 
 function togglePassword(inputId, iconElement) {
-    var passwordBox = document.getElementById(inputId); 
-    if (passwordBox.type == "password") {
-        console.log("showing password now..."); 
+    const passwordBox = document.getElementById(inputId); 
+    if (passwordBox.type === "password") {
         passwordBox.type = "text"; 
-        iconElement.classList.remove("fa-eye"); 
-        iconElement.classList.add("fa-eye-slash"); 
+        iconElement.classList.replace("fa-eye", "fa-eye-slash"); 
     } else {
         passwordBox.type = 'password'; 
-        iconElement.classList.remove("fa-eye-slash"); 
-        iconElement.classList.add("fa-eye"); 
+        iconElement.classList.replace("fa-eye-slash", "fa-eye"); 
     }
 }
 
-document.getElementById('password').addEventListener('input', function() {
-    var passwordValue = this.value; 
-
-    var hasNumber = /[0-9]/.test(passwordValue); 
-    updateStatus('req-number', hasNumber); 
-
-    var hasUpper = /[A-Z]/.test(passwordValue); 
-    updateStatus('req-upper', hasUpper); // Fixed: was double-checking number before
-
-    var hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue); 
-    updateStatus('req-special', hasSpecial); 
-
-    console.log("Check password: " + passwordValue); 
-}); 
-
+// --- PASSWORD VALIDATION ---
 function updateStatus(requirementId, checkPasses) {
-    var requirementRow = document.getElementById(requirementId); 
-    var theIcon = requirementRow.querySelector('i');
-    var currentPassword = document.getElementById('password').value; 
+    const requirementRow = document.getElementById(requirementId); 
+    const theIcon = requirementRow.querySelector('i');
+    const currentPassword = document.getElementById('password').value; 
 
-    if (currentPassword.length > 0 && checkPasses == true) {
-        requirementRow.style.color = "green"; 
+    if (currentPassword.length > 0 && checkPasses) {
+        requirementRow.style.color = "#2ecc71"; // Green
         theIcon.className = "fa-solid fa-circle-check"; 
     } else {
-        requirementRow.style.color = "red"; 
+        requirementRow.style.color = "#ff6b6b"; // Red
         theIcon.className = "fa-solid fa-circle-xmark"; 
     }
 }
 
-document.getElementById('confirm_password').addEventListener('input', function() {
-    var pass1 = document.getElementById('password').value; 
-    var pass2 = this.value; 
-    var errorDisplay = document.getElementById('error-message'); 
+document.getElementById('password').addEventListener('input', function() {
+    const val = this.value; 
+    updateStatus('req-number', /[0-9]/.test(val)); 
+    updateStatus('req-upper', /[A-Z]/.test(val)); 
+    updateStatus('req-special', /[!@#$%^&*(),.?":{}|<>]/.test(val)); 
+}); 
 
-    if (pass1 != pass2) { 
-        if (pass2.length > 0) {
-            errorDisplay.textContent = "Passwords do not match !"; 
-        }
+document.getElementById('confirm_password').addEventListener('input', function() {
+    const pass1 = document.getElementById('password').value; 
+    const errorDisplay = document.getElementById('error-message'); 
+
+    if (this.value !== pass1 && this.value.length > 0) { 
+        errorDisplay.textContent = "Passwords do not match!"; 
     } else {
         errorDisplay.textContent = ""; 
     }
@@ -73,50 +70,42 @@ document.getElementById('confirm_password').addEventListener('input', function()
 document.querySelector('#register-form form').addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    var email = this.email.value; 
-    var password = document.getElementById('password').value; 
-    var username = this.name.value; 
-    var confirmPass = document.getElementById('confirm_password').value; 
-    var errorBox = document.getElementById('error-message'); 
+    const email = this.email.value; 
+    const password = document.getElementById('password').value; 
+    const username = this.name.value; 
+    const confirmPass = document.getElementById('confirm_password').value; 
+    const errorBox = document.getElementById('error-message'); 
 
-    var hasNum = /[0-9]/.test(password); 
-    var hasUpper = /[A-Z]/.test(password); 
-    var hasSpecial = /[!@#$%^&*(),.?{}|<>]/.test(password); 
+    const isValid = /[0-9]/.test(password) && /[A-Z]/.test(password) && /[!@#$%^&*(),.?{}|<>]/.test(password);
 
-    if (hasNum == false || hasUpper == false || hasSpecial == false) {
-        errorBox.textContent = "Error: Password is not complecated enought !";
+    if (!isValid) {
+        errorBox.textContent = "Error: Password is not complicated enough!";
         return; 
     }
 
-    if (password != confirmPass) {
+    if (password !== confirmPass) {
         errorBox.textContent = "Error: Passwords do not match!"; 
         return; 
     }
 
-    console.log("Everything is good, Registering..."); 
+    toggleLoading(true, "Baking your account..."); 
 
-    fetch('http://localhost:3000/api/register',{
+    fetch('http://localhost:3000/api/register', {
         method: 'POST', 
         headers: { 'Content-Type' : 'application/json' }, 
-        body: JSON.stringify({ 
-		username: username, 
-		email: email,
-		password: password
-            
-        })
+        body: JSON.stringify({ username, email, password })
     })
-    .then(function(response) {
-        if(response.ok == true) {
+    .then(res => {
+        toggleLoading(false); 
+        if (res.ok) {
             alert("Registration successful!");
-	    localStorage.setItem('username', username); 
             showForm('login-form'); 
-        } 
-	else {
+        } else {
             errorBox.textContent = "Registration failed. Try again."; 
         }
     })
-    .catch(function(error) {
-        console.log("Error logic hit"); 
+    .catch(() => {
+        toggleLoading(false); 
         errorBox.textContent = "Cannot connect to server."; 
     }); 
 });
@@ -124,117 +113,125 @@ document.querySelector('#register-form form').addEventListener('submit', functio
 // --- LOGIN ---
 document.querySelector('#login-form form').addEventListener('submit', function(event) {
     event.preventDefault(); 
-    var userName = this.username.value; 
-    var userPass = document.getElementById('login_password').value; 
+    toggleLoading(true, "Verifying credentials..."); 
 
-    console.log("Attempting to login for user: " + userName); 
+    const username = this.username.value; 
+    const password = document.getElementById('login_password').value; 
 
     fetch('http://localhost:3000/api/login', {
         method: 'POST', 
         headers: { 'Content-Type' : 'application/json' },
-        body: JSON.stringify({
-            username: userName, 
-            password: userPass
-        })
+        body: JSON.stringify({ username, password })
     })
-    .then(function(response) { return response.json(); })
-    .then(function(data) {
-        if(data.token) {
+    .then(res => res.json())
+    .then(data => {
+        toggleLoading(false); 
+        if (data.token) {
             localStorage.setItem('token', data.token);
-	    localStorage.setItem('username', userName); 
-            alert("Welcome back to Brownie Beater!"); 
+            localStorage.setItem('username', username); 
             window.location.href = 'lobby.html';
         } else {
-            var messag = data.message || "Invalid"; 
-            alert("Login failed: " + messag); 
+            alert("Login failed: " + (data.message || "Invalid credentials")); 
         }
     })
-    .catch(function(err) {
-        console.log("Error: " + err); 
-        alert("Cannot connect to the server."); 
+    .catch(() => { 
+        toggleLoading(false); 
+        alert("Server is currently down."); 
     }); 
 }); 
 
-// --- FORGOT PASSWORD ---
-document.querySelector('#forgot_password-form form').addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    var myEmail = this.resetEmail.value; 
+// --- NEW: FORGOT PASSWORD (STEP 1: REQUEST CODE) ---
+document.getElementById('request-otp-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = this.resetEmail.value;
+    toggleLoading(true, "Sending reset code...");
 
     fetch('http://localhost:3000/api/forgot-password', {
-        method: 'POST', 
-        headers: { 'Content-Type' : 'application/json' }, 
-        body: JSON.stringify ({ email: myEmail })
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
     })
-    .then(function(response) {
-        if(response.ok == true) {
-            alert("Code sent! CHeck your email."); 
-            showForm('verify_code-form'); 
+    .then(res => {
+        toggleLoading(false);
+        if (res.ok) {
+            alert("Code sent! Please check your inbox.");
+            showForm('verify_code-form'); // Move to the OTP entry screen
         } else {
-            alert("Error: It didn't work. Try again!"); 
+            alert("Email not found or error sending mail.");
         }
     })
-    .catch(function(err) {
-        alert("Server error... try again later."); 
+    .catch(err => {
+        toggleLoading(false);
+        alert("Server error. Please try again later.");
     });
-}); 
+});
 
-// --- OTP AUTO-TAB ---
-var otpBoxes = document.querySelectorAll('#otp-inputs input'); 
-for (var i = 0; i < otpBoxes.length; i++){
-    otpBoxes[i].addEventListener('input', function() {
-        if (this.value.length == 1) {
-            var next = this.nextElementSibling;
-            if(next) { next.focus(); }
-        }
-    }); 
-    otpBoxes[i].addEventListener('keydown', function(event) {
-        if (event.key == 'Backspace' && this.value == "") {
-            var prev = this.previousElementSibling; 
-            if(prev) { prev.focus(); }
-        }
-    }); 
-}
+// --- OTP VERIFICATION (STEP 2: CHECK 6-DIGIT CODE) ---
+document.getElementById('otp-code-input').addEventListener('input', function() {
+    const codeBox = this;
+    const passSection = document.getElementById('new-password-section');
+    const userEmail = document.querySelector('#forgot_password-form input[name="resetEmail"]').value;
+     
+    if (codeBox.value.length === 6) {
+        toggleLoading(true, "Checking code..."); 
 
-// --- VERIFY & RESET ---
-document.querySelector('#verify_code-form form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var finalCode = ""; 
-    var otpBoxes = document.querySelectorAll('#otp-inputs input'); 
-    for (var i = 0; i < otpBoxes.length; i++) {
-        finalCode = finalCode + otpBoxes[i].value; 
+        fetch('http://localhost:3000/api/verify-otp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail, otp_code: codeBox.value })
+        })
+        .then(res => {
+            toggleLoading(false); 
+            if (res.ok) {
+                passSection.style.display = 'block';
+                codeBox.style.borderColor = "green"; 
+                codeBox.readOnly = true; 
+            } else {
+                codeBox.style.borderColor = "red"; 
+                codeBox.value = "";
+                codeBox.placeholder = "Invalid code";
+            }
+        })
+        .catch(() => {
+            toggleLoading(false);
+            alert("Connection error during verification.");
+        });
     }
+});
 
-    if (finalCode.length < 6) {
-        alert("Please enter the full 6-digit code.");
+// --- RESET PASSWORD (STEP 3: UPDATE DB) ---
+document.getElementById('reset-final-form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const theCode = document.getElementById('otp-code-input').value; 
+    const firstPass = document.getElementById('new_password').value; 
+    const secondPass = document.getElementById('confirm_new_password').value; 
+    const userEmail = document.querySelector('#forgot_password-form input[name="resetEmail"]').value; 
+
+    if (firstPass !== secondPass) { 
+        document.getElementById('reset-error-message').textContent = "Passwords do not match!"; 
         return; 
-    }
+    } 
 
-    var newPass = document.getElementById('new_password').value; 
-    var userEmail = document.querySelector('#forgot_password-form input[name="resetEmail"]').value;
-
-    if (!userEmail) {
-        alert("Error: Email is missing. Go back to forgot password screen.");
-        return; 
-    }
+    toggleLoading(true, "Updating password...");  
 
     fetch('http://localhost:3000/api/reset-password', {
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify({
-            email: userEmail, 
-            otp_code: finalCode, 
-            new_password: newPass
-        })
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail, otp_code: theCode, new_password: firstPass })
     })
-    .then(function(response) {
-        if (response.ok == true) {
-            alert("Password updated successfully!"); 
+    .then(res => { 
+        toggleLoading(false); 
+        if (res.ok) {
+            alert("Password updated successfully!");
             showForm('login-form'); 
         } else {
-            alert("Error: This code is wrong or expired.");
+            alert("Session expired or invalid. Please try again."); 
         }
     })
-    .catch(function(err) {
-        alert("Cannot connect to the server."); 
+    .catch(() => {
+        toggleLoading(false); 
+        alert("Server error. Try later.");
     });
 });

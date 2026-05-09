@@ -6,10 +6,14 @@
     <title>Brownie Beater</title>
 
     <link rel="stylesheet" href="style.css"> 
-
+	<link rel="shortcut icon" type="x-icon" href="browniebeatericon.png"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+  <div id="loading-overlay" style="display: none;"> 
+  <div class="spinner"></div> 
+  <p id="loading-text">Loading...</p> 
+  </div>	  
   <div class="container">
     
     <div class="form-box active" id="login-form">
@@ -68,7 +72,7 @@
     </div>
 
     <div class="form-box" id="forgot_password-form">
-        <form action="">
+        <form action="#" id="request-otp-form">
             <h2>REQUEST TO RESET YOUR PASSWORD</h2>
             <p style="font-size: 13px; margin-bottom: 20px;">Forgot your password? No worries! Provide your account email to receive a secure password reset link.</p>
             <input type="email" name="resetEmail" placeholder="Email" required>
@@ -78,25 +82,29 @@
     </div>
 
     <div class="form-box" id="verify_code-form"> 
-        <form action="#">
-            <h2>RESET PASSWORD</h2>
+        <form action="#" id="reset-final-form">
+ 			<h2>RESET PASSWORD</h2>
             <p style="font-size: 13px; margin-bottom: 20px;">Enter the 6 digit code sent to your email and create a new password.</p>
-            <div class="otp-container" id="otp-inputs"> 
-                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
-                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
-                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
-                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
-                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
-                <input type="text" maxlength="1" pattern="\d*" inputmode="numeric" required>
-            </div> 
+
+            <input type="text" id="otp-code-input" placeholder="6-Digit Code" maxlength="6" required style="text-align: center; letter-spacing: 5px; font-weight: bold;"> 
+
+            <div id="new-password-section" style="display: none;"> 
+                    <div class="input-group">
+                            <input type="password" id="new_password" placeholder="New Password" required>
+                            <i class="fa-solid fa-eye toggle-icon" onclick="togglePassword('new_password', this)"></i> 
+                    </div> 
+
 
             <div class="input-group"> 
-                <input type="password" id="new_password" name="new_password" placeholder="New Password" required> 
-                <i class="fa-solid fa-eye toggle-icon" onclick="togglePassword('new_password', this)"></i>
+                <input type="password" id="confirm_new_password" placeholder="Confirm New Password" required> 
+                <i class="fa-solid fa-eye toggle-icon" onclick="togglePassword('confirm_new_password', this)"></i>
             </div>
+            <span id ="reset-error-message" style="color: #ff6b6b; font-size: 13px; display: block; margin-bottom: 10px;" ></span> 
 
             <button type="submit">Update Password</button>
-            <p><a href="#" onclick="showForm('login-form')">Cancel</a></p>
+            </div> 
+            
+            <p><a href="#" onclick="showForm('login-form')">Cancel</a></p> 
         </form>
     </div>
 

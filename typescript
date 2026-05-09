@@ -1,0 +1,1302 @@
+Script started on 2026-05-08 22:04:22-05:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="104" LINES="41"]
+[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ vim script.js 
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"script.js" 209L, 7205B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;13HtoggleLoading([31mfalse[m);
+            [38;5;130malert[m([31m"Connection error during verification."[m);[2;60H[K[3;1H        [36m}[m);[3;12H[K[4;5H[36m}
+}[m);
+
+[38;5;130mdocument[m.getElementById([31m'reset-final-form'[m).addEventListener([31m'submit'[m, [36mfunction[m([38;5;130mevent[m) [36m{[m
+    [38;5;130mevent[m.preventDefault();[10;5H[38;5;130mconst[m theCode = [38;5;130mdocument[m.getElementById([31m'otp-code-input'[m).value;
+    [38;5;130mconst[m firstPass = [38;5;130mdocument[m.getElementById([31m'new_password'[m).value;
+    [38;5;130mconst[m secondPass = [38;5;130mdocument[m.getElementById([31m'confirm_new_password'[m).value;
+    [38;5;130mconst[m userEmail = [38;5;130mdocument[m.querySelector([31m'#forgot_password-form input[name="resetEmail"]'[m).value;[15;5H[38;5;130mif[m (firstPass !== secondPass) [36m{[m[16;9H[38;5;130mdocument[m.getElementById([31m'reset-error-message'[m).textContent = [31m"Passwords do not match!"[m;[17;9H[38;5;130mreturn[m;
+    [36m}[m[20;5HtoggleLoading([31mtrue[m, [31m"Updating password..."[m);[22;5Hfetch([31m'http://localhost:3000/api/reset-password'[m, [36m{[m[23;9Hmethod: [31m'POST'[m,[24;9Hheaders: [36m{[m [31m'Content-Type'[m: [31m'application/json'[m [36m}[m,[25;9Hbody: JSON.stringify([36m{[m email: userEmail, otp_code: theCode, new_password: firstPass [36m}[m)
+    [36m}[m)
+    .then(res => [36m{[m[28;9HtoggleLoading([31mfalse[m);[29;9H[38;5;130mif[m (res.ok) [36m{[m[30;13H[38;5;130malert[m([31m"Password updated successfully!"[m);[31;13HshowForm([31m'login-form'[m);[32;9H[36m}[m [38;5;130melse[m [36m{[m[33;13H[38;5;130malert[m([31m"Session expired. Please try again."[m);[34;9H[36m}
+[m    [36m}[m)
+    .[38;5;130mcatch[m(() => [36m{[m[37;9HtoggleLoading([31mfalse[m);[38;9H[38;5;130malert[m([31m"Server error. Try later."[m);
+    [36m}[m);
+[36m}[m);[41;87H209,3[9CBot[40;3H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[27m[23m[29m[m[H[2J[?25l[1;13HtoggleLoading([95mfalse[m);[2;13H[93malert[m([95m"Connection error during verification."[m);[3;9H[1m[96m}[m);
+    [1m[96m}
+}[m);
+
+[93mdocument[m.getElementById([95m'reset-final-form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault();[10;5H[93mconst[m theCode = [93mdocument[m.getElementById([95m'otp-code-input'[m).value;
+    [93mconst[m firstPass = [93mdocument[m.getElementById([95m'new_password'[m).value;
+    [93mconst[m secondPass = [93mdocument[m.getElementById([95m'confirm_new_password'[m).value;
+    [93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m).value;[15;5H[93mif[m (firstPass !== secondPass) [1m[96m{[m[16;9H[93mdocument[m.getElementById([95m'reset-error-message'[m).textContent = [95m"Passwords do not match!"[m;[17;9H[93mreturn[m;
+    [1m[96m}[m[20;5HtoggleLoading([95mtrue[m, [95m"Updating password..."[m);[22;5Hfetch([95m'http://localhost:3000/api/reset-password'[m, [1m[96m{[m[23;9Hmethod: [95m'POST'[m,[24;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[25;9Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: theCode, new_password: firstPass [1m[96m}[m)
+    [1m[96m}[m)
+    .then(res => [1m[96m{[m[28;9HtoggleLoading([95mfalse[m);[29;9H[93mif[m (res.ok) [1m[96m{[m[30;13H[93malert[m([95m"Password updated successfully!"[m);[31;13HshowForm([95m'login-form'[m);[32;9H[1m[96m}[m [93melse[m [1m[96m{[m[33;13H[93malert[m([95m"Session expired. Please try again."[m);[34;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[37;9HtoggleLoading([95mfalse[m);[38;9H[93malert[m([95m"Server error. Try later."[m);
+    [1m[96m}[m);
+[1m[96m}[m);[41;87H209,3[9CBot"script.js" 209L, 7205B[40;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;1H[K[41;87H209,3[9CBot[37;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[34;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[31;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[28;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[25;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[22;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[19;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[16;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[13;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[10;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[7;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[4;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[1;3H[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9H[93malert[m([95m"Server error. Try later."[m);
+    [1m[96m}[m);[41;87H[K[41;87H209,3[9CBot[4;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[41;87H[K[41;87H209,3[9CBot[7;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HshowForm([95m'login-form'[m);[2;9H[1m[96m}[m [93melse[m [1m[96m{[m[3;13H[93malert[m([95m"Session expired. Please try again."[m);[41;87H[K[41;87H209,3[9CBot[10;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9H[93mif[m (res.ok) [1m[96m{[m[3;13H[93malert[m([95m"Password updated successfully!"[m);[41;87H[K[41;87H209,3[9CBot[13;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: theCode, new_password: firstPass [1m[96m}[m)
+    [1m[96m}[m)
+    .then(res => [1m[96m{[m[41;87H[K[41;87H209,3[9CBot[16;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hfetch([95m'http://localhost:3000/api/reset-password'[m, [1m[96m{[m[2;9Hmethod: [95m'POST'[m,[3;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[41;87H[K[41;87H209,3[9CBot[19;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5HtoggleLoading([95mtrue[m, [95m"Updating password..."[m);[41;87H[K[41;87H209,3[9CBot[22;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mdocument[m.getElementById([95m'reset-error-message'[m).textContent = [95m"Passwords do not match!"[m;[2;9H[93mreturn[m;
+    [1m[96m}[m[41;87H[K[41;87H209,3[9CBot[25;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m).value;[3;5H[93mif[m (firstPass !== secondPass) [1m[96m{[m[41;87H[K[41;87H209,3[9CBot[28;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m theCode = [93mdocument[m.getElementById([95m'otp-code-input'[m).value;
+    [93mconst[m firstPass = [93mdocument[m.getElementById([95m'new_password'[m).value;
+    [93mconst[m secondPass = [93mdocument[m.getElementById([95m'confirm_new_password'[m).value;[41;87H[K[41;87H209,3[9CBot[31;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mdocument[m.getElementById([95m'reset-final-form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault();[41;87H[K[41;87H209,3[9CBot[34;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}
+}[m);[41;87H[K[41;87H209,3[9CBot[37;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HtoggleLoading([95mfalse[m);[2;13H[93malert[m([95m"Connection error during verification."[m);[3;9H[1m[96m}[m);[41;87H[K[41;87H209,3[9CBot[40;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[1m[96m}[2;9H}[m)[3;9H.[93mcatch[m(() => [1m[96m{[m[41;87H[K[41;87H201,3[9C98%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17HcodeBox.style.borderColor = [95m"red"[m;[2;17HcodeBox.value = [95m""[m;[3;17HcodeBox.placeholder = [95m"Invalid code"[m;[41;87H[K[41;87H198,3[9C96%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17HcodeBox.style.borderColor = [95m"green"[m;[2;17HcodeBox.readOnly = [95mtrue[m;[3;13H[1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H195,3[9C94%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HtoggleLoading([95mfalse[m);[2;13H[93mif[m (res.ok) [1m[96m{[m[3;17HpassSection.style.display = [95m'block'[m;[41;87H[K[41;87H192,3[9C92%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: codeBox.value [1m[96m}[m)[2;9H[1m[96m}[m)[3;9H.then(res => [1m[96m{[m[41;87H[K[41;87H189,3[9C91%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hfetch([95m'http://localhost:3000/api/verify-otp'[m, [1m[96m{[m[2;13Hmethod: [95m'POST'[m,[3;13Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[41;87H[K[41;87H186,3[9C89%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m (codeBox.value.length === 6) [1m[96m{[m[2;9HtoggleLoading([95mtrue[m, [95m"Checking code..."[m);[41;87H[K[41;87H183,0-1[7C87%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m passSection = [93mdocument[m.getElementById([95m'new-password-section'[m);
+    [93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m).value;[41;87H[K[41;87H180,3[9C85%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[96m// --- OTP & RESET FLOW ---[m
+[93mdocument[m.getElementById([95m'otp-code-input'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m
+    [93mconst[m codeBox = [1m[96mthis[m;[41;87H[K[41;87H177,3[9C84%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m);
+[1m[96m}[m);[41;87H[K[41;87H174,3[9C82%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H.[93mcatch[m(() => [1m[96m{[m[2;9HtoggleLoading([95mfalse[m);[3;9H[93malert[m([95m"Server is currently down."[m);[41;87H[K[41;87H171,3[9C80%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93malert[m([95m"Login failed: "[m + (data.message || [95m"Invalid credentials"[m));[2;9H[1m[96m}
+[m    [1m[96m}[m)[41;87H[K[41;87H168,3[9C78%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HlocalStorage.setItem([95m'username'[m, username);[2;13H[93mwindow[m.[93mlocation[m.href = [95m'lobby.html'[m;[3;9H[1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H165,3[9C76%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9H[93mif[m (data.token) [1m[96m{[m[3;13HlocalStorage.setItem([95m'token'[m, data.token);[41;87H[K[41;87H162,3[9C75%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m)
+    .then(res => res.json())
+    .then(data => [1m[96m{[m[41;87H[K[41;87H159,3[9C73%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hmethod: [95m'POST'[m,[2;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,[3;9Hbody: JSON.stringify([1m[96m{[m username, password [1m[96m}[m)[41;87H[K[41;87H156,3[9C71%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m password = [93mdocument[m.getElementById([95m'login_password'[m).value;[3;5Hfetch([95m'http://localhost:3000/api/login'[m, [1m[96m{[m[41;87H[K[41;87H153,3[9C69%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5HtoggleLoading([95mtrue[m, [95m"Verifying credentials..."[m);[3;5H[93mconst[m username = [1m[96mthis[m.username.value;[41;87H[K[41;87H150,3[9C68%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[96m// --- LOGIN ---[m
+[93mdocument[m.querySelector([95m'#login-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault();[41;87H[K[41;87H147,3[9C66%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m);
+[1m[96m}[m);[41;87H[K[41;87H144,3[9C64%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H.[93mcatch[m(() => [1m[96m{[m[2;9HtoggleLoading([95mfalse[m);[3;9HerrorBox.textContent = [95m"Cannot connect to server."[m;[41;87H[K[41;87H141,3[9C62%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HerrorBox.textContent = [95m"Registration failed. Try again."[m;[2;9H[1m[96m}
+[m    [1m[96m}[m)[41;87H[K[41;87H138,3[9C60%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93malert[m([95m"Registration successful!"[m);[2;13HshowForm([95m'login-form'[m);[3;9H[1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H135,3[9C59%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H.then(res => [1m[96m{[m[2;9HtoggleLoading([95mfalse[m);[3;9H[93mif[m (res.ok) [1m[96m{[m[41;87H[K[41;87H132,3[9C57%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,[2;9Hbody: JSON.stringify([1m[96m{[m username, email, password [1m[96m}[m)
+    [1m[96m}[m)[41;87H[K[41;87H129,3[9C55%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5Hfetch([95m'http://localhost:3000/api/register'[m, [1m[96m{[m[3;9Hmethod: [95m'POST'[m,[41;87H[K[41;87H126,3[9C53%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m[3;5HtoggleLoading([95mtrue[m, [95m"Baking your account..."[m);[41;87H[K[41;87H123,3[9C52%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m (password !== confirmPass) [1m[96m{[m[2;9HerrorBox.textContent = [95m"Error: Passwords do not match!"[m;[3;9H[93mreturn[m;[41;87H[K[41;87H120,0-1[7C50%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mreturn[m;
+    [1m[96m}[m[41;87H[K[41;87H117,0-1[7C48%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[93mif[m (!isValid) [1m[96m{[m[3;9HerrorBox.textContent = [95m"Error: Password is not complicated enough!"[m;[41;87H[K[41;87H114,3[9C46%[35;3H[?25h[?25l[1;40r[1;1H[4L[1;41r[1;5H[93mconst[m errorBox = [93mdocument[m.getElementById([95m'error-message'[m);[3;5H[93mconst[m isValid = [95m/[0-9]/[m.test(password) && /[1m[96m[[mA-Z[1m[96m][m/.test(password) && /[1m[96m[[m!@#$%^&*(),.?[1m[96m{}[m|<>[1m[96m][m/.test(passs[4;1Hword);[41;87H[K[41;87H110,3[9C44%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m password = [93mdocument[m.getElementById([95m'password'[m).value;
+    [93mconst[m username = [1m[96mthis[m.name.value;
+    [93mconst[m confirmPass = [93mdocument[m.getElementById([95m'confirm_password'[m).value;[41;87H[K[41;87H107,3[9C42%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mevent[m.preventDefault();[3;5H[93mconst[m email = [1m[96mthis[m.email.value;[41;87H[K[41;87H104,3[9C41%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[96m// --- REGISTER ---[m
+[93mdocument[m.querySelector([95m'#register-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m[41;87H[K[41;87H101,3[9C39%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HerrorDisplay.textContent = [95m""[m;
+    [1m[96m}
+}[m);[41;87H[K[41;87H98,3[10C37%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m ([1m[96mthis[m.value !== pass1 && [1m[96mthis[m.value.length > 0) [1m[96m{[m[2;9HerrorDisplay.textContent = [95m"Passwords do not match!"[m;
+    [1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H95,3[10C35%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m pass1 = [93mdocument[m.getElementById([95m'password'[m).value;
+    [93mconst[m errorDisplay = [93mdocument[m.getElementById([95m'error-message'[m);[41;87H[K[41;87H92,0-1[8C34%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}[m);
+
+[93mdocument[m.getElementById([95m'confirm_password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m[41;87H[K[41;87H89,3[10C32%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5HupdateStatus([95m'req-number'[m, [95m/[0-9]/[m.test(val));
+    updateStatus([95m'req-upper'[m, [95m/[A-Z]/[m.test(val));
+    updateStatus([95m'req-special'[m, [95m/[!@#$%^&*(),.?":{}|<>]/[m.test(val));[41;87H[K[41;87H86,3[10C30%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[93mdocument[m.getElementById([95m'password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m
+    [93mconst[m val = [1m[96mthis[m.value;[41;87H[K[41;87H83,3[10C28%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtheIcon.className = [95m"fa-solid fa-circle-xmark"[m;
+    [1m[96m}
+}[m[41;87H[K[41;87H80,0-1[8C27%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtheIcon.className = [95m"fa-solid fa-circle-check"[m;
+    [1m[96m}[m [93melse[m [1m[96m{[m[3;9HrequirementRow.style.color = [95m"#ff6b6b"[m; [96m// Red[m[41;87H[K[41;87H78,0-1[8C25%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[93mif[m (currentPassword.length > 0 && checkPasses) [1m[96m{[m[3;9HrequirementRow.style.color = [95m"#2ecc71"[m; [96m// Green[m[41;87H[K[41;87H75,3[10C23%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m requirementRow = [93mdocument[m.getElementById(requirementId);
+    [93mconst[m theIcon = requirementRow.querySelector([95m'i'[m);
+    [93mconst[m currentPassword = [93mdocument[m.getElementById([95m'password'[m).value;[41;87H[K[41;87H72,0-1[8C21%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[96m// --- PASSWORD VALIDATION ---[m
+[1m[96mfunction[m updateStatus(requirementId, checkPasses) [1m[96m{[m[41;87H[K[41;87H69,3[10C20%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HiconElement.classList.replace([95m"fa-eye-slash"[m, [95m"fa-eye"[m);
+    [1m[96m}
+}[m[41;87H[K[41;87H66,3[10C18%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HiconElement.classList.replace([95m"fa-eye"[m, [95m"fa-eye-slash"[m);
+    [1m[96m}[m [93melse[m [1m[96m{[m[3;9HpasswordBox.type = [95m'password'[m;[41;87H[K[41;87H63,3[10C16%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m passwordBox = [93mdocument[m.getElementById(inputId);
+    [93mif[m (passwordBox.type === [95m"password"[m) [1m[96m{[m[3;9HpasswordBox.type = [95m"text"[m;[41;87H[K[41;87H60,3[10C14%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}
+
+function[m togglePassword(inputId, iconElement) [1m[96m{[m[41;87H[K[41;87H57,0-1[8C13%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m [93melse[m [1m[96m{[m[2;9Hconsole.warn([95m"Could not find form with ID:"[m, formId);
+    [1m[96m}[m[41;87H[K[41;87H54,3[10C11%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m targetForm = [93mdocument[m.getElementById(formId);
+    [93mif[m (targetForm) [1m[96m{[m[3;9HtargetForm.classList.add([95m"active"[m);[41;87H[K[41;87H51,3[11C9%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m forms = [93mdocument[m.querySelectorAll([95m".form-box"[m);
+    forms.forEach(form => form.classList.remove([95m"active"[m));[41;87H[K[41;87H48,3[11C7%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}
+
+function[m showForm(formId) [1m[96m{[m[41;87H[K[41;87H45,3[11C5%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m [93melse[m [1m[96m{[m[2;9Hoverlay.style.display = [95m'none'[m;
+    [1m[96m}[m[41;87H[K[41;87H42,3[11C4%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m (show) [1m[96m{[m[2;9Htext.textContent = message;[3;9Hoverlay.style.display = [95m'flex'[m;[41;87H[K[41;87H39,3[11C2%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m overlay = [93mdocument[m.getElementById([95m'loading-overlay'[m);
+    [93mconst[m text = [93mdocument[m.getElementById([95m'loading-text'[m);[41;87H[K[41;87H36,3[11C0%[35;3H[?25h[?25l[1;40r[1;1H[L[1;41r[1;1H[1m[96mfunction[m toggleLoading(show, message = [95m"Working on it..."[m) [1m[96m{[m[41;87H[K[41;87H35,0-1[8CTop[35;1H[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5H[93mif[m (currentPassword.length > 0 && checkPasses) [1m[96m{[m[40;9HrequirementRow.style.color = [95m"#2ecc71"[m; [96m// Green[m[41;87H[K[41;87H35,0-1[9C1%[32;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HtheIcon.className = [95m"fa-solid fa-circle-check"[m;
+    [1m[96m}[m [93melse[m [1m[96m{[m[40;9HrequirementRow.style.color = [95m"#ff6b6b"[m; [96m// Red[m[41;87H[K[41;87H35,0-1[9C3%[29;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HtheIcon.className = [95m"fa-solid fa-circle-xmark"[m;
+    [1m[96m}
+}[m[41;87H[K[41;87H35,0-1[9C5%[26;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;1H[93mdocument[m.getElementById([95m'password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m
+    [93mconst[m val = [1m[96mthis[m.value;[41;87H[K[41;87H35,0-1[9C7%[23;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5HupdateStatus([95m'req-number'[m, [95m/[0-9]/[m.test(val));
+    updateStatus([95m'req-upper'[m, [95m/[A-Z]/[m.test(val));
+    updateStatus([95m'req-special'[m, [95m/[!@#$%^&*(),.?":{}|<>]/[m.test(val));[41;87H[K[41;87H35,0-1[9C8%[20;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[1m[96m}[m);
+
+[93mdocument[m.getElementById([95m'confirm_password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m[41;87H[K[41;87H35,0-1[8C10%[17;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mconst[m pass1 = [93mdocument[m.getElementById([95m'password'[m).value;
+    [93mconst[m errorDisplay = [93mdocument[m.getElementById([95m'error-message'[m);[41;87H[K[41;87H35,0-1[8C12%[14;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mif[m ([1m[96mthis[m.value !== pass1 && [1m[96mthis[m.value.length > 0) [1m[96m{[m[39;9HerrorDisplay.textContent = [95m"Passwords do not match!"[m;
+    [1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H35,0-1[8C14%[11;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HerrorDisplay.textContent = [95m""[m;
+    [1m[96m}
+}[m);[41;87H[K[41;87H35,0-1[8C15%[8;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;1H[96m// --- REGISTER ---[m
+[93mdocument[m.querySelector([95m'#register-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m[41;87H[K[41;87H36,3[10C17%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mevent[m.preventDefault();[40;5H[93mconst[m email = [1m[96mthis[m.email.value;[41;87H[K[41;87H39,3[10C19%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mconst[m password = [93mdocument[m.getElementById([95m'password'[m).value;
+    [93mconst[m username = [1m[96mthis[m.name.value;
+    [93mconst[m confirmPass = [93mdocument[m.getElementById([95m'confirm_password'[m).value;[41;87H[K[41;87H42,3[10C21%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mconst[m errorBox = [93mdocument[m.getElementById([95m'error-message'[m);[40;5H[93mconst[m isValid = [95m/[0-9]/[m.test(password) && /[1m[96m[[mA-Z[1m[96m][m/.test(password) && /[1m[96m[[m!@#$%^&*(),.?[1m[96m{}[m|<>[1m[96m][m/.test(pass[40;1H[94m@@@                                                                                                     [m[41;87H[K[41;87H45,3[10C22%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[37;1H    [93mconst[m isValid = [95m/[0-9]/[m.test(password) && /[1m[96m[[mA-Z[1m[96m][m/.test(password) && /[1m[96m[[m!@#$%^&*(),.?[1m[96m{}[m|<>[1m[96m][m/.test(passs[38;1Hword);[40;5H[93mif[m (!isValid) [1m[96m{[m[41;87H[K[41;87H48,3[10C24%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HerrorBox.textContent = [95m"Error: Password is not complicated enough!"[m;[39;9H[93mreturn[m;
+    [1m[96m}[m[41;87H[K[41;87H51,3[10C26%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5H[93mif[m (password !== confirmPass) [1m[96m{[m[40;9HerrorBox.textContent = [95m"Error: Passwords do not match!"[m;[41;87H[K[41;87H54,3[10C28%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[93mreturn[m;
+    [1m[96m}[m[41;87H[K[41;87H57,0-1[8C30%[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5HtoggleLoading([95mtrue[m, [95m"Baking your account..."[m);[40;5Hfetch([95m'http://localhost:3000/api/register'[m, [1m[96m{[m[41;87H[K[41;87H60,3[10C31%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hmethod: [95m'POST'[m,[39;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,[40;9Hbody: JSON.stringify([1m[96m{[m username, email, password [1m[96m}[m)[41;87H[K[41;87H63,3[10C33%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m)
+    .then(res => [1m[96m{[m[40;9HtoggleLoading([95mfalse[m);[41;87H[K[41;87H66,3[10C35%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[93mif[m (res.ok) [1m[96m{[m[39;13H[93malert[m([95m"Registration successful!"[m);[40;13HshowForm([95m'login-form'[m);[41;87H[K[41;87H69,3[10C37%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[1m[96m}[m [93melse[m [1m[96m{[m[39;13HerrorBox.textContent = [95m"Registration failed. Try again."[m;[40;9H[1m[96m}[m[41;87H[K[41;87H72,0-1[8C38%[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[40;9HtoggleLoading([95mfalse[m);[41;87H[K[41;87H75,3[10C40%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HerrorBox.textContent = [95m"Cannot connect to server."[m;
+    [1m[96m}[m);
+[1m[96m}[m);[41;87H[K[41;87H78,0-1[8C42%[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;1H[96m// --- LOGIN ---[m
+[93mdocument[m.querySelector([95m'#login-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m[41;87H[K[41;87H80,0-1[8C44%[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mevent[m.preventDefault();
+    toggleLoading([95mtrue[m, [95m"Verifying credentials..."[m);[41;87H[K[41;87H83,3[10C45%[6;3H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;5H[93mconst[m username = [1m[96mthis[m.username.value;
+    [93mconst[m password = [93mdocument[m.getElementById([95m'login_password'[m).value;[40;5Hfetch([95m'http://localhost:3000/api/login'[m, [1m[96m{[m[41;87H[K[41;87H87,3[10C47%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hmethod: [95m'POST'[m,[39;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,[40;9Hbody: JSON.stringify([1m[96m{[m username, password [1m[96m}[m)[41;87H[K[41;87H90,0-1[8C49%[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m)
+    .then(res => res.json())
+    .then(data => [1m[96m{[m[41;87H[K[41;87H93,3[10C51%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HtoggleLoading([95mfalse[m);[39;9H[93mif[m (data.token) [1m[96m{[m[40;13HlocalStorage.setItem([95m'token'[m, data.token);[41;87H[K[41;87H96,3[10C53%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13HlocalStorage.setItem([95m'username'[m, username);[39;13H[93mwindow[m.[93mlocation[m.href = [95m'lobby.html'[m;[40;9H[1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H99,3[10C55%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13H[93malert[m([95m"Login failed: "[m + (data.message || [95m"Invalid credentials"[m));[39;9H[1m[96m}
+[m    [1m[96m}[m)[41;87H[K[41;87H102,3[9C56%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H.[93mcatch[m(() => [1m[96m{[m[39;9HtoggleLoading([95mfalse[m);[40;9H[93malert[m([95m"Server is currently down."[m);[41;87H[K[41;87H105,3[9C58%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m);
+[1m[96m}[m);[41;87H[K[41;87H108,3[9C60%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[96m// --- OTP & RESET FLOW ---[m
+[93mdocument[m.getElementById([95m'otp-code-input'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m
+    [93mconst[m codeBox = [1m[96mthis[m;[41;87H[K[41;87H111,3[9C62%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mconst[m passSection = [93mdocument[m.getElementById([95m'new-password-section'[m);
+    [93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m).value;[41;87H[K[41;87H114,3[9C63%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mif[m (codeBox.value.length === 6) [1m[96m{[m[39;9HtoggleLoading([95mtrue[m, [95m"Checking code..."[m);[41;87H[K[41;87H117,0-1[7C65%[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hfetch([95m'http://localhost:3000/api/verify-otp'[m, [1m[96m{[m[39;13Hmethod: [95m'POST'[m,[40;13Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[41;87H[K[41;87H120,0-1[7C67%[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: codeBox.value [1m[96m}[m)[39;9H[1m[96m}[m)[40;9H.then(res => [1m[96m{[m[41;87H[K[41;87H123,3[9C69%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13HtoggleLoading([95mfalse[m);[39;13H[93mif[m (res.ok) [1m[96m{[m[40;17HpassSection.style.display = [95m'block'[m;[41;87H[K[41;87H126,3[9C71%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;17HcodeBox.style.borderColor = [95m"green"[m;[39;17HcodeBox.readOnly = [95mtrue[m;[40;13H[1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H129,3[9C72%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;17HcodeBox.style.borderColor = [95m"red"[m;[39;17HcodeBox.value = [95m""[m;[40;17HcodeBox.placeholder = [95m"Invalid code"[m;[41;87H[K[41;87H132,3[9C74%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13H[1m[96m}[39;9H}[m)[40;9H.[93mcatch[m(() => [1m[96m{[m[41;87H[K[41;87H135,3[9C76%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13HtoggleLoading([95mfalse[m);[39;13H[93malert[m([95m"Connection error during verification."[m);[40;9H[1m[96m}[m);[41;87H[K[41;87H138,3[9C78%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}
+}[m);[41;87H[K[41;87H141,3[9C79%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[93mdocument[m.getElementById([95m'reset-final-form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault();[41;87H[K[41;87H144,3[9C81%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mconst[m theCode = [93mdocument[m.getElementById([95m'otp-code-input'[m).value;
+    [93mconst[m firstPass = [93mdocument[m.getElementById([95m'new_password'[m).value;
+    [93mconst[m secondPass = [93mdocument[m.getElementById([95m'confirm_new_password'[m).value;[41;87H[K[41;87H147,3[9C83%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m).value;[40;5H[93mif[m (firstPass !== secondPass) [1m[96m{[m[41;87H[K[41;87H150,3[9C85%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[93mdocument[m.getElementById([95m'reset-error-message'[m).textContent = [95m"Passwords do not match!"[m;[39;9H[93mreturn[m;
+    [1m[96m}[m[41;87H[K[41;87H153,3[9C86%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5HtoggleLoading([95mtrue[m, [95m"Updating password..."[m);[41;87H[K[41;87H156,3[9C88%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5Hfetch([95m'http://localhost:3000/api/reset-password'[m, [1m[96m{[m[39;9Hmethod: [95m'POST'[m,[40;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[41;87H[K[41;87H159,3[9C90%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: theCode, new_password: firstPass [1m[96m}[m)
+    [1m[96m}[m)
+    .then(res => [1m[96m{[m[41;87H[K[41;87H162,3[9C92%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HtoggleLoading([95mfalse[m);[39;9H[93mif[m (res.ok) [1m[96m{[m[40;13H[93malert[m([95m"Password updated successfully!"[m);[41;87H[K[41;87H165,3[9C94%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13HshowForm([95m'login-form'[m);[39;9H[1m[96m}[m [93melse[m [1m[96m{[m[40;13H[93malert[m([95m"Session expired. Please try again."[m);[41;87H[K[41;87H168,3[9C95%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[41;87H[K[41;87H171,3[9C97%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9HtoggleLoading([95mfalse[m);[39;9H[93malert[m([95m"Server error. Try later."[m);
+    [1m[96m}[m);[41;87H[K[41;87H174,3[9C99%[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[1m[96m}[m);
+[94m~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H177,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H180,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H183,0-1[7CBot[6;1H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H186,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H189,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H192,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H195,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H198,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H201,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H204,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H207,3[9CBot[6;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[5;3H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[94m~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[2;3H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[94m~                                                                                                       [m[41;87H[K[41;87H209,3[9CBot[1;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9H[93malert[m([95m"Server error. Try later."[m);
+    [1m[96m}[m);[41;87H[K[41;87H209,3[9CBot[4;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[41;87H[K[41;87H209,3[9CBot[7;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HshowForm([95m'login-form'[m);[2;9H[1m[96m}[m [93melse[m [1m[96m{[m[3;13H[93malert[m([95m"Session expired. Please try again."[m);[41;87H[K[41;87H209,3[9CBot[10;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9H[93mif[m (res.ok) [1m[96m{[m[3;13H[93malert[m([95m"Password updated successfully!"[m);[41;87H[K[41;87H209,3[9CBot[13;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: theCode, new_password: firstPass [1m[96m}[m)
+    [1m[96m}[m)
+    .then(res => [1m[96m{[m[41;87H[K[41;87H209,3[9CBot[16;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hfetch([95m'http://localhost:3000/api/reset-password'[m, [1m[96m{[m[2;9Hmethod: [95m'POST'[m,[3;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[41;87H[K[41;87H209,3[9CBot[19;3H[?25h[?25l[41;77H~@k[19;3H[41;77H   [19;3H[?25h[?25l[41;77Hi[19;3H[41;77H [19;3H[41;1H[1m-- INSERT --[m[41;87H[K[41;87H209,3[9CBot[19;3H[?25h[?25l ;[41;91H4[19;4H[?25h[?25l;[19;4H[K[41;91H3[19;3H[?25h[?25l[41;91H4[19;4H[?25h[?25l[20;1H[K[41;88H10,1[20;1H[?25h[?25l[21;1H[K[41;89H1[21;1H[?25h[?25l[96m// --- FORGOT PASSWORD: SEND RESET CODE ---[m
+[93mdocument[m.querySe[22;17H[K[22;17H[?25h[?25llector([95m'#forgot_password-form form'[m).addEventListener([95m'submit'[m, f[?25h[?25l[1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault(); [96m// Stop page refresh[m[23;49H[K[23;49H[?25h[?25l[24;1H[K[25;1H    [93mconst[m emailInput = [1m[96mthis[m.querySelector([95m'input[name="resetEm[m[25;63H[K[25;63H[?25h[?25l[95mail"]'[m);
+    [93mconst[m userEmail = emailInput.value;[26;40H[K[27;1H[K[28;1H    toggleLoad[28;15H[K[28;15H[?25h[?25ling([95mtrue[m, [95m"Sending reset code to your inbox..."[m);[29;1H[K[30;1H    fetch([95m'h[m[30;13H[K[30;13H[?25h[?25l[95mttp://localhost:3000/api/forgot-password'[m, [1m[96m{[m
+        method: [95m'P[m[31;19H[K[31;19H[?25h[?25l[95mOST'[m,
+        headers: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[32;57H[K[33;1H[K[33;1H[?25h[?25l[8Cbody: JSON.stringify([1m[96m{[m email: userEmail [1m[96m}[m)
+    [1m[96m}[m)[34;7H[K[35;1H    .[35;6H[K[35;6H[?25h[?25lthen(res => [1m[96m{[m
+        toggleLoading([95mfalse[m);[36;30H[K[37;1H        [93mif[m (res.ok)[37;20H[K[37;20H[?25h[?25l [1m[96m{[m
+            [93malert[m([95m"Success! Please check your email for the [m[38;61H[K[38;61H[?25h[?25l[95mcode."[m);
+            showForm([95m'verify_code-form'[m); [96m// Move to t[m[39;55H[K[39;55H[?25h[?25l[96mhe 6-digit code screen[m
+        [1m[96m}[m [93melse[m [1m[96m{[m[40;17H[K[1;40r[40;1H
+[1;41r[40;13H[93malert[m([95m"Erro[m[41;11H[1m(paste) --[m[41;87H[K[40;24H[?25h[?25l[95mr: We couldn't find an account with that email."[m);  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[1m[96m}
+[m    [1m[96m}[m)  [?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H.[93mcatch[m(err => [1m[96m{[m[39;9HtoggleLoading([95mfalse[m);[40;9Hconsole.error([95m"Forgot Password Error:"[m, err);[40;18H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[93malert[m([95m"Connection error. Is your server running?"[m);
+    [1m[96m}[m);
+[1m[96m}[m);[41;11H[1m--a[m[41;13H[K[41;87H239,4[9CBot[40;4H[?25h[?25l[41;88H11,44[12;44H[?25h[41;1H[K[12;43H[?25l[41;77H^[[12;43H[41;77H  [12;44H[41;87H211,43[8CBot[12;43H[?25h[?25l[41;77H:[12;43H[41;77H[K[41;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"script.js" 239L, 8272B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ clear 
+[?2004l[H[2J[3J[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ script[K[K[K[K[K[Kcat script.js 
+[?2004lfunction toggleLoading(show, message = "Working on it...") {
+    const overlay = document.getElementById('loading-overlay'); 
+    const text = document.getElementById('loading-text'); 
+
+    if (show) {
+        text.textContent = message; 
+        overlay.style.display = 'flex'; 
+    } else {
+        overlay.style.display = 'none'; 
+    }
+}
+
+function showForm(formId) {
+    const forms = document.querySelectorAll(".form-box"); 
+    forms.forEach(form => form.classList.remove("active"));
+
+    const targetForm = document.getElementById(formId); 
+    if (targetForm) {
+        targetForm.classList.add("active"); 
+    } else {
+        console.warn("Could not find form with ID:", formId); 
+    }
+}
+
+function togglePassword(inputId, iconElement) {
+    const passwordBox = document.getElementById(inputId); 
+    if (passwordBox.type === "password") {
+        passwordBox.type = "text"; 
+        iconElement.classList.replace("fa-eye", "fa-eye-slash"); 
+    } else {
+        passwordBox.type = 'password'; 
+        iconElement.classList.replace("fa-eye-slash", "fa-eye"); 
+    }
+}
+
+// --- PASSWORD VALIDATION ---
+function updateStatus(requirementId, checkPasses) {
+    const requirementRow = document.getElementById(requirementId); 
+    const theIcon = requirementRow.querySelector('i');
+    const currentPassword = document.getElementById('password').value; 
+
+    if (currentPassword.length > 0 && checkPasses) {
+        requirementRow.style.color = "#2ecc71"; // Green
+        theIcon.className = "fa-solid fa-circle-check"; 
+    } else {
+        requirementRow.style.color = "#ff6b6b"; // Red
+        theIcon.className = "fa-solid fa-circle-xmark"; 
+    }
+}
+
+document.getElementById('password').addEventListener('input', function() {
+    const val = this.value; 
+    updateStatus('req-number', /[0-9]/.test(val)); 
+    updateStatus('req-upper', /[A-Z]/.test(val)); 
+    updateStatus('req-special', /[!@#$%^&*(),.?":{}|<>]/.test(val)); 
+}); 
+
+document.getElementById('confirm_password').addEventListener('input', function() {
+    const pass1 = document.getElementById('password').value; 
+    const errorDisplay = document.getElementById('error-message'); 
+
+    if (this.value !== pass1 && this.value.length > 0) { 
+        errorDisplay.textContent = "Passwords do not match!"; 
+    } else {
+        errorDisplay.textContent = ""; 
+    }
+}); 
+
+// --- REGISTER ---
+document.querySelector('#register-form form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const email = this.email.value; 
+    const password = document.getElementById('password').value; 
+    const username = this.name.value; 
+    const confirmPass = document.getElementById('confirm_password').value; 
+    const errorBox = document.getElementById('error-message'); 
+
+    const isValid = /[0-9]/.test(password) && /[A-Z]/.test(password) && /[!@#$%^&*(),.?{}|<>]/.test(password);
+
+    if (!isValid) {
+        errorBox.textContent = "Error: Password is not complicated enough!";
+        return; 
+    }
+
+    if (password !== confirmPass) {
+        errorBox.textContent = "Error: Passwords do not match!"; 
+        return; 
+    }
+
+    toggleLoading(true, "Baking your account..."); 
+
+    fetch('http://localhost:3000/api/register', {
+        method: 'POST', 
+        headers: { 'Content-Type' : 'application/json' }, 
+        body: JSON.stringify({ username, email, password })
+    })
+    .then(res => {
+        toggleLoading(false); 
+        if (res.ok) {
+            alert("Registration successful!");
+            showForm('login-form'); 
+        } else {
+            errorBox.textContent = "Registration failed. Try again."; 
+        }
+    })
+    .catch(() => {
+        toggleLoading(false); 
+        errorBox.textContent = "Cannot connect to server."; 
+    }); 
+});
+
+// --- LOGIN ---
+document.querySelector('#login-form form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    toggleLoading(true, "Verifying credentials..."); 
+
+    const username = this.username.value; 
+    const password = document.getElementById('login_password').value; 
+
+    fetch('http://localhost:3000/api/login', {
+        method: 'POST', 
+        headers: { 'Content-Type' : 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        toggleLoading(false); 
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('username', username); 
+            window.location.href = 'lobby.html';
+        } else {
+            alert("Login failed: " + (data.message || "Invalid credentials")); 
+        }
+    })
+    .catch(() => { 
+        toggleLoading(false); 
+        alert("Server is currently down."); 
+    }); 
+}); 
+
+// --- OTP & RESET FLOW ---
+document.getElementById('otp-code-input').addEventListener('input', function() {
+    const codeBox = this;
+    const passSection = document.getElementById('new-password-section');
+    const userEmail = document.querySelector('#forgot_password-form input[name="resetEmail"]').value;
+     
+    if (codeBox.value.length === 6) {
+        toggleLoading(true, "Checking code..."); 
+
+        fetch('http://localhost:3000/api/verify-otp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail, otp_code: codeBox.value })
+        })
+        .then(res => {
+            toggleLoading(false); 
+            if (res.ok) {
+                passSection.style.display = 'block';
+                codeBox.style.borderColor = "green"; 
+                codeBox.readOnly = true; 
+            } else {
+                codeBox.style.borderColor = "red"; 
+                codeBox.value = "";
+                codeBox.placeholder = "Invalid code";
+            }
+        })
+        .catch(() => {
+            toggleLoading(false);
+            alert("Connection error during verification.");
+        });
+    }
+});
+
+document.getElementById('reset-final-form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const theCode = document.getElementById('otp-code-input').value; 
+    const firstPass = document.getElementById('new_password').value; 
+    const secondPass = document.getElementById('confirm_new_password').value; 
+    const userEmail = document.querySelector('#forgot_password-form input[name="resetEmail"]').value; 
+
+    if (firstPass !== secondPass) { 
+        document.getElementById('reset-error-message').textContent = "Passwords do not match!"; 
+        return; 
+    } 
+
+    toggleLoading(true, "Updating password...");  
+
+    fetch('http://localhost:3000/api/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail, otp_code: theCode, new_password: firstPass })
+    })
+    .then(res => { 
+        toggleLoading(false); 
+        if (res.ok) {
+            alert("Password updated successfully!");
+            showForm('login-form'); 
+        } else {
+            alert("Session expired. Please try again."); 
+        }
+    })
+    .catch(() => {
+        toggleLoading(false); 
+        alert("Server error. Try later.");
+    });
+});
+
+// --- FORGOT PASSWORD: SEND RESET CODE ---
+document.querySelector('#forgot_password-form form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Stop page refresh
+
+    const emailInput = this.querySelector('input[name="resetEmail"]');
+    const userEmail = emailInput.value;
+
+    toggleLoading(true, "Sending reset code to your inbox...");
+
+    fetch('http://localhost:3000/api/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail })
+    })
+    .then(res => {
+        toggleLoading(false);
+        if (res.ok) {
+            alert("Success! Please check your email for the code.");
+            showForm('verify_code-form'); // Move to the 6-digit code screen
+        } else {
+            alert("Error: We couldn't find an account with that email.");
+        }
+    })
+    .catch(err => {
+        toggleLoading(false);
+        console.error("Forgot Password Error:", err);
+        alert("Connection error. Is your server running?");
+    });
+});
+[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ vim script.js 
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"script.js" 239L, 8272B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;9Hmethod: [31m'POST'[m,
+        headers: [36m{[m [31m'Content-Type'[m: [31m'application/json'[m [36m}[m,[2;57H[K[3;1H        body: JSON.stringify([36m{[m email: userEmail, otp_code: theCode, new_password: firstPass [36m}[m)[3;95H[K[4;5H[36m}[m)
+    .then(res => [36m{[m[6;9HtoggleLoading([31mfalse[m);[7;9H[38;5;130mif[m (res.ok) [36m{[m[8;13H[38;5;130malert[m([31m"Password updated successfully!"[m);[9;13HshowForm([31m'login-form'[m);[10;9H[36m}[m [38;5;130melse[m [36m{[m[11;13H[38;5;130malert[m([31m"Session expired. Please try again."[m);[12;9H[36m}
+[m    [36m}[m)
+    .[38;5;130mcatch[m(() => [36m{[m[15;9HtoggleLoading([31mfalse[m);[16;9H[38;5;130malert[m([31m"Server error. Try later."[m);
+    [36m}[m);
+[36m}[m);
+
+[34m// --- FORGOT PASSWORD: SEND RESET CODE ---[m
+[38;5;130mdocument[m.querySelector([31m'#forgot_password-form form'[m).addEventListener([31m'submit'[m, [36mfunction[m([38;5;130mevent[m) [36m{[m
+    [38;5;130mevent[m.preventDefault(); [34m// Stop page refresh[m[24;5H[38;5;130mconst[m emailInput = [36mthis[m.querySelector([31m'input[name="resetEmail"]'[m);
+    [38;5;130mconst[m userEmail = emailInput.value;[27;5HtoggleLoading([31mtrue[m, [31m"Sending reset code to your inbox..."[m);[29;5Hfetch([31m'http://localhost:3000/api/forgot-password'[m, [36m{[m[30;9Hmethod: [31m'POST'[m,[31;9Hheaders: [36m{[m [31m'Content-Type'[m: [31m'application/json'[m [36m}[m,[32;9Hbody: JSON.stringify([36m{[m email: userEmail [36m}[m)
+    [36m}[m)
+    .then(res => [36m{[m[35;9HtoggleLoading([31mfalse[m);[36;9H[38;5;130mif[m (res.ok) [36m{[m[37;13H[38;5;130malert[m([31m"Success! Please check your email for the code."[m);[38;13HshowForm([31m'verify_code-form'[m); [34m// Move to the 6-digit code screen[m[39;9H[36m}[m [38;5;130melse[m [36m{[m[40;13H[38;5;130malert[m([31m"Error: We couldn't find an account with that email."[m);[41;87H211,43[8C95%[20;43H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[41;77H2[20;43H[41;78H0[20;43H[41;79H/[20;43H[41;80H2[20;43H[41;81H1[20;43H[41;82H2[20;43H[41;83H1[20;43H[41;84H/[20;43H[41;85H2[20;43H[41;86H4[20;43H[41;77H          [20;43H[27m[23m[29m[m[H[2J[1;9Hmethod: [95m'POST'[m,[2;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[3;9Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: theCode, new_password: firstPass [1m[96m}[m)
+    [1m[96m}[m)
+    .then(res => [1m[96m{[m[6;9HtoggleLoading([95mfalse[m);[7;9H[93mif[m (res.ok) [1m[96m{[m[8;13H[93malert[m([95m"Password updated successfully!"[m);[9;13HshowForm([95m'login-form'[m);[10;9H[1m[96m}[m [93melse[m [1m[96m{[m[11;13H[93malert[m([95m"Session expired. Please try again."[m);[12;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[15;9HtoggleLoading([95mfalse[m);[16;9H[93malert[m([95m"Server error. Try later."[m);
+    [1m[96m}[m);
+[1m[96m}[m);
+
+[96m// --- FORGOT PASSWORD: SEND RESET CODE ---[m
+[93mdocument[m.querySelector([95m'#forgot_password-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault(); [96m// Stop page refresh[m[24;5H[93mconst[m emailInput = [1m[96mthis[m.querySelector([95m'input[name="resetEmail"]'[m);
+    [93mconst[m userEmail = emailInput.value;[27;5HtoggleLoading([95mtrue[m, [95m"Sending reset code to your inbox..."[m);[29;5Hfetch([95m'http://localhost:3000/api/forgot-password'[m, [1m[96m{[m[30;9Hmethod: [95m'POST'[m,[31;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[32;9Hbody: JSON.stringify([1m[96m{[m email: userEmail [1m[96m}[m)
+    [1m[96m}[m)
+    .then(res => [1m[96m{[m[35;9HtoggleLoading([95mfalse[m);[36;9H[93mif[m (res.ok) [1m[96m{[m[37;13H[93malert[m([95m"Success! Please check your email for the code."[m);[38;13HshowForm([95m'verify_code-form'[m); [96m// Move to the 6-digit code screen[m[39;9H[1m[96m}[m [93melse[m [1m[96m{[m[40;13H[93malert[m([95m"Error: We couldn't find an account with that email."[m);[41;87H211,43[8C95%"script.js" 239L, 8272B[20;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5HtoggleLoading([95mtrue[m, [95m"Updating password..."[m);[3;5Hfetch([95m'http://localhost:3000/api/reset-password'[m, [1m[96m{[m[41;1H[K[41;87H211,43[8C94%[23;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mreturn[m;
+    [1m[96m}[m[41;87H[K[41;87H211,43[8C92%[26;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[93mif[m (firstPass !== secondPass) [1m[96m{[m[3;9H[93mdocument[m.getElementById([95m'reset-error-message'[m).textContent = [95m"Passwords do not match!"[m;[41;87H[K[41;87H211,43[8C91%[29;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m firstPass = [93mdocument[m.getElementById([95m'new_password'[m).value;
+    [93mconst[m secondPass = [93mdocument[m.getElementById([95m'confirm_new_password'[m).value;
+    [93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m).value;[41;87H[K[41;87H211,43[8C89%[32;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mevent[m.preventDefault();[3;5H[93mconst[m theCode = [93mdocument[m.getElementById([95m'otp-code-input'[m).value;[41;87H[K[41;87H211,43[8C88%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}[m);
+
+[93mdocument[m.getElementById([95m'reset-final-form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m[41;87H[K[41;87H208,7[9C86%[35;7H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93malert[m([95m"Connection error during verification."[m);[2;9H[1m[96m}[m);
+    [1m[96m}[m[35;18H[1m[96m[46m{[38;5H}[m)[41;87H[K[41;87H205,18[8C85%[35;18H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m)[2;9H.[93mcatch[m(() => [1m[96m{[m[3;13HtoggleLoading([95mfalse[m);[38;18H[1m[96m{[m[41;87H[K[41;87H202,43[8C83%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17HcodeBox.value = [95m""[m;[2;17HcodeBox.placeholder = [95m"Invalid code"[m;[3;13H[1m[96m}[m[41;87H[K[41;87H199,43[8C82%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17HcodeBox.readOnly = [95mtrue[m;[2;13H[1m[96m}[m [93melse[m [1m[96m{[m[3;17HcodeBox.style.borderColor = [95m"red"[m;[41;87H[K[41;87H196,19[8C80%[35;19H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mif[m (res.ok) [1m[96m{[m[2;17HpassSection.style.display = [95m'block'[m;[3;17HcodeBox.style.borderColor = [95m"green"[m;[41;87H[K[41;87H193,43[8C79%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m)[2;9H.then(res => [1m[96m{[m[3;13HtoggleLoading([95mfalse[m);[41;87H[K[41;87H190,0-1[7C77%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hmethod: [95m'POST'[m,[2;13Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[3;13Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: codeBox.value [1m[96m}[m)[41;87H[K[41;87H187,6[9C76%[35;6H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mtrue[m, [95m"Checking code..."[m);[3;9Hfetch([95m'http://localhost:3000/api/verify-otp'[m, [1m[96m{[m[41;87H[K[41;87H184,36[8C74%[35;36H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m).value;[3;5H[93mif[m (codeBox.value.length === 6) [1m[96m{[m[41;87H[K[41;87H181,43[8C73%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mdocument[m.getElementById([95m'otp-code-input'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m
+    [93mconst[m codeBox = [1m[96mthis[m;
+    [93mconst[m passSection = [93mdocument[m.getElementById([95m'new-password-section'[m);[41;87H[K[41;87H178,0-1[7C71%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}[m);
+
+[96m// --- OTP & RESET FLOW ---[m[41;87H[K[41;87H175,0-1[7C70%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9H[93malert[m([95m"Server is currently down."[m);
+    [1m[96m}[m);[41;87H[K[41;87H172,11[8C68%[35;11H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[35;22H[1m[96m[46m{[38;9H}[m)[41;87H[K[41;87H169,22[8C67%[35;22H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mwindow[m.[93mlocation[m.href = [95m'lobby.html'[m;[2;9H[1m[96m}[m [93melse[m [1m[96m{[m[3;13H[93malert[m([95m"Login failed: "[m + (data.message || [95m"Invalid credentials"[m));[38;22H[1m[96m{[m[41;87H[K[41;87H166,43[8C65%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mif[m (data.token) [1m[96m{[m[2;13HlocalStorage.setItem([95m'token'[m, data.token);[3;13HlocalStorage.setItem([95m'username'[m, username);[35;20H[1m[96m[46m{[39;13H}[m[41;87H[K[41;87H163,20[8C64%[35;20H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H.then(res => res.json())
+    .then(data => [1m[96m{[m[3;9HtoggleLoading([95mfalse[m);[38;20H[1m[96m{[m[41;87H[K[41;87H160,43[8C62%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,[2;9Hbody: JSON.stringify([1m[96m{[m username, password [1m[96m}[m)
+    [1m[96m}[m)[41;87H[K[41;87H157,22[8C61%[35;22H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5Hfetch([95m'http://localhost:3000/api/login'[m, [1m[96m{[m[3;9Hmethod: [95m'POST'[m,[41;87H[K[41;87H154,43[8C59%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[93mconst[m username = [1m[96mthis[m.username.value;
+    [93mconst[m password = [93mdocument[m.getElementById([95m'login_password'[m).value;[41;87H[K[41;87H151,0-1[7C58%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mdocument[m.querySelector([95m'#login-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault();
+    toggleLoading([95mtrue[m, [95m"Verifying credentials..."[m);[41;87H[K[41;87H148,5[9C56%[35;5H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}[m);
+
+[96m// --- LOGIN ---[m[41;87H[K[41;87H145,25[8C55%[35;25H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9HerrorBox.textContent = [95m"Cannot connect to server."[m;
+    [1m[96m}[m);[41;87H[K[41;87H142,0-1[7C53%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[41;87H[K[41;87H139,43[8C52%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HshowForm([95m'login-form'[m);[2;9H[1m[96m}[m [93melse[m [1m[96m{[m[3;13HerrorBox.textContent = [95m"Registration failed. Try again."[m;[26;10H[46m([35;6H)[m[41;87H[K[41;87H136,6[9C50%[35;6H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HtoggleLoading([95mfalse[m);[2;9H[93mif[m (res.ok) [1m[96m{[m[3;13H[93malert[m([95m"Registration successful!"[m);[29;10H([35;16H[1m[96m[46m{[37;9H}[m[38;6H)[41;87H[K[41;87H133,16[8C49%[35;16H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hbody: JSON.stringify([1m[96m{[m username, email, password [1m[96m}[m)
+    [1m[96m}[m)
+    .then(res => [1m[96m{[38;16H{[40;9H}[m[41;87H[K[41;87H130,43[8C47%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hfetch([95m'http://localhost:3000/api/register'[m, [1m[96m{[m[2;9Hmethod: [95m'POST'[m,[3;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,[41;87H[K[41;87H127,19[8C46%[35;19H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5HtoggleLoading([95mtrue[m, [95m"Baking your account..."[m);[41;87H[K[41;87H124,43[8C44%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HerrorBox.textContent = [95m"Error: Passwords do not match!"[m;[2;9H[93mreturn[m;
+    [1m[96m}[m[41;87H[K[41;87H121,43[8C43%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m[3;5H[93mif[m (password !== confirmPass) [1m[96m{[m[41;87H[K[41;87H118,42[8C41%[35;42H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m (!isValid) [1m[96m{[m[2;9HerrorBox.textContent = [95m"Error: Password is not complicated enough!"[m;[3;9H[93mreturn[m;[41;87H[K[41;87H115,28[8C40%[35;28H[?25h[?25l[1;40r[1;1H[4L[1;41r[2;5H[93mconst[m isValid = [95m/[0-9]/[m.test(password) && /[1m[96m[[mA-Z[1m[96m][m/.test(password) && /[1m[96m[[m!@#$%^&*(),.?[1m[96m{}[m|<>[1m[96m][m/.test(passs[3;1Hword);[41;87H[K[41;87H111,3[9C38%[35;3H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m username = [1m[96mthis[m.name.value;
+    [93mconst[m confirmPass = [93mdocument[m.getElementById([95m'confirm_password'[m).value;
+    [93mconst[m errorBox = [93mdocument[m.getElementById([95m'error-message'[m);[41;87H[K[41;87H108,30[8C37%[35;30H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[93mconst[m email = [1m[96mthis[m.email.value;
+    [93mconst[m password = [93mdocument[m.getElementById([95m'password'[m).value;[33;16H[1m[96m[46m{[35;9H}[m[41;87H[K[41;87H105,9[9C35%[35;9H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[96m// --- REGISTER ---[m
+[93mdocument[m.querySelector([95m'#register-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[m
+    [93mevent[m.preventDefault();[36;16H[1m[96m{[38;9H}[m[41;87H[K[41;87H102,36[8C34%[35;36H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}
+}[m);[41;87H[K[41;87H99,30[9C32%[35;30H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HerrorDisplay.textContent = [95m"Passwords do not match!"[m;
+    [1m[96m}[m [93melse[m [1m[96m{[m[3;9HerrorDisplay.textContent = [95m""[m;[41;87H[K[41;87H96,43[9C31%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m errorDisplay = [93mdocument[m.getElementById([95m'error-message'[m);[3;5H[93mif[m ([1m[96mthis[m.value !== pass1 && [1m[96mthis[m.value.length > 0) [1m[96m{[m[41;87H[K[41;87H93,43[9C29%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[93mdocument[m.getElementById([95m'confirm_password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m
+    [93mconst[m pass1 = [93mdocument[m.getElementById([95m'password'[m).value;[41;87H[K[41;87H90,0-1[8C28%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5HupdateStatus([95m'req-upper'[m, [95m/[A-Z]/[m.test(val));
+    updateStatus([95m'req-special'[m, [95m/[!@#$%^&*(),.?":{}|<>]/[m.test(val));
+[1m[96m}[m);[41;87H[K[41;87H87,43[9C26%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mdocument[m.getElementById([95m'password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[m
+    [93mconst[m val = [1m[96mthis[m.value;
+    updateStatus([95m'req-number'[m, [95m/[0-9]/[m.test(val));[32;19H[1m[96m[46m{[35;5H}[m[41;87H[K[41;87H84,5[10C25%[35;5H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}
+}[m[41;87H[K[41;87H81,19[9C23%[35;19H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m [93melse[m [1m[96m{[m[2;9HrequirementRow.style.color = [95m"#ff6b6b"[m; [96m// Red[m[3;9HtheIcon.className = [95m"fa-solid fa-circle-xmark"[m;[38;19H[1m[96m{[m[41;87H[K[41;87H78,0-1[8C22%[34;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m (currentPassword.length > 0 && checkPasses) [1m[96m{[m[2;9HrequirementRow.style.color = [95m"#2ecc71"[m; [96m// Green[m[3;9HtheIcon.className = [95m"fa-solid fa-circle-check"[m;[41;87H[K[41;87H76,43[9C20%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m theIcon = requirementRow.querySelector([95m'i'[m);
+    [93mconst[m currentPassword = [93mdocument[m.getElementById([95m'password'[m).value;[41;87H[K[41;87H73,36[9C19%[35;36H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[96m// --- PASSWORD VALIDATION ---[m
+[1m[96mfunction[m updateStatus(requirementId, checkPasses) [1m[96m{[m
+    [93mconst[m requirementRow = [93mdocument[m.getElementById(requirementId);[41;87H[K[41;87H70,43[9C17%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}
+}[m[41;87H[K[41;87H67,4[10C16%[35;4H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m [93melse[m [1m[96m{[m[2;9HpasswordBox.type = [95m'password'[m;[3;9HiconElement.classList.replace([95m"fa-eye-slash"[m, [95m"fa-eye"[m);[35;12H[1m[96m[46m{[37;5H}[m[41;87H[K[41;87H64,12[9C14%[35;12H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m (passwordBox.type === [95m"password"[m) [1m[96m{[m[2;9HpasswordBox.type = [95m"text"[m;[3;9HiconElement.classList.replace([95m"fa-eye"[m, [95m"fa-eye-slash"[m);[38;12H[1m[96m{[40;5H}[m[41;87H[K[41;87H61,0-1[8C13%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[1m[96mfunction[m togglePassword(inputId, iconElement) [1m[96m{[m
+    [93mconst[m passwordBox = [93mdocument[m.getElementById(inputId);[35;24H[46m([18C)[m[41;87H[K[41;87H58,43[9C11%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hconsole.warn([95m"Could not find form with ID:"[m, formId);
+    [1m[96m}
+}[m[35;43H[95m[46m()[m[38;24H([18C)[41;87H[K[41;87H55,43[9C10%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mif[m (targetForm) [1m[96m{[m[2;9HtargetForm.classList.add([95m"active"[m);
+    [1m[96m}[m [93melse[m [1m[96m{[m[38;43H[95m()[m[41;87H[K[41;87H52,28[10C8%[35;28H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hforms.forEach(form => form.classList.remove([95m"active"[m));[3;5H[93mconst[m targetForm = [93mdocument[m.getElementById(formId);[23;51H[1m[96m[46m{[35;1H}[m[41;87H[K[41;87H49,1[11C7%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[1m[96mfunction[m showForm(formId) [1m[96m{[m
+    [93mconst[m forms = [93mdocument[m.querySelectorAll([95m".form-box"[m);[26;51H[1m[96m{[38;1H}[m[41;87H[K[41;87H46,43[10C5%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hoverlay.style.display = [95m'none'[m;
+    [1m[96m}
+}[m[41;87H[K[41;87H43,43[10C4%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Htext.textContent = message;[2;9Hoverlay.style.display = [95m'flex'[m;
+    [1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H40,43[10C2%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[93mconst[m text = [93mdocument[m.getElementById([95m'loading-text'[m);[3;5H[93mif[m (show) [1m[96m{[m[41;87H[K[41;87H37,43[10C1%[35;43H[?25h[?25l[1;40r[1;1H[2L[1;41r[1;1H[1m[96mfunction[m toggleLoading(show, message = [95m"Working on it..."[m) [1m[96m{[m
+    [93mconst[m overlay = [93mdocument[m.getElementById([95m'loading-overlay'[m);[41;87H[K[41;87H35,0-1[8CTop[35;1H[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[41;87H9,40  [9;40H[?25h[?25l[41;77Hg[9;40H[?25h[?25l[41;77H [9;40H[41;77Hgg[9;40H[41;77H  [1;1H[41;87H1,1 [1;1H[?25h[?25l[41;77Hd[1;1H[?25h[?25l[41;78H^G[1;1H[41;77H   [1;1H[?25h[?25l[59C[1m[96m[46m{[11;1H}[m[41;88H1,1[11;1H[?25h[?25l[41;77Hg[11;1H[?25h[?25l[41;77H [11;1H[41;77Hgg[11;1H[41;77H  [1;1H[59C[1m[96m{[11;1H}[m[41;88H,1 [1;1H[?25h[?25l[41;77Hd[1;1H[?25h[?25l[41;78HG[1;1H[41;77H  [1;1H[1;1H[K[2;1H[94m~                                                                                                       [3;1H~                                                                                                       [4;1H~                                                                                                       [5;1H~                                                                                                       [6;1H~                                                                                                       [7;1H~                                                                                                       [8;1H~                                                                                                       [9;1H~                                                                                                       [10;1H~                                                                                                       [11;1H~                                                                                                       [12;1H~                                                                                                       [13;1H~                                                                                                       [14;1H~                                                                                                       [15;1H~                                                                                                       [16;1H~                                                                                                       [17;1H~                                                                                                       [18;1H~                                                                                                       [19;1H~                                                                                                       [20;1H~                                                                                                       [21;1H~                                                                                                       [22;1H~                                                                                                       [23;1H~                                                                                                       [24;1H~                                                                                                       [25;1H~                                                                                                       [26;1H~                                                                                                       [27;1H~                                                                                                       [28;1H~                                                                                                       [29;1H~                                                                                                       [30;1H~                                                                                                       [31;1H~                                                                                                       [32;1H~                                                                                                       [33;1H~                                                                                                       [34;1H~                                                                                                       [35;1H~                                                                                                       [36;1H~                                                                                                       [37;1H~                                                                                                       [38;1H~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;1H--No lines in buffer--[41;87H[K[41;87H0,0-1[9CAll[1;1H[?25h[?25l[?25h[?25l[41;1H[1m-- INSERT --[m[41;13H[K[41;87H0,1[11CAll[1;1H[96m/* --- HELPER FUNCTIONS --- */[m
+[1m[96mfunction[m toggleLoading(show[2;28H[K[2;28H[?25h[?25l, message = [95m"Working on it..."[m) [1m[96m{[m
+    [93mconst[m overlay = [93mdocument[m.g[3;31H[K[3;31H[?25h[?25letElementById([95m'loading-overlay'[m);
+    [93mconst[m text = [93mdocument[m.get[4;30H[K[4;30H[?25h[?25lElementById([95m'loading-text'[m);[5;1H[K[6;1H    [93mif[m (show) [1m[96m{[m[6;16H[K[7;1H        text.tex[7;17H[K[7;17H[?25h[?25ltContent = message;
+        overlay.style.display = [95m'flex'[m; [8;41H[K[9;1H [9;2H[K[9;2H[?25h[?25l   [1m[96m}[m [93melse[m [1m[96m{[m
+        overlay.style.display = [95m'none'[m; [10;41H[K[11;1H    [1m[96m}[m[11;6H[K[12;1H[1m[96m}[m[12;2H[K[13;1H[K[14;1Hf[14;2H[K[14;2H[?25h[?25l[1m[96mfunction[m showForm(formId) [1m[96m{[m
+    [93mconst[m forms = [93mdocument[m.querySele[15;37H[K[15;37H[?25h[?25lctorAll([95m".form-box"[m);
+    forms.forEach(form => form.classList[16;41H[K[16;41H[?25h[?25l.remove([95m"active"[m));[17;1H[K[18;1H    [93mconst[m targetForm = [93mdocument[m.getElement[18;43H[K[18;43H[?25h[?25lById(formId);
+    [93mif[m (targetForm) [1m[96m{[m[19;22H[K[20;1H        targetForm.classLi[20;27H[K[20;27H[?25h[?25lst.add([95m"active"[m);
+    [1m[96m}[m [93melse[m [1m[96m{[m[21;13H[K[22;1H        console.warn([95m"Could not[m[22;32H[K[22;32H[?25h[?25l[95m find form with ID:"[m, formId);
+    [1m[96m}[m[23;6H[K[24;1H[1m[96m}[m[24;2H[K[25;1H[K[26;1H[1m[96mfunction[m togglePasswor[26;23H[K[26;23H[?25h[?25ld(inputId, iconElement) [1m[96m{[m
+    [93mconst[m passwordBox = [93mdocument[m.getE[27;38H[K[27;38H[?25h[?25llementById(inputId);
+    [93mif[m (passwordBox.type === [95m"password"[m) [28;42H[K[28;42H[?25h[?25l[1m[96m{[m
+        passwordBox.type = [95m"text"[m; [29;36H[K[30;1H        iconElement.[93mclass[m[30;26H[K[30;26H[?25h[?25lclassList.replace([95m"fa-eye"[m, [95m"fa-eye-slash"[m);
+    [1m[96m}[m [93melse[m [1m[96m{[m[31;13H[K[32;1H        p[32;10H[K[32;10H[?25h[?25lasswordBox.type = [95m'password'[m;
+        iconElement.classList.re[33;33H[K[33;33H[?25h[?25lplace([95m"fa-eye-slash"[m, [95m"fa-eye"[m);
+    [1m[96m}[m[34;6H[K[35;1H[1m[96m}[m[35;2H[K[36;1H[K[37;1H[96m/* --- PASSWORD VALI[m[37;21H[K[37;21H[?25h[?25l[96mDATION (REGISTER) --- */[m
+[1m[96mfunction[m updateStatus(requirementId, c[38;39H[K[38;39H[?25h[?25lheckPasses) [1m[96m{[m
+    [93mconst[m requirementRow = [93mdocument[m.getElementByI[39;50H[K[39;50H[?25h[?25ld(requirementId);
+    [93mconst[m theIcon = requirementRow.querySele[40;45H[K[40;45H[?25h[?25lctor([95m'i'[m);[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m currentPassword = [93mdocument[m.getElementById([95m'password'[m).value;[41;11H[1m(paste) --[m[41;87H[K[40;43H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[93mif[m (currentPassword.length > 0 && checkPasses) [1m[96m{[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9HrequirementRow.style.color = [95m"#2ecc71"[m; [96m// Green[m [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9HtheIcon.className = [95m"fa-solid fa-circle-check"[m;
+    [1m[96m}[m [93melse[m [1m[96m{[39C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9HrequirementRow.style.color = [95m"#ff6b6b"[m; [96m// Red[m  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9HtheIcon.className = [95m"fa-solid fa-circle-xmark"[m;
+    [1m[96m}[51C[?25h[?25l[1;40r[m[1;1H[3M[1;41r[38;1H[1m[96m}[m
+
+[93mdocument[m.getElementById([95m'password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[40;16H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;5H[93mconst[m val = [1m[96mthis[m.value;
+    updateStatus([95m'req-number'[m, [95m/[0-9]/[m.test(val));[40;27H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5HupdateStatus([95m'req-upper'[m, [95m/[A-Z]/[m.test(val));[40;39H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5HupdateStatus([95m'req-special'[m, [95m/[!@#$%^&*(),.?":{}|<>]/[m.test(val));[40;26H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[1m[96m}[m);
+
+[93mdocument[m.getElementById([95m'confirm_password'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[40;6H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mconst[m pass1 = [93mdocument[m.getElementById([95m'password'[m).value;[40;7H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m errorDisplay = [93mdocument[m.getElementById([95m'error-message'[m);[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[93mif[m ([1m[96mthis[m.value !== pass1 && [1m[96mthis[m.value.length > 0) [1m[96m{[40;6H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9HerrorDisplay.textContent = [95m"Passwords do not match!"[m;     [?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[1m[96m}[m [93melse[m [1m[96m{[m   [?25h[?25l[1;40r[1;1H[5M[1;41r[36;9HerrorDisplay.textContent = [95m""[m;
+    [1m[96m}
+}[m);
+
+[96m/* --- AUTHENTICATION (REGISTER & LOGIN) --- */[40;19H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;1H[93mdocument[m.querySelector([95m'#register-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[?25h[?25l[m([93mevent[m) [1m[96m{[40;25H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;5H[93mevent[m.preventDefault();
+    [93mconst[m email = [1m[96mthis[m.email.value;[15C[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m password = [93mdocument[m.getElementById([95m'password'[m).value;[40;10H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[93mconst[m username = [1m[96mthis[m.name.value;
+    [93mconst[m confirmPass = [93mdocument[m.getElementById([95m'confirm_password'[m).valu[?25h[?25le;[40;60H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m errorBox = [93mdocument[m.getElementById([95m'error-message'[m);[40;22H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5H[93mif[m (password !== confirmPass) [1m[96m{[m[40;9HerrorBox.textContent = [95m"Error: Passwords do not match!"[m; [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[93mreturn[m;
+    [1m[96m}[?25h[?25l[1;40r[m[1;1H[4M[1;41r[38;5HtoggleLoading([95mtrue[m, [95m"Baking your account..."[m);[40;5Hfetch([95m'http://localhost:3000/api/register'[m, [1m[96m{[40;18H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9Hmethod: [95m'POST'[m,[32C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,  [?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hbody: JSON.stringify([1m[96m{[m username, email, password [1m[96m}[m)     [?25h[?25l[1;40r[1;1H[4M[1;41r[37;5H[1m[96m}[m)
+    .then(res => [1m[96m{[m[39;9HtoggleLoading([95mfalse[m);[40;9H[93mif[m (res.ok) [1m[96m{[25C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;13H[93malert[m([95m"Registration successful!"[m);[40;9H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13HshowForm([95m'login-form'[m);[39;9H[1m[96m}[m [93melse[m [1m[96m{[m[40;13HerrorBox.textContent = [95m"Registration failed. Try again."[m;[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[1m[96m}[18C[?25h[?25l[1;40r[m[1;1H[3M[1;41r[38;5H[1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m[40;9HtoggleLoading([95mfalse[m);[30C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9HerrorBox.textContent = [95m"Cannot connect to server."[m;[40;48H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;5H[1m[96m}[m);
+[1m[96m}[m);
+
+[93mdocument[m.querySelector([95m'#login-form form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[40;23H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mevent[m.preventDefault(); [?25h[?25l[1;40r[1;1H[3M[1;41r[38;5HtoggleLoading([95mtrue[m, [95m"Verifying credentials..."[m);[40;5H[93mconst[m username = [1m[96mthis[m.username.value;[40;22H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m password = [93mdocument[m.getElementById([95m'login_password'[m).value;[40;13H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5Hfetch([95m'http://localhost:3000/api/login'[m, [1m[96m{[m   [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hmethod: [95m'POST'[m,[40;9Hheaders: [1m[96m{[m [95m'Content-Type'[m : [95m'application/json'[m [1m[96m}[m,[40;9H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hbody: JSON.stringify([1m[96m{[m username, password [1m[96m}[m)[40;12H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[1m[96m}[m)
+    .then(res => res.json())[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H.then(data => [1m[96m{[m[40;9HtoggleLoading([95mfalse[m);  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[93mif[m (data.token) [1m[96m{[m[40;13HlocalStorage.setItem([95m'token'[m, data.token);[40;40H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13HlocalStorage.setItem([95m'username'[m, username);[40;46H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13H[93mwindow[m.[93mlocation[m.href = [95m'lobby.html'[m;[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[1m[96m}[m [93melse[m [1m[96m{[m[40;13H[93malert[m([95m"Login failed: "[m + (data.message || [95m"Invalid credentials"[m));[40;9H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[m  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9HtoggleLoading([95mfalse[m);[40;9H[93malert[m([95m"Server is currently down."[m);[40;24H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;5H[1m[96m}[m);
+[1m[96m}[m);
+
+[96m/* --- FORGOT PASSWORD & OTP FLOW --- *//*[?25h[?25l[1;40r[m[1;1H[3M[1;41r[39;1H[96m// STEP 1: Submit email to get reset code[m
+[93mdocument[m.querySelector([95m'#forgot_password-form form'[m).addEventList[?25h[?25lener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[40;2H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;5H[93mevent[m.preventDefault();
+    [93mconst[m emailInput = [1m[96mthis[m.querySelector([95m'input[name="resetEmai[?25h[?25ll"]'[m);[40;9H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[93mconst[m userEmail = emailInput.value.trim();[40;5HtoggleLoading([95mtrue[m, [95m"Sending reset code to your inbox..."[m);[40;7H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5Hfetch([95m'http://localhost:3000/api/forgot-password'[m, [1m[96m{[40;13H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9Hmethod: [95m'POST'[m,[28C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[40;7H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hbody: JSON.stringify([1m[96m{[m email: userEmail [1m[96m}[m)
+    [1m[96m}[m)[7C[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H.then(res => [1m[96m{[m[39;9HtoggleLoading([95mfalse[m);[40;9H[93mif[m (res.ok) [1m[96m{[m     [?25h[?25l[1;40r[1;1H[2M[1;41r[39;13H[93malert[m([95m"Success! Check your email."[m);[40;13HshowForm([95m'verify_code-form'[m);[40;9H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[1m[96m}[m [93melse[m [1m[96m{[m[40;13H[93malert[m([95m"Error: Email not found."[m);[40;9H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(err => [1m[96m{[m  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9HtoggleLoading([95mfalse[m);[40;9H[93malert[m([95m"Connection error."[m);[?25h[?25l[1;40r[1;1H[4M[1;41r[37;5H[1m[96m}[m);
+[1m[96m}[m);
+
+[96m// STEP 2: Verify code automatically when 6 digits are typed[40;38H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;1H[93mdocument[m.getElementById([95m'otp-code-input'[m).addEventListener([95m'input'[m, [1m[96mfunction[m() [1m[96m{[40;20H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mconst[m codeBox = [1m[96mthis[m;[31C[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m passSection = [93mdocument[m.getElementById([95m'new-password-section'[m);[40;47H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[96m// Grab the email entered in the previous form[8C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mconst[m emailField = [93mdocument[m.querySelector([95m'#forgot_password-form input[name="resetEmail"]'[m);[40;25H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m userEmail = emailField ? emailField.value : [95m""[m;[40;24H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[93mif[m (codeBox.value.length === 6) [1m[96m{[11C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9HtoggleLoading([95mtrue[m, [95m"Checking code..."[m);    [?25h[?25l[1;40r[1;1H[3M[1;41r[39;9Hfetch([95m'http://localhost:3000/api/verify-otp'[m, [1m[96m{[m[40;13Hmethod: [95m'POST'[m,[12C[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[40;42H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: codeBox.value [1m[96m}[m)[40;14H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[1m[96m}[m)[40;9H.then(res => [1m[96m{[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;13HtoggleLoading([95mfalse[m);[40;13H[93mif[m (res.ok) [1m[96m{[30C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;17HpassSection.style.display = [95m'block'[m; [96m// Reveal new password fields[40;36H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;17HcodeBox.style.borderColor = [95m"green"[m;  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;17HcodeBox.readOnly = [95mtrue[m;[40;13H[1m[96m}[m [93melse[m [1m[96m{[24C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;17HcodeBox.style.borderColor = [95m"red"[m;[40;20H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;17HcodeBox.value = [95m""[m;[40;17HcodeBox.placeholder = [95m"Invalid code"[m;   [?25h[?25l[1;40r[1;1H[3M[1;41r[38;13H[1m[96m}[39;9H}[m)[40;9H.[93mcatch[m(() => [1m[96m{[40;10H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;13HtoggleLoading([95mfalse[m);[40;13H[93malert[m([95m"Verification connection error."[m); [?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[1m[96m}[m);
+    [1m[96m}
+}[m);[23C[?25h[?25l[1;40r[1;1H[3M[1;41r[39;1H[96m// STEP 3: Final Password Update[m
+[93mdocument[m.getElementById([95m'reset-final-form'[m).addEventListener([95m'submit'[m, [1m[96mfunction[m([93mevent[m) [1m[96m{[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mevent[m.preventDefault();      [?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[93mconst[m theCode = [93mdocument[m.getElementById([95m'otp-code-input'[m).value;[40;27H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m firstPass = [93mdocument[m.getElementById([95m'new_password'[m).value;[40;20H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m secondPass = [93mdocument[m.getElementById([95m'confirm_new_password'[m).value;   [?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mconst[m userEmail = [93mdocument[m.querySelector([95m'#forgot_password-for[?25h[?25lm input[name="resetEmail"]'[m).value;[40;26H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[93mif[m (firstPass !== secondPass) [1m[96m{[16C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9H[93mdocument[m.getElementById([95m'reset-error-message'[m).textContent = [95m"Passwords do not match!"[m;[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[93mreturn[m;
+    [1m[96m}[?25h[?25l[1;40r[m[1;1H[4M[1;41r[38;5HtoggleLoading([95mtrue[m, [95m"Updating password..."[m);[40;5Hfetch([95m'http://localhost:3000/api/reset-password'[m, [1m[96m{[40;11H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9Hmethod: [95m'POST'[m,[26C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hheaders: [1m[96m{[m [95m'Content-Type'[m: [95m'application/json'[m [1m[96m}[m,[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hbody: JSON.stringify([1m[96m{[m email: userEmail, otp_code: theCode, new_password: firstPass [1m[96m}[m)[40;17H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[1m[96m}[m)
+    .then(res => [1m[96m{[40;7H[?25h[?25l[1;40r[m[1;1H[3M[1;41r[38;9HtoggleLoading([95mfalse[m);[39;9H[93mif[m (res.ok) [1m[96m{[m[40;13H[93malert[m([95m"Password updated successfully!"[m);[40;17H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13HshowForm([95m'login-form'[m);[40;26H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[1m[96m}[m [93melse[m [1m[96m{[m[40;13H[93malert[m([95m"Session expired or invalid. Please try again."[m);  [?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H[1m[96m}
+[m    [1m[96m}[m)
+    .[93mcatch[m(() => [1m[96m{[?25h[?25l[m[41;1H[K[1;40r[1;1H[4M[1;41r[37;9HtoggleLoading([95mfalse[m);[38;9H[93malert[m([95m"Server error."[m);
+    [1m[96m}[m);
+[1m[96m}[m);[41;87H234,3[9CBot[40;3H[?25h[?25l[41;77H^[[40;3H[41;77H  [40;3H[41;77H^[[40;3H[41;77H  [40;3H[?25h[?25l[41;77H:[40;3H[41;77H[K[41;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"script.js" 234L, 8153B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ node server.js 
+[?2004l◇ injected env (6) from .env [2m// tip: ⌘ enable debugging { debug: true }[0m
+node:events:502
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::3000
+[90m    at Server.setupListenHandle [as _listen2] (node:net:1908:16)[39m
+[90m    at listenInCluster (node:net:1965:12)[39m
+[90m    at Server.listen (node:net:2067:7)[39m
+    at Object.<anonymous> [90m(/home/barrazaneftali4/brownie-beater/[39mserver.js:459:12[90m)[39m
+[90m    at Module._compile (node:internal/modules/cjs/loader:1521:14)[39m
+[90m    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)[39m
+[90m    at Module.load (node:internal/modules/cjs/loader:1266:32)[39m
+[90m    at Module._load (node:internal/modules/cjs/loader:1091:12)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)[39m
+[90m    at node:internal/main/run_main_module:28:49[39m
+Emitted 'error' event on Server instance at:
+[90m    at emitErrorNT (node:net:1944:8)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)[39m {
+  code: [32m'EADDRINUSE'[39m,
+  errno: [33m-98[39m,
+  syscall: [32m'listen'[39m,
+  address: [32m'::'[39m,
+  port: [33m3000[39m
+}
+
+Node.js v20.20.2
+[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ clea[K[K[K[Kcat server.js 
+[?2004lglobal.WebSocket = require('ws'); 
+require('dotenv').config(); 
+
+const express = require('express'); 
+const bcrypt = require('bcryptjs'); 
+const jwt = require('jsonwebtoken'); 
+const nodemailer = require('nodemailer'); 
+const cors = require('cors'); 
+const { createClient } = require('@supabase/supabase-js');
+const http = require('http');
+const { Server } = require('socket.io');
+const app = express();
+const PORT = process.env.PORT || 3000; 
+const SECRET_KEY = process.env.JWT_SECRET || "for_local_testing"; 
+var gameRooms = {}; 
+const supabaseURL = process.env.SUPABASE_URL; 
+const supabaseKey = process.env.SUPABASE_KEY; 
+const supabase = createClient(supabaseURL, supabaseKey);
+
+
+app.use(cors()); 
+app.use(express.json()); 
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, 
+    auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS 
+    },
+    tls: {
+        rejectUnauthorized: false,
+        minVersion: 'TLSv1.2'
+    }
+});
+
+// register
+app.post('/api/register', async function(req, res) {
+	var username = req.body.username; 
+	var password = req.body.password; 
+	var email = req.body.email.toLowerCase().trim();
+
+	console.log("Attempting to register user: " + username); 
+
+	try {
+		const {data: existingUser } = await supabase 
+		.from('users')
+		.select('id')
+		.or(`email.eq.${email},username.eq.${username}`)
+		.maybeSingle(); 
+
+		if(existingUser) {
+			return res.status(400).send("Username or Email already is use."); 
+		}
+
+		var saltRounds = 10; 
+		var hashedPassword = await bcrypt.hash(password, saltRounds); 
+
+		var response = await supabase 
+			.from('users')
+			.insert([
+				{
+					username: username, 
+					password: hashedPassword, 
+					email: email
+				}
+			]); 
+
+		if(response.error) {
+			console.log("Supabase  error:", response.error.message); 
+			return res.status(400).send("Registration failed: " + response.error.message); 
+		}
+
+		console.log("User" + username  + " is now in the database !"); 
+		res.status(201).send("Success"); 
+	}
+	    catch (err) {
+            console.log("Everything broke:"); 
+            console.log(err); 
+            res.status(500).send("Server crashed"); 
+        }
+}); 
+
+
+// login
+app.post('/api/login', async function(req, res) {
+	var userAttempt = req.body.username.trim(); 
+	var passAttempt = req.body.password; 
+
+	console.log("Login attempt from: " +  userAttempt); 
+
+	var result = await supabase 
+		.from('users')
+		.select('*')
+		.ilike('username', userAttempt)
+		.maybeSingle(); 
+
+	var user = result.data; 
+
+	if(!user) {
+		console.log("User not found in the database"); 
+		return res.status(401).json({ message: "Invalid username or password" }); 
+	}
+
+	var passwordMatch = await bcrypt.compare(passAttempt, user.password); 
+
+	if (passwordMatch) {
+
+		var token = jwt.sign({ username: userAttempt }, SECRET_KEY); 
+		console.log("Login success for " + userAttempt); 
+		res.json({ token: token}); 
+	}
+	else {
+		console.log("Password didn't match for " + userAttempt); 
+		res.status(401).json({ message: "Invalid username or password " }); 
+	} 
+}); 
+
+	
+
+// forgot password
+app.post('/api/forgot-password', async function(req, res) {
+	var userEmail = req.body.email; 
+	var randomCode = Math.floor(100000 + Math.random() * 900000); 
+	var codeString = randomCode.toString(); 
+
+	console.log(" Reset attempt from: " + userEmail + "---"); 
+
+	var result = await supabase 
+	.from('users')
+	.update({ reset_code: codeString })
+	.eq('email', userEmail) 
+	.select(); 
+
+	if (result.error || !result.data || result.data.length === 0) {
+		console.log(" Couldn't find the email in the database"); 
+		return res.status(400).send("User not found"); 
+	} 
+
+	try {
+		var mailOptions = {
+			from: '"Brownie Beater" <barrazaneftali4@gmail.com>', 
+			to: userEmail, 
+			subject: 'Your Reset Code', 
+			text: 'Your brownie beater reset code is: ' + codeString
+		}; 
+
+		await transporter.sendMail(mailOptions); 
+
+		console.log("Code sent to your email!"); 
+		res.send("Sent"); 
+	} 
+
+	catch (mailError) {
+		console.log("Gmail Error: " + mailError.message); 
+		res.status(500).send("Mail failed"); 
+	}
+}); 
+
+// reset passowrd 
+app.post('/api/reset-password', async function(req, res) {
+    var email = req.body.email; 
+    var userCode = req.body.otp_code; 
+    var newPassword = req.body.new_password; 
+
+    console.log("Attempting to change password for: " + email); 
+
+    var result = await supabase 
+            .from('users')
+            .select('*')
+            .eq('email', email)
+            .eq('reset_code', userCode)
+            .maybeSingle(); 
+
+    var user = result.data; 
+
+    if (!user) {
+            console.log("Invalid code or email provided"); 
+            return res.status(400).send("Invalid code or email"); 
+    } 
+
+    var saltRounds = 10; 
+    var hashed = await bcrypt.hash(newPassword, saltRounds); 
+
+    var updateResult = await supabase 
+            .from('users')
+            .update({
+                    password: hashed, 
+                    reset_code: null 
+            })
+            .eq('email', email);
+
+    if (updateResult.error) {
+            console.log("Update failed in database:", updateResult.error.message); 
+            return res.status(500).send("Update failed"); 
+    }
+
+    console.log("Password successfully reset for " + email); 
+    res.send("Password changed successfully!");
+});
+
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+    cors: { origin: "*" }
+});
+
+
+//sockets connection
+io.on('connection', (socket) => {
+    console.log("Socket connected:", socket.id);
+
+    // join room
+    socket.on("joinRoom", ({ roomCode, username }) => {
+        if (!gameRooms[roomCode]) return;
+
+        const currentPlayers = gameRooms[roomCode].playList;
+    
+        if (currentPlayers.length >= 2 && !currentPlayers.includes(username)) {
+            socket.emit("error", "Room is full! Max 2 players.");
+            return;
+        }
+        socket.join(roomCode);
+
+        if (!gameRooms[roomCode].playList.includes(username)) {
+            gameRooms[roomCode].playList.push(username);
+        }
+
+        if (!gameRooms[roomCode].readyPlayers) {
+            gameRooms[roomCode].readyPlayers = {};
+        }
+        // new players not ready
+        if (gameRooms[roomCode].readyPlayers[username] === undefined) {
+            gameRooms[roomCode].readyPlayers[username] = false;
+        }
+
+        if (gameRooms[roomCode].status !== "finished") {
+            if (!gameRooms[roomCode].scores[username]) {
+                gameRooms[roomCode].scores[username] = { clicks: 0, cps: 0 };
+            }
+        }
+
+            io.to(roomCode).emit("roomUpdate", {
+            players: gameRooms[roomCode].playList,
+            readyStatus: gameRooms[roomCode].readyPlayers
+        });
+    });
+
+    //ready logic so game can start
+    socket.on("toggleReady", ({ roomCode, username }) => {
+        if (!gameRooms[roomCode]) return;
+
+        gameRooms[roomCode].readyPlayers[username] = !gameRooms[roomCode].readyPlayers[username];
+
+        const players = gameRooms[roomCode].playList;
+        const readyObj = gameRooms[roomCode].readyPlayers;
+
+        io.to(roomCode).emit("roomUpdate", {
+            players: players,
+            readyStatus: readyObj
+        });
+
+        const allReady = players.length >= 2 && players.every(p => readyObj[p] === true);
+
+        if (allReady) {
+            gameRooms[roomCode].status = "playing";
+            io.to(roomCode).emit("gameStarted");
+        }
+
+    });
+
+    //force start incase you want to solo play
+    socket.on("forceStart", ({ roomCode }) => {
+        if (!gameRooms[roomCode]) return;
+
+        console.log(`Solo/Manual start triggered for room: ${roomCode}`);
+        
+        gameRooms[roomCode].status = "playing";
+        
+        io.to(roomCode).emit("gameStarted");
+    });
+    
+     //checks if done, saves player stats, sets status to finished
+    socket.on("playerReachedGoal", ({ roomCode, username, usedPowerUps, peakCPS, finalClicks }) => {
+        if (!gameRooms[roomCode] || gameRooms[roomCode].status !== "playing") return;
+
+            gameRooms[roomCode].scores[username] = {
+            clicks: finalClicks,
+            cps: peakCPS,
+            usedPowerUps: usedPowerUps
+        };
+
+        gameRooms[roomCode].status = "finished";
+        
+        io.to(roomCode).emit("gameOver", {
+            winner: username,
+            finalScores: gameRooms[roomCode].scores 
+        });
+    });
+
+    //clicking livestream, checks clicks cps, and usedPoweups
+    socket.on("clickUpdate", ({ roomCode, username, clicks, cps, usedPowerUps }) => {
+        if (!gameRooms[roomCode] || gameRooms[roomCode].status === "finished") return;
+
+        gameRooms[roomCode].scores[username] = {
+            clicks: clicks || 0,
+            cps: cps || 0,
+            usedPowerUps: usedPowerUps || { multiplier: 0, steal: 0, glitch: 0}
+        };
+
+        io.to(roomCode).emit("scoreUpdate", gameRooms[roomCode].scores);
+    });
+
+    //steal powerup logic
+    socket.on("activateSteal", ({ roomCode, username }) => {
+        if (!gameRooms[roomCode] || gameRooms[roomCode].status !== "playing") return;
+
+        let room = gameRooms[roomCode];
+        let stolenTotal = 0;
+
+        for (let player in room.scores) {
+            if (player !== username) {
+                
+                let currentOpponentClicks = room.scores[player].clicks || 0;
+                let amountToSteal = Math.floor(currentOpponentClicks * 0.15);
+                
+                room.scores[player].clicks -= amountToSteal;             
+                stolenTotal += amountToSteal;
+
+                socket.to(roomCode).emit("pointsLost", { 
+                    victim: player, 
+                    newTotal: room.scores[player].clicks,
+                    thief: username 
+                });
+            }
+        }
+      
+        if (room.scores[username]) {
+            room.scores[username].clicks += stolenTotal;
+        }
+        
+        io.to(roomCode).emit("scoreUpdate", room.scores);
+        
+            socket.emit("stealConfirmed", { newTotal: room.scores[username].clicks });
+    });
+
+    
+    socket.on("activateGlitch", ({ roomCode, username }) => {
+        // Send a message to everyone EXCEPT the person who used it
+        socket.to(roomCode).emit("glitchEffect", { duration: 30000 }); 
+    });
+
+    socket.on("getFinalScores", ({ roomCode }) => {
+        if (gameRooms[roomCode]) {
+            console.log(`Sending final scores for room ${roomCode}`);
+            socket.emit("displayFinalScores", gameRooms[roomCode].scores);
+        } else {
+            console.log(`Room ${roomCode} not found for final scores`);
+        }
+    });
+    socket.on("powerUpUsed", ({ roomCode, username, powerUpName }) => {
+        // Send to everyone in the room EXCEPT the sender
+        socket.to(roomCode).emit("opponentUsedPowerUp", { 
+            user: username, 
+            powerUp: powerUpName 
+        });
+    });
+    //resets ev to 0, and sends players to waiting room
+    socket.on("requestRematch", ({ roomCode }) => {
+        if (!gameRooms[roomCode]) return;
+
+        console.log(`Resetting room ${roomCode} for rematch`);
+
+        gameRooms[roomCode].status = "waiting";
+        gameRooms[roomCode].scores = {};
+        gameRooms[roomCode].readyPlayers = {}; 
+
+        
+        const currentPlayers = gameRooms[roomCode].playList;
+        currentPlayers.forEach(player => {
+            
+            gameRooms[roomCode].readyPlayers[player] = false; 
+            
+            
+            gameRooms[roomCode].scores[player] = { 
+                clicks: 0, 
+                cps: 0, 
+                usedPowerUps: { multiplier: 0, steal: 0 } 
+            };
+        });
+
+        io.to(roomCode).emit("goToWaitroom");
+    });
+
+    socket.on("disconnect", () => {
+            console.log("User disconnected:", socket.id);
+        });
+}); 
+
+    function makeCode() {
+    return Math.floor(1000 + Math.random() * 9000).toString(); 
+    }
+
+    // create room
+    app.post('/createRoom', function(req, res) {
+        var newCode = makeCode(); 
+        gameRooms[newCode] = {
+            hostName: req.body.username, 
+            playList: [], 
+            status: "waiting",
+            scores: {} 
+        };
+        console.log("Room Created:", newCode, "by", req.body.username);
+        res.send({ roomCode: newCode }); 
+    });
+
+    // room status
+    app.get('/roomStatus/:code', function(req, res) {
+        var room = gameRooms[req.params.code]; 
+        if (room) {
+            res.send({
+                playerCount: room.playList.length, 
+                isFull: room.playList.length >= 2, 
+                status: room.status
+            }); 
+        } else {
+            res.status(404).send("Room not found"); 
+        }
+    });
+    
+    //stats
+    app.get('/api/stats', async function(req, res) {
+            const username = req.query.username;
+
+            if (!username) {
+                return res.status(400).json({ error: "Username required" });
+            }
+
+            try {
+                const { data, error } = await supabase
+                    .from('users')
+                    .select('totalBrownies')
+                    .eq('username', username)
+                    .maybeSingle();
+
+                if (error) throw error;
+
+                const total = data ? (data.totalBrownies || 0) : 0;
+                res.json({ totalBrownies: total });
+
+            } catch (err) {
+                console.error("Error fetching stats:", err);
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+    });
+
+    server.listen(PORT, function() {
+        console.log("Server running on port " + PORT);
+    });
+
+    app.post('/api/add-clicks', async function(req, res) {
+        const { clicks } = req.body;
+        const authHeader = req.headers.authorization;
+        if (!authHeader) return res.status(401).send("No token");
+
+        try {
+            const token = authHeader.split(' ')[1];
+            const decoded = jwt.verify(token, SECRET_KEY);
+            const username = decoded.username;
+
+            
+            const { data: user } = await supabase
+                .from('users')
+                .select('totalBrownies')
+                .eq('username', username)
+                .single();
+
+            const currentTotal = user ? (user.totalBrownies || 0) : 0;
+            const newTotal = currentTotal + clicks;
+
+                const { error } = await supabase
+                .from('users')
+                .update({ totalBrownies: newTotal })
+                .eq('username', username);
+
+            if (error) throw error;
+            res.json({ success: true, newTotal });
+        } catch (err) {
+            console.error(err);
+            res.status(500).send("Error saving brownies");
+        }
+    });
+
+[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;barrazaneftali4@penguin: ~/brownie-beater[01;32mbarrazaneftali4@penguin[00m:[01;34m~/brownie-beater[00m$ vim server.js 
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"server.js" 495L, 14815B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;13H[36m}[m
+    [36m}[m);[2;8H[K[3;1H[K[4;5Hserver.listen(PORT, [36mfunction[m() [36m{[m[5;9Hconsole.log([31m"Server running on port "[m + PORT);
+    [36m}[m);[8;5Happ.post([31m'/api/add-clicks'[m, [38;5;130masync[m [36mfunction[m(req, res) [36m{[m[9;9H[38;5;130mconst[m [36m{[m clicks [36m}[m = req.body;[10;9H[38;5;130mconst[m authHeader = req.headers.authorization;[11;9H[38;5;130mif[m (!authHeader) [38;5;130mreturn[m res.[38;5;130mstatus[m(401).send([31m"No token"[m);[13;9H[38;5;130mtry[m [36m{[m[14;13H[38;5;130mconst[m token = authHeader.split([31m' '[m)[36m[[m1[36m][m;[15;13H[38;5;130mconst[m decoded = jwt.verify(token, SECRET_KEY);[16;13H[38;5;130mconst[m username = decoded.username;[19;13H[38;5;130mconst[m [36m{[m data: user [36m}[m = [38;5;130mawait[m supabase[20;17H.from([31m'users'[m)[21;17H.select([31m'totalBrownies'[m)[22;17H.eq([31m'username'[m, username)[23;17H.single();[25;13H[38;5;130mconst[m currentTotal = user ? (user.totalBrownies || 0) : 0;[26;13H[38;5;130mconst[m newTotal = currentTotal + clicks;[28;17H[38;5;130mconst[m [36m{[m error [36m}[m = [38;5;130mawait[m supabase[29;17H.from([31m'users'[m)[30;17H.update([36m{[m totalBrownies: newTotal [36m}[m)[31;17H.eq([31m'username'[m, username);[33;13H[38;5;130mif[m (error) [38;5;130mthrow[m error;[34;13Hres.json([36m{[m success: [31mtrue[m, newTotal [36m}[m);[35;9H[36m}[m [38;5;130mcatch[m (err) [36m{[m[36;13Hconsole.error(err);[37;13Hres.[38;5;130mstatus[m(500).send([31m"Error saving brownies"[m);[38;9H[36m}
+[m    [36m}[m);[41;87H495,0-1[7CBot[40;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[41;77H2[40;1H[41;78H0[40;1H[41;79H/[40;1H[41;80H2[40;1H[41;81H1[40;1H[41;82H2[40;1H[41;83H1[40;1H[41;84H/[40;1H[41;85H2[40;1H[41;86H4[40;1H[41;77H          [40;1H[27m[23m[29m[m[H[2J[1;13H[1m[96m}
+[m    [1m[96m}[m);[4;5Hserver.listen(PORT, [1m[96mfunction[m() [1m[96m{[m[5;9Hconsole.log([95m"Server running on port "[m + PORT);
+    [1m[96m}[m);[8;5Happ.post([95m'/api/add-clicks'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[m[9;9H[93mconst[m [1m[96m{[m clicks [1m[96m}[m = req.body;[10;9H[93mconst[m authHeader = req.headers.authorization;[11;9H[93mif[m (!authHeader) [93mreturn[m res.[93mstatus[m(401).send([95m"No token"[m);[13;9H[93mtry[m [1m[96m{[m[14;13H[93mconst[m token = authHeader.split([95m' '[m)[1m[96m[[m1[1m[96m][m;[15;13H[93mconst[m decoded = jwt.verify(token, SECRET_KEY);[16;13H[93mconst[m username = decoded.username;[19;13H[93mconst[m [1m[96m{[m data: user [1m[96m}[m = [93mawait[m supabase[20;17H.from([95m'users'[m)[21;17H.select([95m'totalBrownies'[m)[22;17H.eq([95m'username'[m, username)[23;17H.single();[25;13H[93mconst[m currentTotal = user ? (user.totalBrownies || 0) : 0;[26;13H[93mconst[m newTotal = currentTotal + clicks;[28;17H[93mconst[m [1m[96m{[m error [1m[96m}[m = [93mawait[m supabase[29;17H.from([95m'users'[m)[30;17H.update([1m[96m{[m totalBrownies: newTotal [1m[96m}[m)[31;17H.eq([95m'username'[m, username);[33;13H[93mif[m (error) [93mthrow[m error;[34;13Hres.json([1m[96m{[m success: [95mtrue[m, newTotal [1m[96m}[m);[35;9H[1m[96m}[m [93mcatch[m (err) [1m[96m{[m[36;13Hconsole.error(err);[37;13Hres.[93mstatus[m(500).send([95m"Error saving brownies"[m);[38;9H[1m[96m}
+[m    [1m[96m}[m);[41;87H495,0-1[7CBot"server.js" 495L, 14815B[40;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[1m[96m}[m [93mcatch[m (err) [1m[96m{[m[2;17Hconsole.error([95m"Error fetching stats:"[m, err);[3;17Hres.[93mstatus[m(500).json([1m[96m{[m error: [95m"Internal Server Error"[m [1m[96m}[m);[41;1H[K[41;87H487,0-1[7C99%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[93mconst[m total = data ? (data.totalBrownies || 0) : 0;[2;17Hres.json([1m[96m{[m totalBrownies: total [1m[96m}[m);[41;87H[K[41;87H484,1[9C98%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;17H[93mif[m (error) [93mthrow[m error;[41;87H[K[41;87H481,1[9C98%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;21H.select([95m'totalBrownies'[m)[2;21H.eq([95m'username'[m, username)[3;21H.maybeSingle();[41;87H[K[41;87H478,1[9C97%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mtry[m [1m[96m{[m[2;17H[93mconst[m [1m[96m{[m data, error [1m[96m}[m = [93mawait[m supabase[3;21H.from([95m'users'[m)[41;87H[K[41;87H475,1[9C96%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[93mreturn[m res.[93mstatus[m(400).json([1m[96m{[m error: [95m"Username required"[m [1m[96m}[m);[2;13H[1m[96m}[m[41;87H[K[41;87H472,0-1[7C96%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mconst[m username = req.query.username;[3;13H[93mif[m (!username) [1m[96m{[m[41;87H[K[41;87H469,1[9C95%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[96m//stats[m
+    app.get([95m'/api/stats'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[m[41;87H[K[41;87H466,1[9C94%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hres.[93mstatus[m(404).send([95m"Room not found"[m);[2;9H[1m[96m}
+[m    [1m[96m}[m);[41;87H[K[41;87H463,1[9C94%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[93mstatus[m: room.[93mstatus[m[2;13H[1m[96m}[m);[3;9H[1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H460,1[9C93%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hres.send([1m[96m{[m[2;17HplayerCount: room.playList.length,[3;17HisFull: room.playList.length >= 2,[41;87H[K[41;87H457,1[9C92%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Happ.get([95m'/roomStatus/:code'[m, [1m[96mfunction[m(req, res) [1m[96m{[2;9Hvar[m room = gameRooms[1m[96m[[mreq.params.code[1m[96m][m;[3;9H[93mif[m (room) [1m[96m{[m[41;87H[K[41;87H454,1[9C92%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m);[3;5H[96m// room status[m[41;87H[K[41;87H451,1[9C91%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m;[2;9Hconsole.log([95m"Room Created:"[m, newCode, [95m"by"[m, req.body.username);[3;9Hres.send([1m[96m{[m roomCode: newCode [1m[96m}[m);[41;87H[K[41;87H448,1[9C90%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HplayList: [1m[96m[][m,[2;13H[93mstatus[m: [95m"waiting"[m,[3;13Hscores: [1m[96m{}[m[41;87H[K[41;87H445,1[9C90%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96mvar[m newCode = makeCode();[2;9HgameRooms[1m[96m[[mnewCode[1m[96m][m = [1m[96m{[m[3;13HhostName: req.body.username,[41;87H[K[41;87H442,1[9C89%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[96m// create room[m
+    app.post([95m'/createRoom'[m, [1m[96mfunction[m(req, res) [1m[96m{[m[41;87H[K[41;87H439,1[9C88%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96mfunction[m makeCode() [1m[96m{[m
+    [93mreturn[m Math.floor(1000 + Math.random() * 9000).toString();
+    [1m[96m}[m[41;87H[K[41;87H436,0-1[7C88%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m);
+[1m[96m}[m);[41;87H[K[41;87H433,1[9C87%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5Hsocket.on([95m"disconnect"[m, () => [1m[96m{[m[3;13Hconsole.log([95m"User disconnected:"[m, socket.id);[41;87H[K[41;87H430,1[9C86%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9Hio.to(roomCode).emit([95m"goToWaitroom"[m);
+    [1m[96m}[m);[41;87H[K[41;87H427,1[9C86%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17HusedPowerUps: [1m[96m{[m multiplier: 0, steal: 0 [1m[96m}[2;13H}[m;[3;9H[1m[96m}[m);[41;87H[K[41;87H424,1[9C85%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[mplayer[1m[96m][m = [1m[96m{[m[2;17Hclicks: 0,[3;17Hcps: 0,[41;87H[K[41;87H421,1[9C84%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[mplayer[1m[96m][m = [95mfalse[m;[41;87H[K[41;87H418,0-1[7C84%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mconst[m currentPlayers = gameRooms[1m[96m[[mroomCode[1m[96m][m.playList;[2;9HcurrentPlayers.forEach(player => [1m[96m{[m[41;87H[K[41;87H415,1[9C83%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers = [1m[96m{}[m;[41;87H[K[41;87H412,1[9C82%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"waiting"[m;[3;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores = [1m[96m{}[m;[41;87H[K[41;87H409,1[9C82%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m) [93mreturn[m;[3;9Hconsole.log([95m`Resetting room [m[38;5;224m${roomCode}[m[95m for rematch`[m);[41;87H[K[41;87H406,1[9C81%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m);
+    [96m//resets ev to 0, and sends players to waiting room[m
+    socket.on([95m"requestRematch"[m, ([1m[96m{[m roomCode [1m[96m}[m) => [1m[96m{[m[41;87H[K[41;87H403,1[9C80%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Huser: username,[2;13HpowerUp: powerUpName[3;9H[1m[96m}[m);[41;87H[K[41;87H400,1[9C80%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hsocket.on([95m"powerUpUsed"[m, ([1m[96m{[m roomCode, username, powerUpName [1m[96m}[m) => [1m[96m{[m[2;9H[96m// Send to everyone in the room EXCEPT the sender[m[3;9Hsocket.to(roomCode).emit([95m"opponentUsedPowerUp"[m, [1m[96m{[m[41;87H[K[41;87H397,1[9C79%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hconsole.log([95m`Room [m[38;5;224m${roomCode}[m[95m not found for final scores`[m);[2;9H[1m[96m}
+[m    [1m[96m}[m);[41;87H[K[41;87H394,1[9C78%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hconsole.log([95m`Sending final scores for room [m[38;5;224m${roomCode}[m[95m`[m);[2;13Hsocket.emit([95m"displayFinalScores"[m, gameRooms[1m[96m[[mroomCode[1m[96m][m.scores);[3;9H[1m[96m}[m [93melse[m [1m[96m{[m[41;87H[K[41;87H391,1[9C78%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5Hsocket.on([95m"getFinalScores"[m, ([1m[96m{[m roomCode [1m[96m}[m) => [1m[96m{[m[3;9H[93mif[m (gameRooms[1m[96m[[mroomCode[1m[96m][m) [1m[96m{[m[41;87H[K[41;87H388,1[9C77%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[96m// Send a message to everyone EXCEPT the person who used it[m[2;9Hsocket.to(roomCode).emit([95m"glitchEffect"[m, [1m[96m{[m duration: 30000 [1m[96m}[m);
+    [1m[96m}[m);[41;87H[K[41;87H385,1[9C76%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[3;5Hsocket.on([95m"activateGlitch"[m, ([1m[96m{[m roomCode, username [1m[96m}[m) => [1m[96m{[m[41;87H[K[41;87H382,1[9C76%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;13Hsocket.emit([95m"stealConfirmed"[m, [1m[96m{[m newTotal: room.scores[1m[96m[[musername[1m[96m][m.clicks [1m[96m}[m);
+    [1m[96m}[m);[41;87H[K[41;87H379,0-1[7C75%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m[3;9Hio.to(roomCode).emit([95m"scoreUpdate"[m, room.scores);[41;87H[K[41;87H376,1[9C74%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9H[93mif[m (room.scores[1m[96m[[musername[1m[96m][m) [1m[96m{[m[3;13Hroom.scores[1m[96m[[musername[1m[96m][m.clicks += stolenTotal;[41;87H[K[41;87H373,0-1[7C74%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[1m[96m}[m);[2;13H[1m[96m}[3;9H}[m[41;87H[K[41;87H370,1[9C73%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;21Hvictim: player,[2;21HnewTotal: room.scores[1m[96m[[mplayer[1m[96m][m.clicks,[3;21Hthief: username[41;87H[K[41;87H367,1[9C72%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17HstolenTotal += amountToSteal;[3;17Hsocket.to(roomCode).emit([95m"pointsLost"[m, [1m[96m{[m[41;87H[K[41;87H364,1[9C72%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[1m[96mlet[m amountToSteal = Math.floor(currentOpponentClicks * 0.15);[3;17Hroom.scores[1m[96m[[mplayer[1m[96m][m.clicks -= amountToSteal;[41;87H[K[41;87H361,1[9C71%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mif[m (player !== username) [1m[96m{[3;17Hlet[m currentOpponentClicks = room.scores[1m[96m[[mplayer[1m[96m][m.clicks || 0;[41;87H[K[41;87H358,1[9C70%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96mlet[m stolenTotal = 0;[3;9H[93mfor[m ([1m[96mlet[m player [93min[m room.scores) [1m[96m{[m[41;87H[K[41;87H355,1[9C70%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m || gameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m !== [95m"playing"[m) [93mreturn[m;[3;9H[1m[96mlet[m room = gameRooms[1m[96m[[mroomCode[1m[96m][m;[41;87H[K[41;87H352,1[9C69%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[96m//steal powerup logic[m
+    socket.on([95m"activateSteal"[m, ([1m[96m{[m roomCode, username [1m[96m}[m) => [1m[96m{[m[41;87H[K[41;87H349,1[9C69%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9Hio.to(roomCode).emit([95m"scoreUpdate"[m, gameRooms[1m[96m[[mroomCode[1m[96m][m.scores);
+    [1m[96m}[m);[41;87H[K[41;87H346,1[9C68%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hcps: cps || 0,[2;13HusedPowerUps: usedPowerUps || [1m[96m{[m multiplier: 0, steal: 0, glitch: 0[1m[96m}[3;9H}[m;[41;87H[K[41;87H343,1[9C67%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m = [1m[96m{[m[3;13Hclicks: clicks || 0,[41;87H[K[41;87H340,1[9C67%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[96m//clicking livestream, checks clicks cps, and usedPoweups[m
+    socket.on([95m"clickUpdate"[m, ([1m[96m{[m roomCode, username, clicks, cps, usedPowerUps [1m[96m}[m) => [1m[96m{[m[3;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m || gameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m === [95m"finished"[m) [93mreturn[m;[41;87H[K[41;87H337,1[9C66%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m);
+    [1m[96m}[m);[41;87H[K[41;87H334,1[9C65%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hio.to(roomCode).emit([95m"gameOver"[m, [1m[96m{[m[2;13Hwinner: username,[3;13HfinalScores: gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[41;87H[K[41;87H331,0-1[7C65%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"finished"[m;[41;87H[K[41;87H328,1[9C64%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hcps: peakCPS,[2;13HusedPowerUps: usedPowerUps[3;9H[1m[96m}[m;[41;87H[K[41;87H325,1[9C63%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m = [1m[96m{[m[3;13Hclicks: finalClicks,[41;87H[K[41;87H322,0-1[7C63%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;6H[96m//checks if done, saves player stats, sets status to finished[m
+    socket.on([95m"playerReachedGoal"[m, ([1m[96m{[m roomCode, username, usedPowerUps, peakCPS, finalClicks [1m[96m}[m) => [1m[96m{[m[3;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m || gameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m !== [95m"playing"[m) [93mreturn[m;[41;87H[K[41;87H319,0-1[7C62%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hio.to(roomCode).emit([95m"gameStarted"[m);
+    [1m[96m}[m);[41;87H[K[41;87H316,1[9C61%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"playing"[m;[41;87H[K[41;87H313,1[9C61%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m) [93mreturn[m;[3;9Hconsole.log([95m`Solo/Manual start triggered for room: [m[38;5;224m${roomCode}[m[95m`[m);[41;87H[K[41;87H310,1[9C60%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[96m//force start incase you want to solo play[m
+    socket.on([95m"forceStart"[m, ([1m[96m{[m roomCode [1m[96m}[m) => [1m[96m{[m[41;87H[K[41;87H307,1[9C59%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[3;5H}[m);[41;87H[K[41;87H304,1[9C59%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mif[m (allReady) [1m[96m{[m[2;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"playing"[m;[3;13Hio.to(roomCode).emit([95m"gameStarted"[m);[41;87H[K[41;87H301,1[9C58%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9H[93mconst[m allReady = players.length >= 2 && players.every(p => readyObj[1m[96m[[mp[1m[96m][m === [95mtrue[m);[41;87H[K[41;87H298,1[9C57%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hplayers: players,[2;13HreadyStatus: readyObj[3;9H[1m[96m}[m);[41;87H[K[41;87H295,1[9C57%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mconst[m readyObj = gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers;[3;9Hio.to(roomCode).emit([95m"roomUpdate"[m, [1m[96m{[m[41;87H[K[41;87H292,1[9C56%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m = !gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m;[3;9H[93mconst[m players = gameRooms[1m[96m[[mroomCode[1m[96m][m.playList;[41;87H[K[41;87H289,1[9C55%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hsocket.on([95m"toggleReady"[m, ([1m[96m{[m roomCode, username [1m[96m}[m) => [1m[96m{[m[2;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m) [93mreturn[m;[41;87H[K[41;87H286,1[9C55%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96m}[m);[3;5H[96m//ready logic so game can start[m[41;87H[K[41;87H283,1[9C54%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hplayers: gameRooms[1m[96m[[mroomCode[1m[96m][m.playList,[2;13HreadyStatus: gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[3;9H[1m[96m}[m);[41;87H[K[41;87H280,1[9C53%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m[3;13Hio.to(roomCode).emit([95m"roomUpdate"[m, [1m[96m{[m[41;87H[K[41;87H277,0-1[7C53%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m) [1m[96m{[m[2;17HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m = [1m[96m{[m clicks: 0, cps: 0 [1m[96m}[m;[3;13H[1m[96m}[m[41;87H[K[41;87H274,1[9C52%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m[3;9H[93mif[m (gameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m !== [95m"finished"[m) [1m[96m{[m[41;87H[K[41;87H271,0-1[7C51%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[96m// new players not ready[m[2;9H[93mif[m (gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m === [93mundefined[m) [1m[96m{[m[3;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m = [95mfalse[m;[41;87H[K[41;87H268,1[9C51%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers) [1m[96m{[m[2;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers = [1m[96m{}[m;[3;9H[1m[96m}[m[41;87H[K[41;87H265,1[9C50%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.playList.push(username);[2;9H[1m[96m}[m[41;87H[K[41;87H262,1[9C49%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hsocket.join(roomCode);[3;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.playList.includes(username)) [1m[96m{[m[41;87H[K[41;87H259,0-1[7C49%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hsocket.emit([95m"error"[m, [95m"Room is full! Max 2 players."[m);[2;13H[93mreturn[m;[3;9H[1m[96m}[m[41;87H[K[41;87H256,0-1[7C48%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mconst[m currentPlayers = gameRooms[1m[96m[[mroomCode[1m[96m][m.playList;[3;9H[93mif[m (currentPlayers.length >= 2 && !currentPlayers.includes(username)) [1m[96m{[m[41;87H[K[41;87H253,1[9C47%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hsocket.on([95m"joinRoom"[m, ([1m[96m{[m roomCode, username [1m[96m}[m) => [1m[96m{[m[2;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m) [93mreturn[m;[41;87H[K[41;87H250,0-1[7C47%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hconsole.log([95m"Socket connected:"[m, socket.id);[3;5H[96m// join room[m[41;87H[K[41;87H247,1[9C46%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[96m//sockets connection[m
+io.on([95m'connection'[m, (socket) => [1m[96m{[m[41;87H[K[41;87H244,0-1[7C45%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hcors: [1m[96m{[m origin: [95m"*"[m [1m[96m}
+}[m);[41;87H[K[41;87H241,1[9C45%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mconst[m server = http.createServer(app);
+
+[93mconst[m io = [93mnew[m Server(server, [1m[96m{[m[41;87H[K[41;87H238,0-1[7C44%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}[m);[41;87H[K[41;87H235,1[9C43%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5Hconsole.log([95m"Password successfully reset for "[m + email);
+    res.send([95m"Password changed successfully!"[m);[41;87H[K[41;87H232,1[9C43%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hconsole.log([95m"Update failed in database:"[m, updateResult.error.message);[2;13H[93mreturn[m res.[93mstatus[m(500).send([95m"Update failed"[m);
+    [1m[96m}[m[41;87H[K[41;87H229,1[9C42%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H.eq([95m'email'[m, email);[3;5H[93mif[m (updateResult.error) [1m[96m{[m[41;87H[K[41;87H226,0-1[7C41%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;21Hpassword: hashed,[2;21Hreset_code: [93mnull[m[3;13H[1m[96m}[m)[41;87H[K[41;87H223,1[9C41%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96mvar[m updateResult = [93mawait[m supabase[2;13H.from([95m'users'[m)[3;13H.update([1m[96m{[m[41;87H[K[41;87H220,1[9C40%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96mvar[m saltRounds = 10;
+    [1m[96mvar[m hashed = [93mawait[m bcrypt.hash(newPassword, saltRounds);[41;87H[K[41;87H217,1[9C40%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mreturn[m res.[93mstatus[m(400).send([95m"Invalid code or email"[m);
+    [1m[96m}[m[41;87H[K[41;87H214,0-1[7C39%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[93mif[m (!user) [1m[96m{[m[3;13Hconsole.log([95m"Invalid code or email provided"[m);[41;87H[K[41;87H211,1[9C38%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H.maybeSingle();[3;5H[1m[96mvar[m user = result.data;[33;31H[1m[96m[46m{
+
+}[m)[41;87H[K[41;87H208,1[9C38%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H.select([95m'*'[m)[2;13H.eq([95m'email'[m, email)[3;13H.eq([95m'reset_code'[m, userCode)[36;31H[1m[96m{
+
+}[m)[41;87H[K[41;87H205,0-1[7C37%[35;1H[?25h[?25l[41;89H2[32;1H[?25h[?25l[41;77H^[[32;1H[41;77H  [32;1H[41;77H^[[32;1H[41;77H  [32;1H[?25h[?25l[41;77H/[32;1H[41;77H[K[41;1H/[?25ha[?25l[34;24H[7ma[m[41;87H204,24[8C37%[41;87H[K[41;3H[?25hp[?25l[34;24Ha[9C[7map[m[41;87H204,34[8C37%[41;87H[K[41;4H[?25hp[?25l[34;36H[7mp[m[41;87H204,34[8C37%[41;87H[K[41;5H[?25h.[?25l[34;37H[7m)[m[41;87H204,34[8C37%[41;87H[K[41;6H[?25hp[?25l[1;13H    clicks: 0,[2;13H    cps: 0, [2;26H[K[3;13H    usedPowerUps: [1m[96m{[m multiplier: 0, steal: 0 [1m[96m}[4;13H}[m;[4;15H[K[5;9H[1m[96m}[m);[6;5H[K[7;9Hio.to(roomCode).emit([95m"goToWaitroom"[m);
+    [1m[96m}[m);[8;8H[K[9;13H[K[10;5Hsocket.on([95m"disconnect"[m, () => [1m[96m{[m[10;36H[K[11;5H        console.log([95m"User disconnected:"[m, socket.id);[12;9H[1m[96m}[m);
+[1m[96m}[m);[13;5H[K[14;5H[K[15;5H[1m[96mfunction[m makeCode() [1m[96m{[m
+    [93mreturn[m Math.floor(1000 + Math.random() * 9000).toString();
+    [1m[96m}[m[17;13H[K[18;13H[K[19;5H[96m// create room[m[19;21H[K[20;5H[7mapp.p[most([95m'/createRoom'[m, [1m[96mfunction[m(req, res) [1m[96m{[21;9Hvar[m newCode = makeCode();[22;9HgameRooms[1m[96m[[mnewCode[1m[96m][m = [1m[96m{[m[22;31H[K[23;13HhostName: req.body.username,
+            playList: [1m[96m[][m, [24;27H[K[25;13H[93mstatus[m: [95m"waiting"[m,[25;31H[K[26;13Hscores: [1m[96m{}[m [26;24H[K[27;5H    [1m[96m}[m;[28;9Hconsole.log([95m"Room Created:"[m, newCode, [95m"by"[m, req.body.username);
+        res.send([1m[96m{[m roomCode: newCode [1m[96m}[m); [29;42H[K[30;5H[1m[96m}[m);[30;8H[K[31;1H[K[32;5H[96m// room status[m
+    app.get([95m'/roomStatus/:code'[m, [1m[96mfunction[m(req, res) [1m[96m{[m
+        [1m[96mvar[m room = gameRooms[1m[96m[[mreq.params.code[1m[96m][m;[35;9H[93mif[m (room) [1m[96m{[m
+            res.send([1m[96m{[m[36;23H[K[37;5H            playerCount: room.playList.length,
+   [13CisFull: room.playList.length >= 2,[39;17H[93mstatus[m: room.[93mstatus[m[40;13H[1m[96m}[m);[41;87H407,5[9C85%[41;87H[K[41;7H[?25ho[?25l[20;10H[7mo[m[41;87H407,5[9C85%[41;87H[K[41;8H[?25hs[?25l[20;11H[7ms[m[41;87H407,5[9C85%[41;87H[K[41;9H[?25ht[?25l[20;12H[7mt[m[41;87H407,5[9C85%[41;87H[K[41;10H[?25h([?25l[20;13H[7m([m[41;87H407,5[9C85%[41;87H[K[41;11H[?25h'[?25l[20;14H[7m[95m'[m[41;87H407,5[9C85%[41;87H[K[41;12H[?25h/[?25l[74C407,5[9C85%[41;87H[K[41;13H[?25ha[?25l[73C407,5[9C85%[41;87H[K[41;14H[?25h[[?25l[72C407,5[9C85%[41;87H[K[41;15H[?25ho[?25l[71C407,5[9C85%[41;87H[K[41;16H[?25h[?25l[41;15H[K[41;87H407,5[9C85%[41;87H[K[41;15H[?25h[?25l[41;14H[K[41;87H407,5[9C85%[41;87H[K[41;14H[?25h[?25l[41;13H[K[41;87H407,5[9C85%[41;87H[K[41;13H[?25h[?25l[41;12H[K[41;87H407,5[9C85%[41;87H[K[41;12H[?25h[?25l[41;11H[K[20;14H[95m'[m[41;87H407,5[9C85%[41;87H[K[41;11H[?25h[?25l[41;10H[K[20;13H([41;87H407,5[9C85%[41;87H[K[41;10H[?25h[?25l[41;9H[K[20;12Ht[41;87H407,5[9C85%[41;87H[K[41;9H[?25h[?25l[41;8H[K[20;11Hs[41;87H407,5[9C85%[41;87H[K[41;8H[?25h[?25l[41;7H[K[20;10Ho[41;87H407,5[9C85%[41;87H[K[41;7H[?25h[?25l[41;6H[K[1;13H.select([95m'*'[m)[1;25H[K[2;13H.eq([95m'email'[m, email)[3;13H.eq([95m'reset_code'[m, userCode)[3;40H[K[4;13H.maybeSingle();[5;9H[K[6;5H[1m[96mvar[m user = result.data;[7;9H[K[8;5H[93mif[m (!user) [1m[96m{[m[9;13Hconsole.log([95m"Invalid code or email provided"[m);
+            [93mreturn[m res.[93mstatus[m(400).send([95m"Invalid code or email"[m);
+    [1m[96m}[m[11;13H[K[12;9H[K[13;1H    [1m[96mvar[m saltRounds = 10;
+    [1m[96mvar[m hashed = [93mawait[m bcrypt.hash(newPassword, saltRounds);[15;5H[K[16;5H[1m[96mvar[m updateResult = [93mawait[m supabase [16;39H[K[17;5H        .from([95m'users'[m)[18;13H.update([1m[96m{[m
+                    password: hashed,
+                    reset_code: [93mnull[m [20;38H[K[21;9H    [1m[96m}[m)[21;15H[K[22;9H    .eq([95m'email'[m, email);[23;13H[K[24;5H[93mif[m (updateResult.error) [1m[96m{[m[25;13Hconsole.log([95m"Update failed in database:"[m, updateResult.error.message);[26;13H[93mreturn[m res.[93mstatus[m(500).send([95m"Update failed"[m);
+    [1m[96m}[m[27;9H[K[28;9H[K[29;5Hconsole.log([95m"Password successfully reset for "[m + email);
+    res.send([95m"Password changed successfully!"[m);
+[1m[96m}[m);[32;5H[K[33;5H[K[34;1H[93mconst[m server = http.createServer([7mapp)[m;[34;39H[K[35;9H[K[36;1H[93mconst[m io = [93mnew[m Server(server, [1m[96m{[m
+    cors: [1m[96m{[m origin: [95m"*"[m [1m[96m}[m[37;26H[K[38;1H[1m[96m}[m);[38;17H[K[39;17H[K[40;13H[K[41;87H204,34[8C37%[41;87H[K[41;6H[?25h[?25l[41;5H[K[34;37H)[41;87H204,34[8C37%[41;87H[K[41;5H[?25h[?25l[41;4H[K[34;36Hp[41;87H204,34[8C37%[41;87H[K[41;4H[?25h[?25l[41;3H[K[34;24H[7ma[m[9Cap[41;87H204,24[8C37%[41;87H[K[41;3H[?25h[?25l[41;2H[K[34;24Ha[41;87H202,0-1[7C37%[41;87H[K[41;2H[?25h [?25l[32;1H[41;87H202,0-1[7C37%[32;1H[?25h[?25l[41;89H4,38 [34;38H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;5H[1m[96mvar[m result = [93mawait[m supabase[3;13H.from([95m'users'[m)[41;87H[K[41;87H202,0-1[7C36%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5H[1m[96mvar[m newPassword = req.body.new_password;[3;5Hconsole.log([95m"Attempting to change password for: "[m + email);[41;87H[K[41;87H199,61[8C36%[35;61H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1Happ.post([95m'/api/reset-password'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{
+[m    [1m[96mvar[m email = req.body.email;
+    [1m[96mvar[m userCode = req.body.otp_code;[41;87H[K[41;87H196,58[8C35%[35;58H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}[m);
+
+[96m// reset passowrd [m[41;87H[K[41;87H193,0-1[7C34%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17Hconsole.log([95m"Gmail Error: "[m + mailError.message);[2;17Hres.[93mstatus[m(500).send([95m"Mail failed"[m);[3;9H[1m[96m}[m[41;87H[K[41;87H190,37[8C34%[35;37H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}[m[3;9H[93mcatch[m (mailError) [1m[96m{[m[35;18H[46m([7C)[m[41;87H[K[41;87H187,26[8C33%[35;26H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;17Hconsole.log([95m"Code sent to your email!"[m);[3;17Hres.send([95m"Sent"[m);[38;18H([7C)[41;87H[K[41;87H184,61[8C32%[35;61H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[1m[96m}[m;[3;17H[93mawait[m transporter.sendMail(mailOptions);[41;87H[K[41;87H181,6[9C32%[35;6H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;25Hto: userEmail,[2;25Hsubject: [95m'Your Reset Code'[m,[3;25Htext: [95m'Your brownie beater reset code is: '[m + codeString[35;16H[1m[96m[46m{[38;5H}[m [41;87H[K[41;87H178,16[8C31%[35;16H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mtry[m [1m[96m{[2;17Hvar[m mailOptions = [1m[96m{[m[3;25Hfrom: [95m'"Brownie Beater" <barrazaneftali4@gmail.com>'[m,[38;16H[1m[96m{[m[41;87H[K[41;87H175,0-1[7C30%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[93mreturn[m res.[93mstatus[m(400).send([95m"User not found"[m);[2;9H[1m[96m}[m[35;16H[46m([14C)[m[41;87H[K[41;87H172,31[8C30%[35;31H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9H[93mif[m (result.error || !result.data || result.data.length === 0) [1m[96m{[m[3;17Hconsole.log([95m" Couldn't find the email in the database"[m);[38;16H([14C)[41;87H[K[41;87H169,32[8C29%[35;32H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H.update([1m[96m{[m reset_code: codeString [1m[96m}[m)[2;9H.eq([95m'email'[m, userEmail)[3;9H.select();[41;87H[K[41;87H166,0-1[7C28%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9H[1m[96mvar[m result = [93mawait[m supabase[3;9H.from([95m'users'[m)[41;87H[K[41;87H163,32[8C28%[35;32H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96mvar[m codeString = randomCode.toString();[3;9Hconsole.log([95m" Reset attempt from: "[m + userEmail + [95m"---"[m);[41;87H[K[41;87H160,0-1[7C27%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1Happ.post([95m'/api/forgot-password'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[2;9Hvar[m userEmail = req.body.email;[3;9H[1m[96mvar[m randomCode = Math.floor(100000 + Math.random() * 900000);[41;87H[K[41;87H157,39-53     26%[35;53H[?25h[?25l[1;40r[1;1H[3L[1;41r[3;1H[96m// forgot password[m[41;87H[K[41;87H154,0-1[7C26%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96m}
+}[m);[41;87H[K[41;87H151,43-57     25%[35;57H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93melse[m [1m[96m{[m[2;17Hconsole.log([95m"Password didn't match for "[m + userAttempt);[3;17Hres.[93mstatus[m(401).json([1m[96m{[m message: [95m"Invalid username or password "[m [1m[96m}[m);[41;87H[K[41;87H148,0-1[7C24%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17Hconsole.log([95m"Login success for "[m + userAttempt);[2;17Hres.json([1m[96m{[m token: token[1m[96m}[m);[3;9H[1m[96m}[m[41;87H[K[41;87H145,31-52     24%[35;52H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[93mif[m (passwordMatch) [1m[96m{[3;17Hvar[m token = jwt.sign([1m[96m{[m username: userAttempt [1m[96m}[m, SECRET_KEY);[35;35H[1m[96m[46m{[40;17H}[m;[41;87H[K[41;87H142,21-35     23%[35;35H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9H[1m[96mvar[m passwordMatch = [93mawait[m bcrypt.compare(passAttempt, user.password);[38;35H[1m[96m{[m[41;87H[K[41;87H139,3-10      22%[35;10H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17Hconsole.log([95m"User not found in the database"[m);[2;17H[93mreturn[m res.[93mstatus[m(401).json([1m[96m{[m message: [95m"Invalid username or password"[m [1m[96m}[m);[3;9H[1m[96m}[m[35;71H[1m[96m[46m{[38;9H}[m [41;87H[K[41;87H136,64-71     22%[35;71H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96mvar[m user = result.data;[3;9H[93mif[m(!user) [1m[96m{[38;71H{[m[41;87H[K[41;87H133,25-32     21%[35;32H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H.ilike([95m'username'[m, userAttempt)[2;17H.maybeSingle();[41;87H[K[41;87H130,29-36     20%[35;36H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96mvar[m result = [93mawait[m supabase[2;17H.from([95m'users'[m)[3;17H.select([95m'*'[m)[41;87H[K[41;87H127,0-1[7C20%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9Hconsole.log([95m"Login attempt from: "[m +  userAttempt);[41;87H[K[41;87H124,33-40     19%[35;40H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1Happ.post([95m'/api/login'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[2;9Hvar[m userAttempt = req.body.username.trim();[3;9H[1m[96mvar[m passAttempt = req.body.password;[41;87H[K[41;87H121,0-1[7C18%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[3;1H[96m// login[m[41;87H[K[41;87H118,4[9C18%[35;4H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13Hres.[93mstatus[m(500).send([95m"Server crashed"[m);[2;9H[1m[96m}
+}[m);[41;87H[K[41;87H115,59-73     17%[35;73H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;13H[93mcatch[m (err) [1m[96m{[m[2;13Hconsole.log([95m"Everything broke:"[m);[3;13Hconsole.log(err);[41;87H[K[41;87H112,29-43     16%[35;43H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17Hconsole.log([95m"User"[m + username  + [95m" is now in the database !"[m);[2;17Hres.[93mstatus[m(201).send([95m"Success"[m);[3;9H[1m[96m}[m[41;87H[K[41;87H109,0-1[7C16%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;25H[93mreturn[m res.[93mstatus[m(400).send([95m"Registration failed: "[m + response.error.message);[2;17H[1m[96m}[m[41;87H[K[41;87H106,71-78     15%[35;78H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;17H[93mif[m(response.error) [1m[96m{[m[3;25Hconsole.log([95m"Supabase  error:"[m, response.error.message);[41;87H[K[41;87H103,76-90     14%[35;90H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;41Hemail: email[2;33H[1m[96m}[3;25H][m);[41;87H[K[41;87H100,0-1[7C14%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;33H[1m[96m{[m[2;41Husername: username,[3;41Hpassword: hashedPassword,[41;87H[K[41;87H97,18-32      13%[35;32H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[1m[96mvar[m response = [93mawait[m supabase[2;25H.from([95m'users'[m)[3;25H.insert([1m[96m[[m[35;22H[46m([7C)[m[41;87H[K[41;87H94,16-30      12%[35;30H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H[1m[96mvar[m saltRounds = 10;[2;17H[1m[96mvar[m hashedPassword = [93mawait[m bcrypt.hash(password, saltRounds);[38;22H([7C)[41;87H[K[41;87H91,53-60      12%[35;60H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;25H[93mreturn[m res.[93mstatus[m(400).send([95m"Username or Email already is use."[m);[2;17H[1m[96m}[m[41;87H[K[41;87H88,45-52      11%[35;52H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H.maybeSingle();[3;17H[93mif[m(existingUser) [1m[96m{[m[41;87H[K[41;87H85,0-1[8C10%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;17H.from([95m'users'[m)[2;17H.select([95m'id'[m)[3;17H.or([95m`email.eq.[m[38;5;224m${email}[m[95m,username.eq.[m[38;5;224m${username}[m[95m`[m)[31;25H[1m[96m[46m{[35;9H}[m[41;87H[K[41;87H82,9[10C10%[35;9H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;9H[93mtry[m [1m[96m{[m[3;17H[93mconst[m [1m[96m{[mdata: existingUser [1m[96m}[m = [93mawait[m supabase[34;25H[1m[96m{[38;9H}[m[41;87H[K[41;87H79,46[10C9%[35;46H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9H[1m[96mvar[m email = req.body.email.toLowerCase().trim();[3;9Hconsole.log([95m"Attempting to register user: "[m + username);[41;87H[K[41;87H76,35-49[7C9%[35;49H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1Happ.post([95m'/api/register'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[2;9Hvar[m username = req.body.username;[3;9H[1m[96mvar[m password = req.body.password;[32;36H[1m[96m[46m{[35;17H}[m[41;87H[K[41;87H73,3-17[8C8%[35;17H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96m}[m);
+
+[96m// register[m[41;87H[K[41;87H70,22-36[7C7%[35;36H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9HrejectUnauthorized: [95mfalse[m,[2;9HminVersion: [95m'TLSv1.2'[m
+    [1m[96m}[m[31;33H[1m[96m[46m{[35;33H}[m[38;36H[1m[96m{[m[41;87H[K[41;87H67,5-33[8C7%[35;33H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;9Hpass: process.env.GMAIL_PASS
+    [1m[96m}[m,
+    tls: [1m[96m{[34;33H{[38;33H}[m[41;87H[K[41;87H64,25-60[7C6%[35;60H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;5Hsecure: [95mfalse[m,
+    auth: [1m[96m{[m[3;9Huser: process.env.GMAIL_USER,[35;30H[46m([7C)[m[41;87H[K[41;87H61,17-38[7C5%[35;38H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mconst[m transporter = nodemailer.createTransport([1m[96m{[m
+    host: [95m'smtp.gmail.com'[m,
+    port: 587,[38;30H([7C)[41;87H[K[41;87H58,64-78[7C5%[35;78H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1Happ.use(cors());
+app.use(express.json());[33;34H[1m[96m[46m{[35;17H}[m[41;87H[K[41;87H55,3-17[8C4%[35;17H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mconst[m supabase = createClient(supabaseURL, supabaseKey);[36;34H[1m[96m{[38;17H}[m[41;87H[K[41;87H52,0-1[9C3%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[1m[96mvar[m gameRooms = [1m[96m{}[m;
+[93mconst[m supabaseURL = process.env.SUPABASE_URL;
+[93mconst[m supabaseKey = process.env.SUPABASE_KEY;[35;24H[46m([4C)[m[41;87H[K[41;87H49,15-29[7C3%[35;29H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mconst[m app = express();
+[93mconst[m PORT = process.env.PORT || 3000;
+[93mconst[m SECRET_KEY = process.env.JWT_SECRET || [95m"for_local_testing"[m;[38;24H([4C)[41;87H[K[41;87H46,6-13[8C2%[35;13H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mconst[m [1m[96m{[m createClient [1m[96m}[m = require([95m'@supabase/supabase-js'[m);
+[93mconst[m http = require([95m'http'[m);
+[93mconst[m [1m[96m{[m Server [1m[96m}[m = require([95m'socket.io'[m);[41;87H[K[41;87H43,0-1[9C1%[35;1H[?25h[?25l[1;40r[1;1H[3L[1;41r[1;1H[93mconst[m jwt = require([95m'jsonwebtoken'[m);
+[93mconst[m nodemailer = require([95m'nodemailer'[m);
+[93mconst[m cors = require([95m'cors'[m);[41;87H[K[41;87H40,35-42[7C1%[35;42H[?25h[?25l[1;40r[1;1H[3L[1;41r[2;1H[93mconst[m express = require([95m'express'[m);
+[93mconst[m bcrypt = require([95m'bcryptjs'[m);[41;87H[K[41;87H37,0-1[9C0%[35;1H[?25h[?25l[1;40r[1;1H[2L[1;41r[1;1Hglobal.WebSocket = require([95m'ws'[m);
+require([95m'dotenv'[m).config();[32;10H[1m[96m[46m{[35;5H}[m[41;87H[K[41;87H35,5[10CTop[35;5H[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[32;10H[1m[96m{[35;5H}[m[41;87H7,42[7;42H[?25h[?25l[41;77Hd[7;42H[?25h[?25l[41;78Hd[7;42H[41;77H  [7;1H[7;40r[40;1H
+[1;41r[40;9H[1m[96mvar[m password = req.body.password;[41;87H[K[41;87H7,1[11CTop[7;1H[?25h[?25l[41;77Hg[7;1H[?25h[?25l[41;77H [7;1H[41;77Hg[7;1H[?25h[?25l[41;78HD[7;1H[41;77H  [4;1H[41;87H4[4;1H[?25h[?25l[41;77Hg[4;1H[?25h[?25l[41;77H [4;1H[41;77Hgg[4;1H[41;77H  [1;1H[41;87H1[1;1H[?25h[?25l[41;77Hd[1;1H[?25h[?25l[41;78HG[1;1H[41;77H  [1;1H[1;1H[K[2;1H[94m~                                                                                                       [3;1H~                                                                                                       [4;1H~                                                                                                       [5;1H~                                                                                                       [6;1H~                                                                                                       [7;1H~                                                                                                       [8;1H~                                                                                                       [9;1H~                                                                                                       [10;1H~                                                                                                       [11;1H~                                                                                                       [12;1H~                                                                                                       [13;1H~                                                                                                       [14;1H~                                                                                                       [15;1H~                                                                                                       [16;1H~                                                                                                       [17;1H~                                                                                                       [18;1H~                                                                                                       [19;1H~                                                                                                       [20;1H~                                                                                                       [21;1H~                                                                                                       [22;1H~                                                                                                       [23;1H~                                                                                                       [24;1H~                                                                                                       [25;1H~                                                                                                       [26;1H~                                                                                                       [27;1H~                                                                                                       [28;1H~                                                                                                       [29;1H~                                                                                                       [30;1H~                                                                                                       [31;1H~                                                                                                       [32;1H~                                                                                                       [33;1H~                                                                                                       [34;1H~                                                                                                       [35;1H~                                                                                                       [36;1H~                                                                                                       [37;1H~                                                                                                       [38;1H~                                                                                                       [39;1H~                                                                                                       [40;1H~                                                                                                       [m[41;1H--No lines in buffer--[41;87H[K[41;87H0,0-1[9CAll[1;1H[?25h[?25l[?25h[?25l[41;1H[1m-- INSERT --[m[41;13H[K[41;87H0,1[11CAll[1;1Hglobal.WebSocket = require([95m'ws'[m);
+require([95m'dotenv'[m).config();[2;28H[K[2;28H[?25h[?25l[3;1H[K[4;1H[93mconst[m express = require([95m'express'[m); [4;37H[K[5;1H[93mconst[m bcrypt = require([95m'bc[m[5;27H[K[5;27H[?25h[?25l[95mryptjs'[m);
+[93mconst[m jwt = require([95m'jsonwebtoken'[m); [6;38H[K[7;1H[93mconst[m nodemailer[7;17H[K[7;17H[?25h[?25l = require([95m'nodemailer'[m);
+[93mconst[m cors = require([95m'cors'[m); [8;31H[K[9;1H[93mconst[m [9;7H[K[9;7H[?25h[?25l[1m[96m{[m createClient [1m[96m}[m = require([95m'@supabase/supabase-js'[m);
+[93mconst[m http [10;12H[K[10;12H[?25h[?25l= require([95m'http'[m);
+[93mconst[m [1m[96m{[m Server [1m[96m}[m = require([95m'socket.io'[m);[11;41H[K[12;1H[K[13;1Hcon[13;4H[K[13;4H[?25h[?25l[93mconst[m app = express();
+[93mconst[m PORT = process.env.PORT || 3000; [14;40H[K[15;1Hcon[15;4H[K[15;4H[?25h[?25l[93mconst[m SECRET_KEY = process.env.JWT_SECRET || [95m"for_local_testing"[m; [?25h[?25l
+[1m[96mvar[m gameRooms = [1m[96m{}[m; [16;21H[K[17;1H[93mconst[m supabaseURL = process.env.SUPABASE_[17;42H[K[17;42H[?25h[?25lURL;
+[93mconst[m supabaseKey = process.env.SUPABASE_KEY; [18;47H[K[19;1H[93mconst[m supa[19;11H[K[19;11H[?25h[?25lbase = createClient(supabaseURL, supabaseKey);[20;1H[K[21;1Happ.use(cors())[21;16H[K[21;16H[?25h[?25l;
+app.use(express.json()); [22;26H[K[23;1H[K[24;1H[93mconst[m transporter = nodemailer.cr[24;34H[K[24;34H[?25h[?25leateTransport([1m[96m{[m
+    host: [95m'smtp.gmail.com'[m,[25;28H[K[26;1H    port: 587,[26;15H[K[27;1H    [27;5H[K[27;5H[?25h[?25lsecure: [95mfalse[m,
+    auth: [1m[96m{[m[28;12H[K[29;1H        user: process.env.GMAIL_USE[29;36H[K[29;36H[?25h[?25lR,
+        pass: process.env.GMAIL_PASS [30;38H[K[31;1H    [1m[96m}[m,[31;7H[K[32;1H    tls: [1m[96m{[m[32;11H[K[33;1H    [33;5H[K[33;5H[?25h[?25l    rejectUnauthorized: [95mfalse[m,
+        minVersion: [95m'TLSv1.2'[m[34;30H[K[35;1H  [35;3H[K[35;3H[?25h[?25l  [1m[96m}
+}[m);[36;4H[K[37;1H[K[38;1H[96m// --- REGISTER ---[m[38;20H[K[39;1Happ.post([95m'/api/register'[m, [93masync[m fu[39;35H[K[39;35H[?25h[?25l[1m[96mfunction[m(req, res) [1m[96m{[m
+    [1m[96mvar[m username = req.body.username; [40;39H[K[1;40r[40;1H
+[1;41r[40;5Hv[41;11H[1m(paste) --[m[41;87H[K[40;6H[?25h[?25l[1m[96mvar[m password = req.body.password;[40;30H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[1m[96mvar[m email = req.body.email.toLowerCase().trim();[40;39H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5Hconsole.log([95m"Attempting to register user: "[m + username);[40;29H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5H[93mtry[m [1m[96m{[m[40;9H[93mconst[m [1m[96m{[mdata: existingUser [1m[96m}[m = [93mawait[m supabase[40;15H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H.from([95m'users'[m)[40;9H.select([95m'id'[m)[34C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H.or([95m`email.eq.[m[38;5;224m${email}[m[95m,username.eq.[m[38;5;224m${username}[m[95m`[m)[40;9H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;9H.maybeSingle();[39;9H[93mif[m(existingUser) [1m[96m{[m[40;13H[93mreturn[m res.[93mstatus[m(400).send([95m"Username or Email already in u[?25h[?25lse."[m);[40;15H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;9H[1m[96m}[39;9Hvar[m saltRounds = 10;[40;9H[1m[96mvar[m hashedPassword = [93mawait[m bcrypt.hash(password, saltRounds);     [?25h[?25l[1;40r[1;1H[2M[1;41r[40;9H[1m[96mvar[m response = [93mawait[m supabase  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;13H.from([95m'users'[m)[40;13H.insert([1m[96m[{[m username, password: hashedPassword, email [?25h[?25l[1m[96m}][m);[40;28H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;9H[93mif[m(response.error) [1m[96m{[m[40;13H[93mreturn[m res.[93mstatus[m(400).send([95m"Registration failed: "[m + response.error.message);[?25h[?25l[40;9H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;9H[1m[96m}[m[39;9Hres.[93mstatus[m(201).send([95m"Success"[m);
+    [1m[96m}[m [93mcatch[m (err) [1m[96m{[m  [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hres.[93mstatus[m(500).send([95m"Server crashed"[m);
+    [1m[96m}[31C[?25h[?25l[1;40r[m[1;1H[4M[1;41r[37;1H[1m[96m}[m);
+
+[96m// --- LOGIN ---[m
+app.post([95m'/api/login'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;5H[1m[96mvar[m userAttempt = req.body.username.trim();
+    [1m[96mvar[m passAttempt = req.body.password;[40;21H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[1m[96mvar[m result = [93mawait[m supabase[40;24H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;13H.from([95m'users'[m)[40;13H.select([95m'*'[m)[40;18H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;13H.ilike([95m'username'[m, userAttempt)[40;13H.maybeSingle();[40;21H[?25h[?25l[1;40r[1;1H[4M[1;41r[38;5H[1m[96mvar[m user = result.data;[40;5H[93mif[m(!user) [93mreturn[m res.[93mstatus[m(401).json([1m[96m{[m message: [95m"Invalid username or password"[?25h[?25l[m [1m[96m}[m);[40;57H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[1m[96mvar[m passwordMatch = [93mawait[m bcrypt.compare(passAttempt, user.password);[40;19H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5H[93mif[m (passwordMatch) [1m[96m{[40;9Hvar[m token = jwt.sign([1m[96m{[m username: userAttempt [1m[96m}[m, SECRET_KEY);[40;12H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hres.json([1m[96m{[m token: token[1m[96m}[m);[40;26H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[1m[96m}[m [93melse[m [1m[96m{[m[40;9Hres.[93mstatus[m(401).json([1m[96m{[m message: [95m"Invalid username or password"[m [1m[96m}[m);[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}
+}[m);[40;18H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;1H[96m// --- FORGOT PASSWORD STEP 1: SEND CODE ---[m
+app.post([95m'/api/forgot-password'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[40;21H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[1m[96mvar[m userEmail = req.body.email;[11C[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[1m[96mvar[m randomCode = Math.floor(100000 + Math.random() * 900000);[40;43H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[1m[96mvar[m codeString = randomCode.toString();    [?25h[?25l[1;40r[1;1H[4M[1;41r[38;5Hconsole.log([95m"Reset attempt from: "[m + userEmail);[40;5H[1m[96mvar[m result = [93mawait[m supabase[40;13H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H.from([95m'users'[m)[40;9H.update([1m[96m{[m reset_code: codeString [1m[96m}[m)[40;32H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H.eq([95m'email'[m, userEmail)[9C[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H.select();[40;5H[93mif[m (result.error || !result.data || result.data.length === 0) [1m[96m{[40;36H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9H[93mreturn[m res.[93mstatus[m(400).send([95m"User not found"[m);[40;25H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;5H[1m[96m}[m[39;5H[93mtry[m [1m[96m{[40;9Hvar[m mailOptions = [1m[96m{[32C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;13Hfrom: [95m'"Brownie Beater" <barrazaneftali4@gmail.com>'[m,[40;28H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;13Hto: userEmail,[40;13Hsubject: [95m'Your Reset Code'[m,[10C[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Htext: [95m'Your brownie beater reset code is: '[m + codeString[40;32H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[1m[96m}[m;[40;9H[93mawait[m transporter.sendMail(mailOptions);[40;18H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hres.send([95m"Sent"[m);
+    [1m[96m}[m [93mcatch[m (mailError) [1m[96m{[40;8H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;9Hconsole.log([95m"Mail Error:"[m, mailError);[40;9Hres.[93mstatus[m(500).send([95m"Mail failed"[m);[40;13H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;5H[1m[96m}
+}[m);
+
+[96m// --- FORGOT PASSWORD STEP 2: VERIFY OTP ---[40;30H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;1Happ.post([95m'/api/verify-otp'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[40;38H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mconst[m [1m[96m{[m email, otp_code [1m[96m}[m = req.body;[40;15H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5H[93mconst[m [1m[96m{[m data, error [1m[96m}[m = [93mawait[m supabase[40;9H.from([95m'users'[m)    [?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H.select([95m'id'[m)[39;9H.eq([95m'email'[m, email)[40;9H.eq([95m'reset_code'[m, otp_code)[40;7H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9H.maybeSingle();[40;5H[93mif[m (error || !data) [1m[96m{[18C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9H[93mreturn[m res.[93mstatus[m(400).send([95m"Invalid code"[m);  [?25h[?25l[1;40r[1;1H[5M[1;41r[36;5H[1m[96m}[m
+    res.[93mstatus[m(200).send([95m"Valid code"[m);
+[1m[96m}[m);
+
+[96m// --- FORGOT PASSWORD STEP 3: FINAL RESET ---[40;19H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;1Happ.post([95m'/api/reset-password'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[40;23H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[1m[96mvar[m email = req.body.email;[40;14H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[1m[96mvar[m userCode = req.body.otp_code;
+    [1m[96mvar[m newPassword = req.body.new_password;[40;30H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[1m[96mvar[m result = [93mawait[m supabase[40;9H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13H.from([95m'users'[m)[39;13H.select([95m'*'[m)[40;13H.eq([95m'email'[m, email)[8C[?25h[?25l[1;40r[40;1H
+[1;41r[40;13H.eq([95m'reset_code'[m, userCode)[40;33H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13H.maybeSingle();[40;5H[93mif[m (!result.data) [93mreturn[m res.[93mstatus[m(400).send([95m"Invalid code or email"[m);[40;18H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5H[1m[96mvar[m saltRounds = 10;[30C[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[1m[96mvar[m hashed = [93mawait[m bcrypt.hash(newPassword, saltRounds);[40;17H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5H[1m[96mvar[m updateResult = [93mawait[m supabase[40;13H.from([95m'users'[m)[26C[?25h[?25l[1;40r[40;1H
+[1;41r[40;13H.update([1m[96m{[m password: hashed, reset_code: [93mnull[m [1m[96m}[m)[40;22H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13H.eq([95m'email'[m, email);[40;5H[93mif[m (updateResult.error) [93mreturn[m res.[93mstatus[m(500).send([95m"Update failed"[m);[40;10H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5Hres.send([95m"Password changed successfully!"[m);[40;20H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[1m[96m}[m);
+
+[96m// --- SOCKETS & ROOMS ---[40;17H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;1H[93mconst[m server = http.createServer(app);
+[93mconst[m io = [93mnew[m Server(server, [1m[96m{[m cors: [1m[96m{[m origin: [95m"*"[m [1m[96m}[m [1m[96m}[m);[40;21H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;1Hio.on([95m'connection'[m, (socket) => [1m[96m{[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;5Hconsole.log([95m"Socket connected:"[m, socket.id);[40;7H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5Hsocket.on([95m"joinRoom"[m, ([1m[96m{[m roomCode, username [1m[96m}[m) => [1m[96m{[m[40;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m) [93mreturn[m;[40;28H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[93mconst[m currentPlayers = gameRooms[1m[96m[[mroomCode[1m[96m][m.playList;[40;30H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[93mif[m (currentPlayers.length >= 2 && !currentPlayers.includes(username)) [1m[96m{[40;13H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;13Hsocket.emit([95m"error"[m, [95m"Room is full!"[m);    [?25h[?25l[1;40r[1;1H[2M[1;41r[39;13H[93mreturn[m;[40;9H[1m[96m}[17C[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;9Hsocket.join(roomCode);[40;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.playList.includes(username)) gameRooms[1m[96m[[mroomCode[1m[96m][m.playLis[?25h[?25lt.push(username[40;1H[94m@@@                                                                                                     [1;40r[m[1;1H[2M[1;41r[38;1H        [93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.playList.includes(username)) gameRooms[1m[96m[[mroomCode[1m[96m][m.playList.push(usernamee[39;1H);[40;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[?25h[?25l) gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers = [1m[96m{}[m;[40;23H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[93mif[m (gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m === [93mundefined[m) gameRooms[1m[96m[[mroomC[?25h[?25lode[1m[96m][m.readyPlayers[1m[96m[[mu[40;1H[94m@@@                                                                                                     [1;40r[m[1;1H[2M[1;41r[38;1H        [93mif[m (gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m === [93mundefined[m) gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[muu[39;1Hsername[1m[96m][m = [95mfalse[m;[40;9H[93mif[m (gameRooms[1m[96m[[mroom[?25h[?25lCode[1m[96m][m.[93mstatus[m !== [95m"finished"[m) [1m[96m{[40;33H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;13H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m) gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m = [1m[96m{[?25h[?25l[m clicks:[94m@@@                                                                                                     [1;40r[m[1;1H[3M[1;41r[37;1H            [93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m) gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m = [1m[96m{[m clicks:  [38;1H0, cps: 0 [1m[96m}[m;[39;9H[1m[96m}[m[40;9Hio.to(roomCode).emit([95m"r[?25h[?25loomUpdate"[m, [1m[96m{[m players: gameRooms[1m[96m[[mroomCode[1m[96m][m.playList, readyStatu[?25h[?25ls: gameRoo[40;1H[94m@@@                                                                                                     [1;40r[m[1;1H[4M[1;41r[36;1H        io.to(roomCode).emit([95m"roomUpdate"[m, [1m[96m{[m players: gameRooms[1m[96m[[mroomCode[1m[96m][m.playList, readyStatus: gameRooo[37;1Hms[1m[96m[[mroomCode[1m[96m][m.readyPlayers [1m[96m}[m);
+    [1m[96m}[m);[40;5Hsocket.on([?25h[?25l[95m"toggleReady"[m, ([1m[96m{[m roomCode, username [1m[96m}[m) => [1m[96m{[40;19H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m) [93mreturn[m;[?25h[?25l[1;40r[40;1H
+[1;41r[40;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m = !gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[musername[1m[96m][m;    [?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[93mconst[m players = gameRooms[1m[96m[[mroomCode[1m[96m][m.playList;[40;14H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[93mconst[m readyObj = gameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers;[40;18H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hio.to(roomCode).emit([95m"roomUpdate"[m, [1m[96m{[m players, readyStatus: readyObj [1m[96m}[m);[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[93mif[m (players.length >= 2 && players.every(p => readyObj[1m[96m[[?25h[?25l[mp[1m[96m][m === [95mtrue[m)) [1m[96m{[40;48H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"playing"[m;[40;10H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;13Hio.to(roomCode).emit([95m"gameStarted"[m);[40;9H[1m[96m}[?25h[?25l[1;40r[m[1;1H[4M[1;41r[37;5H[1m[96m}[m);[39;5Hsocket.on([95m"forceStart"[m, ([1m[96m{[m roomCode [1m[96m}[m) => [1m[96m{[m[40;9H[93mif[m (gameRooms[1m[96m[[mroomCode[1m[96m][m) [1m[96m{[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"playing"[m;[40;45H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hio.to(roomCode).emit([95m"gameStarted"[m);[40;40H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;9H[1m[96m}
+[m    [1m[96m}[m);[40;5Hsocket.on([95m"playerReachedGoal"[m, ([1m[96m{[m roomCode, username, usedPowerUps, peakCPS, finalClicks [1m[96m}[m) => [1m[96m{[m [?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m || gameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m ![?25h[?25l== [95m"playing"[m) [93mreturn[m;[40;42H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m = [1m[96m{[m clicks: finalClicks, cps: peakCPS, usedPowerUps [1m[96m}[m;    [?25h[?25l[1;40r[40;1H
+[1;41r[40;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"finished"[m;[40;19H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hio.to(roomCode).emit([95m"gameOver"[m, [1m[96m{[m winner: username, finalScores: gameRoo[?25h[?25lms[1m[96m[[mroomCode[1m[96m][m.scores [1m[96m}[m);[40;31H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m);[40;5Hsocket.on([95m"clickUpdate"[m, ([1m[96m{[m roomCode, username, clicks, cps, usedPowerUps [1m[96m}[m) => [1m[96m{[39;8H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m || gameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m === [95m"fi[m
+[94m~                                                                                                       [39;71H[?25h[?25l[m[95mnished"[m) [93mreturn[m;
+        gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m =[40;47H[K[40;47H[?25h[?25l [1m[96m{[m clicks: clicks || 0, cps: cps || 0, usedPowerUps: usedP[40;1H[94m@@@                                                                                                     [1;40r[m[40;1H
+[1;41r[39;1H        gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[musername[1m[96m][m = [1m[96m{[m clicks: clicks || 0, cps: cps || 0, usedPowerUps: usedPP[40;1HowerU[?25h[?25lps || [1m[96m{[m multiplier: 0, steal: 0, glitch: 0[1m[96m}[m [1m[96m}[m;[39;17H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hio.to(roomCode).emit([95m"scoreUpdate"[m, gameRooms[1m[96m[[mroomCode[1m[96m][m.scores);
+    [1m[96m}[m)[?25h[?25l;[39;61H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;5Hsocket.on([95m"activateSteal"[m, ([1m[96m{[m roomCode, username [1m[96m}[m) => [1m[96m{[m[40;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m || gameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[?25h[?25l[m !== [95m"playing"[m) [93mreturn[m;[40;40H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9H[1m[96mlet[m room = gameRooms[1m[96m[[mroomCode[1m[96m][m;[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9H[1m[96mlet[m stolenTotal = 0;[40;9H[93mfor[m ([1m[96mlet[m player [93min[m room.scores) [1m[96m{[1;40r[m[1;1H[2M[1;41r[39;13H[93mif[m (player !== username) [1m[96m{[40;16H[?25h[?25l[m [1m[96mlet[m currentOpponentClicks = room.scores[1m[96m[[mplayer[1m[96m][m.clicks || 0; [?25h[?25l[1;40r[40;1H
+[1;41r[40;17H[1m[96mlet[m amountToSteal = Math.floor(currentOpponentCl[?25h[?25licks * 0.15);[40;50H[?25h[?25l[1;40r[40;1H
+[1;41r[40;17Hroom.scores[1m[96m[[mplayer[1m[96m][m.clicks -= amountToSteal;[40;39H[?25h[?25l[1;40r[40;1H
+[1;41r[40;17HstolenTotal += amountToSteal;[10C[?25h[?25l[1;40r[40;1H
+[1;41r[40;17Hsocket.to(roomCode).emit([95m"pointsLost"[m, [1m[96m{[m victim: player, newTotal: room.scores[1m[96m[[mplayer[1m[96m][m.c[40;1H[94m@@@                                                                                                     [1;40r[m[40;1H
+[1;41r[39;1H                socket.to(roomCode).emit([95m"pointsLost"[m, [1m[96m{[m victim: player, newTotal: room.scores[1m[96m[[mplayer[1m[96m][m.cc[40;1Hlicks, thief: [?25h[?25lusername [1m[96m}[m);[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13H[1m[96m}[39;9H}[m[40;9H[93mif[m (room.scores[1m[96m[[musername[1m[96m][m) room.scores[1m[96m[[musername[1m[96m][m.clicks += stolenTotal;[40;10H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hio.to(roomCode).emit([95m"scoreUpdate"[m, room.scores);[40;15H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hsocket.emit([95m"stealConfirmed"[m, [1m[96m{[m newTotal: room.scores[1m[96m[[musername[1m[96m][m.click[?25h[?25ls [1m[96m}[m);[40;49H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m);[40;5Hsocket.on([95m"activateGlitch"[m, ([1m[96m{[m roomCode [1m[96m}[m) => [1m[96m{[8C[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9Hsocket.to(roomCode).emit([95m"glitchEffect"[m, [1m[96m{[m duration: 30000 [1m[96m}[m);[40;42H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m);[40;5Hsocket.on([95m"requestRematch"[m, ([1m[96m{[m roomCode [1m[96m}[m) => [1m[96m{[40;11H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;9H[93mif[m (!gameRooms[1m[96m[[mroomCode[1m[96m][m) [93mreturn[m;[40;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.[93mstatus[m = [95m"waiting"[m;[40;26H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores = [1m[96m{}[m;[7C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers = [1m[96m{}[m;     [?25h[?25l[1;40r[1;1H[2M[1;41r[39;9HgameRooms[1m[96m[[mroomCode[1m[96m][m.playList.forEach(player => [1m[96m{[m[40;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.readyPlayers[1m[96m[[mplayer[1m[96m][m = [95mfalse[m;     [?25h[?25l[1;40r[40;1H
+[1;41r[40;13HgameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[mplayer[1m[96m][m = [1m[96m{[m clicks: 0, cps: 0[?25h[?25l, usedPowerUps: [1m[96m{[m multiplier: 0, ste[40;1H[94m@@@                                                                                                     [1;40r[m[1;1H[3M[1;41r[37;1H            gameRooms[1m[96m[[mroomCode[1m[96m][m.scores[1m[96m[[mplayer[1m[96m][m = [1m[96m{[m clicks: 0, cps: 0, usedPowerUps: [1m[96m{[m multiplier: 0, stee[38;1Hal: 0 [1m[96m}[m [1m[96m}[m;[39;9H[1m[96m}[m);
+    [?25h[?25l    io.to(roomCode).emit([95m"goToWaitroom"[m);[40;13H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;5H[1m[96m}[m);[40;5Hsocket.on([95m"disconnect"[m, () => [1m[96m{[m console.log([95m"User disconnected:"[m, socke[?25h[?25lt.id); [1m[96m}[m);[40;20H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;1H[1m[96m}[m);
+
+[96m// --- ROOM MANAGEMENT ---[m
+[1m[96mfunction[m makeCode() [1m[96m{[m [93mreturn[m Math.floor(1000 + Math.random() * 9000).toString(); [1m[96m}[?25h[?25l[40;17H[?25h[?25l[1;40r[m[1;1H[3M[1;41r[39;1Happ.post([95m'/createRoom'[m, [1m[96mfunction[m(req, res) [1m[96m{
+[m    [1m[96mvar[m newCode = makeCode();[19C[?25h[?25l[1;40r[40;1H
+[1;41r[40;5HgameRooms[1m[96m[[mnewCode[1m[96m][m = [1m[96m{[m hostName: req.body.username, playList: [1m[96m[][m, [93mstatus[m: [95m"waiting"[m, scores: [1m[96m{}[m [1m[96m}[m;[40;9H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5Hres.send([1m[96m{[m roomCode: newCode [1m[96m}[m);[40;29H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[1m[96m}[m);
+
+app.get([95m'/roomStatus/:code'[m, [1m[96mfunction[m(req, res) [1m[96m{[40;42H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[1m[96mvar[m room = gameRooms[1m[96m[[mreq.params.code[1m[96m][m;[39;61H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[93mif[m (room) res.send([1m[96m{[m playerCount: room.playList.length, isFull: room.playList.length >= 2, [93mstatus[m: rr[40;1Hoom.[93mstatus[m [1m[96m}[m);oom[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93melse[m res.[93mstatus[m(404).send([95m"Room not found"[m);[40;12H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;1H[1m[96m}[m);
+
+app.get([95m'/api/stats'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[40;26H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mconst[m username = req.query.username;[7C[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[93mif[m (!username) [93mreturn[m res.[93mstatus[m(400).json([1m[96m{[m error: [95m"Username required"[m [1m[96m}[m);[40;21H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[93mtry[m [1m[96m{[m[40;9H[93mconst[m [1m[96m{[m data, error [1m[96m}[m = [93mawait[m supabase.from([95m'users'[m).select([95m'totalBrownies'[?25h[?25l[m).eq([95m'username'[m, user[40;1H[94m@@@                                                                                                     [1;40r[m[1;1H[2M[1;41r[38;1H        [93mconst[m [1m[96m{[m data, error [1m[96m}[m = [93mawait[m supabase.from([95m'users'[m).select([95m'totalBrownies'[m).eq([95m'username'[m, userr[39;1Hname).maybeSingle();[40;9H[93mif[m (error) th[?25h[?25l[93mthrow[m error;[21C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hres.json([1m[96m{[m totalBrownies: data ? (data.totalBrownies || 0) : 0 [1m[96m}[m);[40;41H[?25h[?25l[1;40r[40;1H
+[1;41r[40;5H[1m[96m}[m [93mcatch[m (err) [1m[96m{[m res.[93mstatus[m(500).json([1m[96m{[m error: [95m"Internal Server Error"[m [1m[96m}[m); [1m[96m}[40;19H[?25h[?25l[1;40r[m[1;1H[3M[1;41r[38;1H[1m[96m}[m);
+
+app.post([95m'/api/add-clicks'[m, [93masync[m [1m[96mfunction[m(req, res) [1m[96m{[40;27H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;5H[93mconst[m [1m[96m{[m clicks [1m[96m}[m = req.body;[40;7H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[93mconst[m authHeader = req.headers.authorization;
+    [93mif[m (!authHeader) [93mreturn[m res.[93mstatus[m(401).send([95m"No token"[m);[39;8H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;5H[93mtry[m [1m[96m{[m[40;9H

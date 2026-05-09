@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Lobby</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+            color: white;
+            background-image: url('browniebackground.jpg');
+            background-repeat: repeat;
+            background-size: 250px;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            background-color: rgba(51, 51, 51, 0.8);
+            padding: 20px 60px;
+            border-radius: 15px;
+            display: block;
+            width: fit-content;
+            margin: 20px auto 10px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        #roomCode {
+            font-size: 18px;
+            background-color: rgba(51, 51, 51, 0.8);
+            padding: 8px 20px;
+            border-radius: 8px;
+            display: block;
+            width: fit-content;
+            margin: 0 auto 40px auto;
+        }
+
+        #playerList {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center; 
+        }
+
+        .player {
+            background: rgba(51, 51, 51, 0.9);
+            padding: 15px 25px;
+            width: 100%; 
+            max-width: 1150px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-sizing: border-box; /* Fixes padding issues */
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #795548;
+            border-radius: 50%;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border: 2px solid #ffeb3b;
+            flex-shrink: 0;
+        }
+
+        .player-name {
+            font-size: 24px;
+            font-weight: bold;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .stats-group {
+            display: flex;
+            gap: 30px;
+            text-align: right;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #ffeb3b;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #startBtn {
+            display: block; /* Ensures it's visible */
+            margin: 40px auto; /* Centers it horizontally */
+            padding: 15px 60px;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: #ffeb3b;
+            color: #333;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        #startBtn:hover {
+            background-color: #fdd835;
+            transform: scale(1.05);
+        }
+       #powerupGuide {
+            position: fixed;
+            bottom: 15px;
+            left: 15px; /* Pushed to bottom-left */
+            background: rgba(51, 51, 51, 0.9);
+            border: 1px solid #ffeb3b;
+            border-radius: 12px;
+            padding: 10px 15px;
+            text-align: left;
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .guide-header {
+            font-size: 11px;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 235, 59, 0.3);
+            padding-bottom: 4px;
+        }
+
+        .guide-item {
+            color: white;
+            font-size: 12px;
+            margin-bottom: 4px; 
+            white-space: nowrap;
+        }
+
+        .guide-item:last-child {
+            margin-bottom: 0; 
+        }
+
+        .key-label {
+            background: #ffeb3b;
+            color: #222;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 10px;
+            margin-right: 5px;
+        }
+
+        .guide-item strong {
+            color: #ffeb3b;
+        }
+        
+    </style>
+</head>
+<body>
+
+<h1>Waiting Room</h1>
+<div id="roomCode">Room: ----</div>
+
+<div id="powerupGuide">
+    <div class="guide-header">POWER UPS</div>
+    <div class="guide-item">
+        <span class="key-label">Press 1</span>
+        <strong>Multiplier</strong>
+        <p>2x click multiplier for 5 seconds.</p>
+    </div>
+    <hr>
+    <div class="guide-item">
+        <span class="key-label">Press 2</span>
+        <strong>Steal</strong>
+        <p>Steal 15% of your opponent's total and adds it to your own.</p>
+    </div>
+    <hr>
+    <div class="guide-item">
+        <span class="key-label">Press 3</span>
+        <strong>Glitch</strong>
+        <p>Moves the opponent's brownie around the screen for 30 seconds.</p>
+    </div>
+</div>
+
+<div id="playerList"></div>
+
+<button id="startBtn" onclick="toggleReady()">READY UP</button>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+    var socket = io("http://localhost:3000");
+
+    var params = new URLSearchParams(window.location.search);
+    var roomCode = params.get("room");
+    var myName = localStorage.getItem("username");
+
+    var roomDisplay = document.getElementById("roomCode");
+    var playerListDiv = document.getElementById("playerList");
+    var startBtn = document.getElementById("startBtn");
+
+    roomDisplay.textContent = "Room Code: " + roomCode;
+
+    // Join room
+    socket.emit("joinRoom", { roomCode, username: myName });
+
+        async function fetchPlayerStats(username) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/stats?username=${username}`);
+                const data = await response.json();
+                
+                const element = document.getElementById(`brownies-${username}`);
+                if (element) {
+                    element.textContent = (data.totalBrownies || 0).toLocaleString();
+                }
+            } catch (e) {
+                console.error("Stats fetch error", e);
+            }
+    }
+
+    // tells server whos in the room and if their ready
+    socket.on("roomUpdate", function(data) {
+        playerListDiv.innerHTML = "";
+        if(!data.players || !data.readyStatus) return;
+
+        data.players.forEach(p => {
+            var isReady = data.readyStatus[p];
+            var div = document.createElement("div");
+            div.className = "player";
+            
+            let readyBadge = isReady 
+                ? `<span style="color: #4caf50; font-weight: bold; margin-left: 10px;">Ready</span>` 
+                : `<span style="color: #ff5252; font-weight: bold; margin-left: 10px;">Not ready</span>`;
+
+            div.innerHTML = `
+                <div class="avatar">👤</div>
+                <div class="player-name">${p} ${readyBadge}</div>
+                <div class="stats-group">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Brownies</span>
+                        <span class="stat-value" id="brownies-${p}">Loading...</span>
+                    </div>
+                </div>
+            `;
+            playerListDiv.appendChild(div);
+
+            fetchPlayerStats(p);
+
+            
+            if (p === myName) {
+                if (data.players.length === 1 && isReady) {
+                    startBtn.textContent = "START GAME";
+                    startBtn.style.backgroundColor = "#2196f3"; 
+                    startBtn.style.color = "white";
+                    startBtn.setAttribute("onclick", "manualStart()");
+                } else {
+                    startBtn.textContent = isReady ? "READY!" : "READY UP";
+                    startBtn.style.backgroundColor = isReady ? "#4caf50" : "#ffeb3b";
+                    startBtn.style.color = isReady ? "white" : "#333";
+                    startBtn.setAttribute("onclick", "toggleReady()");
+                }
+            }
+        });
+    });
+
+
+    //when both players ready start
+    socket.on("gameStarted", function() {
+        window.location.href = "game.html?room=" + roomCode;
+    });
+
+    function toggleReady() {
+        socket.emit("toggleReady", {
+            roomCode: roomCode,
+            username: myName
+        });
+    }
+
+    function manualStart() {
+        socket.emit("forceStart", { roomCode: roomCode });
+    }
+</script>
+</body>
+</html>
