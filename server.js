@@ -24,7 +24,12 @@ app.use(cors({
 	credentials: true
 }));
 
-app.use(express.json()); 
+app.use(express.json());
+
+app.get('/', (req, res) => {
+	res.send('Server is up and running!'); 
+}); 
+
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
