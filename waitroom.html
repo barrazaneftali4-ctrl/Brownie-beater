@@ -79,7 +79,25 @@
             flex-grow: 1;
             text-align: left;
         }
-
+		.announcement-box {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%); 
+            
+            background-color: #6e462d; 
+            color: #ffffff;
+            padding: 25px 35px;
+            border-radius: 12px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid #e0c097;
+            
+            z-index: 9999;
+            max-width: 200px;
+            text-align: center;
+        }
         .stats-group {
             display: flex;
             gap: 30px;
@@ -198,7 +216,7 @@
         <p>Moves the opponent's brownie around the screen for 30 seconds.</p>
     </div>
 </div>
-
+<div class="announcement-box">First to 500 brownies wins!</div>
 <div id="playerList"></div>
 
 <button id="startBtn" onclick="toggleReady()">READY UP</button>
