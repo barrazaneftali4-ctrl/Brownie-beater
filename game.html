@@ -98,6 +98,26 @@
         #myTube { left: 30px; }
         #opponentTube { right: 30px; }
 
+        .announcement-box {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%); 
+            
+            background-color: rgba(51, 51, 51, 0.95); 
+            color: #ffffff;
+            padding: 25px 35px;
+            border-radius: 12px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid #e0c097;
+            
+            z-index: 9999;
+            max-width: 200px;
+            text-align: center;
+        }
+
         .fill {
             position: absolute;
             bottom: 0;
@@ -207,6 +227,7 @@
 <body>
     <div id="countdownOverlay">3</div>
 <div id="opponentHUD"></div>
+<div class="announcement-box">First to 500 brownies wins!</div>
 <div id="powerUpContainer">
     <div id="multiplierCard" class="power-card">[PRESS 1]<br>MULTIPLIER (2x)</div>
     <div id="stealCard" class="power-card">[PRESS 2]<br>STEAL 15%</div>
